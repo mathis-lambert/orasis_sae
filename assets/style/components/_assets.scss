@@ -1,0 +1,93 @@
+/* assets stylesheet */
+/* including, buttons, and other assets from our UI KIT */
+
+/* colors */
+$color-primary: #47c7ef;
+$color-secondary: #c22b2b;
+$color-black: #292a2a;
+$color-white: #fff;
+
+/* buttons */
+a {
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-blue {
+  background-color: $color-primary;
+  color: $color-white;
+  border: 2px $color-primary solid;
+  &:hover {
+    background-color: $color-white;
+    color: $color-primary;
+  }
+}
+.btn-blue1 {
+  background-color: $color-white;
+  color: $color-primary;
+  border: 2px $color-primary solid;
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+}
+.btn-red {
+  background-color: $color-secondary;
+  color: $color-white;
+  border: 2px $color-secondary solid;
+  &:hover {
+    background-color: $color-white;
+    color: $color-secondary;
+  }
+}
+.btn-red1 {
+  background-color: $color-white;
+  color: $color-secondary;
+  border: 2px $color-secondary solid;
+  &:hover {
+    background-color: $color-secondary;
+    color: $color-white;
+  }
+}
+.btn-black {
+  background-color: $color-black;
+  color: $color-white;
+  border: 2px $color-black solid;
+  &:hover {
+    background-color: $color-white;
+    color: $color-black;
+  }
+}
+.btn-black1 {
+  background-color: $color-white;
+  color: $color-black;
+  border: 2px $color-black solid;
+  &:hover {
+    background-color: $color-black;
+    color: $color-white;
+  }
+}
+.btn-white {
+  background-color: $color-white;
+  color: $color-black;
+  border: 2px $color-black solid;
+  &:hover {
+    background-color: $color-black;
+    color: $color-white;
+  }
+}
+.btn-white1 {
+  background-color: $color-black;
+  color: $color-white;
+  border: 2px $color-black solid;
+  &:hover {
+    background-color: $color-white;
+    color: $color-black;
+  }
+}

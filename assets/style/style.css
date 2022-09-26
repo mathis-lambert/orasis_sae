@@ -1,17 +1,206 @@
 /* NEW CSS PROJECT */
+/* IMPORTS */
+/* assets stylesheet */
+/* including, buttons, and other assets from our UI KIT */
+/* colors */
+/* buttons */
+a {
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-blue {
+  background-color: #47c7ef;
+  color: #fff;
+  border: 2px #47c7ef solid;
+}
+.btn-blue:hover {
+  background-color: #fff;
+  color: #47c7ef;
+}
+
+.btn-blue1 {
+  background-color: #fff;
+  color: #47c7ef;
+  border: 2px #47c7ef solid;
+}
+.btn-blue1:hover {
+  background-color: #47c7ef;
+  color: #fff;
+}
+
+.btn-red {
+  background-color: #c22b2b;
+  color: #fff;
+  border: 2px #c22b2b solid;
+}
+.btn-red:hover {
+  background-color: #fff;
+  color: #c22b2b;
+}
+
+.btn-red1 {
+  background-color: #fff;
+  color: #c22b2b;
+  border: 2px #c22b2b solid;
+}
+.btn-red1:hover {
+  background-color: #c22b2b;
+  color: #fff;
+}
+
+.btn-black {
+  background-color: #292a2a;
+  color: #fff;
+  border: 2px #292a2a solid;
+}
+.btn-black:hover {
+  background-color: #fff;
+  color: #292a2a;
+}
+
+.btn-black1 {
+  background-color: #fff;
+  color: #292a2a;
+  border: 2px #292a2a solid;
+}
+.btn-black1:hover {
+  background-color: #292a2a;
+  color: #fff;
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #292a2a;
+  border: 2px #292a2a solid;
+}
+.btn-white:hover {
+  background-color: #292a2a;
+  color: #fff;
+}
+
+.btn-white1 {
+  background-color: #292a2a;
+  color: #fff;
+  border: 2px #292a2a solid;
+}
+.btn-white1:hover {
+  background-color: #fff;
+  color: #292a2a;
+}
+
+header {
+  position: fixed;
+  background-color: white;
+  width: 100%;
+  height: 90px;
+  border-radius: 0 0 25px 25px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  z-index: 99;
+  top: -20%;
+  transition: top 500ms ease-in-out;
+}
+header.scrolled {
+  top: 0;
+}
+header .header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 3rem;
+  align-items: center;
+}
+header .header-container > div {
+  width: clamp(15%, 150px, 20%);
+}
+header .header-container .logo img {
+  height: 100%;
+}
+@font-face {
+  font-family: "Lexend";
+  src: url(fonts/LexendPeta-Regular.ttf);
+}
+@font-face {
+  font-family: "Lexend-Bold";
+  src: url(fonts/LexendPeta-Bold.ttf);
+}
 /* reset */
 *,
 :before,
 :after {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* body */
+html,
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Lexend", sans-serif;
   font-size: 16px;
+  height: 300%;
+  overflow-x: hidden;
 }
-/*# sourceMappingURL=style.css.map */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 14px;
+}
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: #cecece;
+}
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: rgb(82, 82, 82);
+  border: 4px solid #cecece;
+}
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: rgb(46, 46, 46);
+}
+
+.hero_container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.hero {
+  margin: 0 auto;
+  height: 100%;
+  max-width: 100%;
+  padding: 1.5rem;
+  -webkit-animation: zoom 750ms ease-in-out;
+          animation: zoom 750ms ease-in-out;
+}
+.hero .content {
+  height: 100%;
+  width: 100%;
+  background-color: #1c1c20;
+  border-radius: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+@-webkit-keyframes zoom {
+  0% {
+    transform: scale(1.075, 1.075);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1.075, 1.075);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}/*# sourceMappingURL=style.css.map */

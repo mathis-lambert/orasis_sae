@@ -1,5 +1,16 @@
 /* NEW CSS PROJECT */
 
+/* IMPORTS */
+@import "components/assets";
+@import "components/navbar";
+@font-face {
+  font-family: "Lexend";
+  src: url(fonts/LexendPeta-Regular.ttf);
+}
+@font-face {
+  font-family: "Lexend-Bold";
+  src: url(fonts/LexendPeta-Bold.ttf);
+}
 /* reset */
 *,
 :before,
@@ -10,7 +21,51 @@
 }
 
 /* body */
+html,
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Lexend", sans-serif;
   font-size: 16px;
+  height: 300%;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 14px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #cecece;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgb(82, 82, 82);
+    border: 4px solid #cecece;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgb(46, 46, 46);
+  }
+}
+
+.hero_container {
+  width: 100%;
+  min-height: 100vh;
+}
+.hero {
+  margin: 0 auto;
+  height: 100%;
+  max-width: 100%;
+  padding: 1.5rem;
+  animation: zoom 750ms ease-in-out;
+  .content {
+    height: 100%;
+    width: 100%;
+    background-color: #1c1c20;
+    border-radius: clamp(0.5rem, 1.5vw, 1rem);
+  }
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1.075, 1.075);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
 }
