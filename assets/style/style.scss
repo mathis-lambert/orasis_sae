@@ -1,8 +1,6 @@
 /* NEW CSS PROJECT */
 
 /* IMPORTS */
-@import "components/assets";
-@import "components/navbar";
 @font-face {
   font-family: "Lexend";
   src: url(fonts/LexendPeta-Regular.ttf);
@@ -11,6 +9,10 @@
   font-family: "Lexend-Bold";
   src: url(fonts/LexendPeta-Bold.ttf);
 }
+
+@import "components/assets";
+@import "components/navbar";
+
 /* reset */
 *,
 :before,
@@ -43,6 +45,31 @@ body {
   }
 }
 
+/*  main classes  */
+.d-flex {
+  display: flex;
+}
+.column {
+  flex-direction: column;
+}
+.row {
+  flex-direction: row;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.align-center {
+  align-items: center;
+}
+.grid-center {
+  display: grid;
+  place-items: center;
+}
+
+/* BODY DEVELOPMENT */
 .hero_container {
   width: 100%;
   min-height: 100vh;
@@ -53,11 +80,14 @@ body {
   max-width: 100%;
   padding: 1.5rem;
   animation: zoom 750ms ease-in-out;
+  color: white;
   .content {
+    position: relative;
     height: 100%;
     width: 100%;
     background-color: #1c1c20;
     border-radius: clamp(0.5rem, 1.5vw, 1rem);
+    padding-inline: 5vw;
   }
 }
 

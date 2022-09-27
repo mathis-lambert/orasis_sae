@@ -17,12 +17,15 @@ gsap.to(hero, {
 });
 
 const navbar = document.querySelector("header");
+const heroNav = document.querySelector(".landing-header");
 
 document.addEventListener("scroll", () => {
   console.log(window.scrollY);
-  if (window.scrollY > 50) {
+  if (window.scrollY > 100) {
     navbar.classList.add("scrolled");
+    heroNav.classList.add("scrolled");
   } else {
     navbar.classList.remove("scrolled");
+    heroNav.classList.remove("scrolled");
   }
 });

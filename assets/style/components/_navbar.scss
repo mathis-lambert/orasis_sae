@@ -15,7 +15,8 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 3rem;
+    height: 100%;
+    padding: 0 2rem;
     align-items: center;
     > div {
       width: clamp(15%, 150px, 20%);
@@ -32,6 +33,44 @@ header {
       }
     }
     .button-right {
+    }
+  }
+}
+
+.landing-header {
+  position: fixed;
+  background-color: transparent;
+  width: 100%;
+  height: 125px;
+  border-radius: 0 0 25px 25px;
+  z-index: 98;
+  top: 0;
+  transition: top 500ms ease-in-out;
+  &.scrolled {
+    top: -20%;
+  }
+  .landing-header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 3rem;
+    align-items: center;
+    > div {
+      width: clamp(15%, 150px, 20%);
+    }
+    .landing-button-left {
+      .burger-menu {
+      }
+      span {
+      }
+    }
+    .landing-logo {
+      img {
+        height: 100%;
+      }
+    }
+    .landing-button-right {
     }
   }
 }
