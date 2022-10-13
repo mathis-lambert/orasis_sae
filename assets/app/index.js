@@ -1,21 +1,55 @@
-// gsap animation, scroll trigger, hero scalling on scroll
-gsap.registerPlugin(ScrollTrigger);
+if (window.location.pathname.includes("/index2")) {
+  let params = new URLSearchParams(window.location.search);
+  let pageName = params.get("page");
+  const root = document.querySelector("#root");
 
-const body = document.querySelector("body");
-const hero = document.querySelector(".hero_container");
-const heroHeight = hero.offsetHeight;
+  function init() {
+    renderPage(pageName);
+  }
 
-gsap.to(hero, {
-  scale: 1.075,
-  scrollTrigger: {
-    trigger: hero,
-    start: `top top`,
-    end: `bottom top `,
-    scrub: true,
-    pin: true,
-  },
-});
-if (true == false) {
+  init();
+
+  function fetchPage(page) {
+    fetch(`${page}.html`)
+      .then((res) => res.text())
+      .then((data) => {
+        root.innerHTML = data;
+      });
+  }
+
+  function fetchJs(page) {
+    fetch(`assets/controllers/js/${page}.js`)
+      .then((res) => res.text())
+      .then((data) => {
+        eval(data);
+      });
+  }
+
+  function renderPage(page) {
+    switch (page) {
+      case "accueil":
+        fetchPage("accueil");
+        fetchJs("accueil");
+        break;
+      case "connexion":
+        fetchPage("connexion");
+        fetchJs("connexion");
+        break;
+      case "contact":
+        fetchPage("contact");
+        fetchJs("contact");
+        break;
+      default:
+        fetchPage("accueil");
+        fetchJs("accueil");
+        break;
+    }
+  }
+
+  function updateParam(p) {
+    history.pushState({}, "", `?page=${p}`);
+    renderPage(p);
+  }
 }
 
 const navbar = document.querySelector("header");
@@ -31,30 +65,3 @@ document.addEventListener("scroll", () => {
     heroNav.classList.remove("scrolled");
   }
 });
-
-const clippedImg = document.querySelector(".clippedImage");
-const imgPath = document.querySelector(".imgReveal");
-
-if (imgPath) {
-  imgPath.addEventListener("mousemove", (e) => {
-    const x = e.pageX - imgPath.offsetLeft;
-    const y = e.pageY - imgPath.offsetTop;
-
-    let clip_size = 150;
-
-    clippedImg.style.clipPath = `circle(${clip_size}px at ${x}px ${y}px)`;
-  });
-  imgPath.addEventListener("mouseleave", (e) => {
-    const x = e.pageX - imgPath.offsetLeft;
-    const y = e.pageY - imgPath.offsetTop;
-
-    clippedImg.style.clipPath = `circle(0px at ${x}px ${y}px)`;
-  });
-
-  const picOverlay = document.querySelector(".infoOverlay");
-  const overlayBtn = document.querySelector(".overlayBtn");
-
-  overlayBtn.addEventListener("click", () => {
-    picOverlay.classList.toggle("opened");
-  });
-}

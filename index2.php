@@ -13,6 +13,7 @@
   <!-- import GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+  <script defer src="assets/app/index.js"></script>
 </head>
 
 <body>
@@ -20,7 +21,7 @@
   <div id="root"></div>
   <?php include_once 'assets/includes/_footer.html' ?>
   <!-- Javascript import files -->
-  <script src="assets/app/index2.js"></script>
+
 </body>
 
 </html>
