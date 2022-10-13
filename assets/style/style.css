@@ -265,11 +265,19 @@ body::-webkit-scrollbar-thumb:hover {
   padding-inline: 5vw;
 }
 
+.content-container {
+  align-items: center;
+  gap: 5vw;
+}
+.content-container > div {
+  flex: 0 1 40%;
+  margin-inline: 5vw;
+}
+
 .imgReveal {
   position: relative;
   overflow: hidden;
   border-radius: 40px;
-  margin-top: 20vh;
   margin-inline: auto;
   width: 90vw;
   max-width: 800px;
@@ -327,7 +335,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 .imgReveal .infoOverlay .overlayContent p {
   font-family: "Lexend-Bold";
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 .imgReveal .infoOverlay .overlayBtn {
   position: absolute;

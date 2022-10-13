@@ -32,33 +32,31 @@
               <a href="https://www.youtube.com/watch?v=9bZkp7q19f0" target="_blank" class="btn">Voir la vidéo</a>
             </div>
           </div>
+          <div class="imgReveal">
+            <img src="assets/img/native-mileiade.jpg" alt="">
+            <div class="clippedImage">
+              <img src="assets/img/computed-mileiade.jpg" alt="">
+            </div>
+            <div class="infoOverlay">
+
+              <div class="overlayCard">
+                <div class="overlayContent">
+                  <p>Cette image a été traitée par un ordinateur pour reconnaître les différents types de surface</p>
+                </div>
+              </div>
+
+              <div class="overlayBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M18.5,8.51h-7v-7A1.5,1.5,0,0,0,10,0h0A1.5,1.5,0,0,0,8.5,1.5v7h-7a1.5,1.5,0,0,0,0,3h7v7A1.5,1.5,0,0,0,10,20h0a1.5,1.5,0,0,0,1.5-1.5v-7h7a1.5,1.5,0,0,0,0-3Z"></path>
+                </svg>
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <section id="firstparaf">
-    <div class="imgReveal">
-      <img src="assets/img/native-mileiade.jpg" alt="">
-      <div class="clippedImage">
-        <img src="assets/img/computed-mileiade.jpg" alt="">
-      </div>
-      <div class="infoOverlay">
-
-        <div class="overlayCard">
-          <div class="overlayContent">
-            <p>Cette image a été traitée par un ordinateur pour reconnaître les différents types de surface</p>
-          </div>
-        </div>
-
-        <div class="overlayBtn">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path d="M18.5,8.51h-7v-7A1.5,1.5,0,0,0,10,0h0A1.5,1.5,0,0,0,8.5,1.5v7h-7a1.5,1.5,0,0,0,0,3h7v7A1.5,1.5,0,0,0,10,20h0a1.5,1.5,0,0,0,1.5-1.5v-7h7a1.5,1.5,0,0,0,0-3Z"></path>
-          </svg>
-        </div>
-
-      </div>
-    </div>
-  </section>
   <!-- Javascript import files -->
   <script src="assets/app/index.js"></script>
 </body>
