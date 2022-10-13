@@ -12,6 +12,7 @@
 
 @import "components/assets";
 @import "components/navbar";
+@import "components/animations";
 
 /* reset */
 *,
@@ -91,11 +92,113 @@ body {
   }
 }
 
-@keyframes zoom {
-  0% {
-    transform: scale(1.075, 1.075);
+.imgReveal {
+  position: relative;
+  overflow: hidden;
+  border-radius: 40px;
+
+  margin-top: 20vh;
+  margin-inline: auto;
+
+  width: 90vw;
+  max-width: 800px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
-  100% {
-    transform: scale(1, 1);
+
+  .clippedImage {
+    position: absolute;
+    inset: 0;
+    clip-path: circle(0% at 50% 50%);
+    animation: clipSize 1s ease-in-out;
+
+    z-index: 10;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .infoOverlay {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 20;
+
+    .overlayCard {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      background-color: rgba(85, 51, 51, 0.7);
+      backdrop-filter: blur(10px);
+
+      transition: 0.25s;
+      transition-delay: 300ms;
+    }
+    .overlayContent {
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      text-align: center;
+      color: white;
+
+      transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+      transition-delay: 0;
+
+      p {
+        font-family: "Lexend-Bold";
+        font-size: 1.5rem;
+      }
+    }
+    .overlayBtn {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      height: 3rem;
+      width: 3rem;
+      text-align: center;
+      padding: 0.75rem;
+      border-radius: 50%;
+      background-color: rgba($color: #fff, $alpha: 0.5);
+
+      cursor: pointer;
+
+      svg {
+        max-width: 100%;
+        height: auto;
+        fill: white;
+        transition: transform 300ms ease-in-out;
+      }
+    }
+
+    &.opened {
+      .overlayCard {
+        opacity: 1;
+        visibility: visible;
+        transition: 0.3s;
+        transition-delay: 0;
+      }
+      .overlayContent {
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transition-delay: 200ms;
+      }
+      .overlayBtn {
+        svg {
+          transform: rotate(45deg);
+        }
+      }
+    }
   }
 }

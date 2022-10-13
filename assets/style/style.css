@@ -160,6 +160,22 @@ header .header-container .logo img {
 .landing-header .landing-header-container .landing-logo img {
   height: 100%;
 }
+@-webkit-keyframes zoom {
+  0% {
+    transform: scale(1.075, 1.075);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+@keyframes zoom {
+  0% {
+    transform: scale(1.075, 1.075);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
 /* reset */
 *,
 :before,
@@ -249,20 +265,99 @@ body::-webkit-scrollbar-thumb:hover {
   padding-inline: 5vw;
 }
 
-@-webkit-keyframes zoom {
-  0% {
-    transform: scale(1.075, 1.075);
-  }
-  100% {
-    transform: scale(1, 1);
-  }
+.imgReveal {
+  position: relative;
+  overflow: hidden;
+  border-radius: 40px;
+  margin-top: 20vh;
+  margin-inline: auto;
+  width: 90vw;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-@keyframes zoom {
-  0% {
-    transform: scale(1.075, 1.075);
-  }
-  100% {
-    transform: scale(1, 1);
-  }
+.imgReveal img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.imgReveal .clippedImage {
+  position: absolute;
+  inset: 0;
+  -webkit-clip-path: circle(0% at 50% 50%);
+          clip-path: circle(0% at 50% 50%);
+  -webkit-animation: clipSize 1s ease-in-out;
+          animation: clipSize 1s ease-in-out;
+  z-index: 10;
+}
+.imgReveal .clippedImage img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.imgReveal .infoOverlay {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 20;
+}
+.imgReveal .infoOverlay .overlayCard {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  background-color: rgba(85, 51, 51, 0.7);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  transition: 0.25s;
+  transition-delay: 300ms;
+}
+.imgReveal .infoOverlay .overlayContent {
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+  color: white;
+  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+  transition-delay: 0;
+}
+.imgReveal .infoOverlay .overlayContent p {
+  font-family: "Lexend-Bold";
+  font-size: 1.5rem;
+}
+.imgReveal .infoOverlay .overlayBtn {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  height: 3rem;
+  width: 3rem;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+.imgReveal .infoOverlay .overlayBtn svg {
+  max-width: 100%;
+  height: auto;
+  fill: white;
+  transition: transform 300ms ease-in-out;
+}
+.imgReveal .infoOverlay.opened .overlayCard {
+  opacity: 1;
+  visibility: visible;
+  transition: 0.3s;
+  transition-delay: 0;
+}
+.imgReveal .infoOverlay.opened .overlayContent {
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition-delay: 200ms;
+}
+.imgReveal .infoOverlay.opened .overlayBtn svg {
+  transform: rotate(45deg);
 }/*# sourceMappingURL=style.css.map */
