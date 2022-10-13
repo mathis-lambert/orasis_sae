@@ -22,12 +22,17 @@
       <div class="content grid-center">
         <div class="content-container d-flex row">
           <div class="main-container">
-            <div>
-              <h1>Bienvenue pour la 19ème édition d’ORASIS</h1>
-              <p>Journée francophone des jeunes chercheurs en vision par ordinateur. Elle se déroulera du 26 au 27 Mai 2023 à Carqueiranne.
-                Ces journées se veulent être, pour certains, la première opportunité
-                d'entendre des chercheurs confirmés du domaine et de s'initier au processus de rédaction, dépôt, évaluation et présentation d'articles de recherche. </p>
+            <h1>Bienvenue pour la 19ème édition d’ORASIS</h1>
+            <div class="para">
+              <p>
+                Journée francophone des jeunes chercheurs en vision par ordinateur.
+                <br>
+                Elle se déroulera du 26 au 27 Mai 2023 à Carqueiranne.
+                <br>
+                Ces journées se veulent être, pour certains, la première opportunité d'entendre des chercheurs confirmés du domaine et de s'initier au processus de rédaction, dépôt, évaluation et présentation d'articles de recherche.
+              </p>
             </div>
+
             <div>
               <a href="https://www.youtube.com/watch?v=9bZkp7q19f0" target="_blank" class="btn">Voir la vidéo</a>
             </div>

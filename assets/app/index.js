@@ -15,6 +15,8 @@ gsap.to(hero, {
     pin: true,
   },
 });
+if (true == false) {
+}
 
 const navbar = document.querySelector("header");
 const heroNav = document.querySelector(".landing-header");

@@ -249,7 +249,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .hero {
   margin: 0 auto;
-  height: 100%;
+  height: 100vh;
   max-width: 100%;
   padding: 1.5rem;
   -webkit-animation: zoom 750ms ease-in-out;
@@ -262,22 +262,31 @@ body::-webkit-scrollbar-thumb:hover {
   width: 100%;
   background-color: #1c1c20;
   border-radius: clamp(0.5rem, 1.5vw, 1rem);
-  padding-inline: 5vw;
+  padding-inline: 10vw;
 }
 
 .content-container {
   align-items: center;
   gap: 5vw;
 }
-.content-container > div {
-  flex: 0 1 40%;
-  margin-inline: 5vw;
+.content-container .main-container {
+  display: flex;
+  flex: 1 1 40%;
+  flex-direction: column;
+  gap: 3rem;
+  margin-inline: 0;
+}
+.content-container .main-container .para {
+  background-color: rgba(92, 92, 92, 0.75);
+  padding: 1rem;
+  border-radius: 1rem;
 }
 
 .imgReveal {
   position: relative;
   overflow: hidden;
   border-radius: 40px;
+  flex: 1 1 60%;
   margin-inline: auto;
   width: 90vw;
   max-width: 800px;
@@ -335,7 +344,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 .imgReveal .infoOverlay .overlayContent p {
   font-family: "Lexend-Bold";
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 .imgReveal .infoOverlay .overlayBtn {
   position: absolute;
