@@ -1,4 +1,4 @@
-if (window.location.pathname.includes("/index2")) {
+if (window.location.pathname.includes("/")) {
   let params = new URLSearchParams(window.location.search);
   let pageName = params.get("page");
   const root = document.querySelector("#root");
@@ -40,6 +40,7 @@ if (window.location.pathname.includes("/index2")) {
         fetchJs("contact");
         break;
       default:
+        history.pushState({}, "", `?page=${"accueil"}`);
         fetchPage("accueil");
         fetchJs("accueil");
         break;
