@@ -10,7 +10,7 @@ if (window.location.pathname.includes("/")) {
   init();
 
   function fetchPage(page) {
-    fetch(`${page}.html`)
+    fetch(`./views/${page}.html`)
       .then((res) => res.text())
       .then((data) => {
         root.innerHTML = data;
