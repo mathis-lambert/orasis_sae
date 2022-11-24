@@ -50,6 +50,24 @@ if (window.location.pathname.includes("/")) {
   let params = new URLSearchParams(window.location.search);
   let pageName = params.get("page");
 
+  let previousUrl = pageName;
+  const observer = new MutationObserver(function (mutations) {
+    if (
+      new URLSearchParams(window.location.search).get("page") !== previousUrl
+    ) {
+      previousUrl = window.location.href;
+      console.log(
+        `URL changed from ${previousUrl} to ${new URLSearchParams(
+          window.location.search
+        ).get("page")}`
+      );
+      renderPage(new URLSearchParams(window.location.search).get("page"));
+    }
+  });
+  const config = { subtree: true, childList: true };
+
+  observer.observe(document, config);
+
   renderPage(pageName);
 }
 
