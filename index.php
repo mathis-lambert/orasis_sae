@@ -17,11 +17,12 @@
 
 <body>
   <?php include_once 'assets/includes/_navbar.html' ?>
-  <div id="root"></div>
+  <?php include_once 'views/accueil.html' ?>
   <?php include_once 'assets/includes/_footer.html' ?>
   <!-- Javascript import files -->
 
   <script src="assets/app/index.js"></script>
+  <script src="assets/controllers/js/accueil.js"></script>
 </body>
 
 </html>
