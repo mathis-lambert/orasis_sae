@@ -18,9 +18,12 @@
 <body>
    <?php include 'assets/includes/_navbar.html'; ?>
 
+
+
+   <?php include 'assets/includes/_footer.html'; ?>
+
    <!-- Javascript import files -->
    <script src="assets/app/index.js"></script>
-   <script src="assets/controllers/js/accueil.js"></script>
 </body>
 
 </html>
