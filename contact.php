@@ -16,8 +16,8 @@
   <!-- <div class="container"> -->
   <div class="container">
     <h1 class="contact">Contact</h1>
-    <div id="form" class="">
-      <form action="" method="post">
+    <div id="form">
+      <form action="" method="post" class="form">
         <div class="input-group">
         <input name="mail" id="mail" placeholder=" " required>
         <label for="mail">Email</label>
