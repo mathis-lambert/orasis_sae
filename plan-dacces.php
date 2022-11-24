@@ -18,7 +18,7 @@
 <body>
    <?php include 'assets/includes/_navbar.html'; ?>
 
-
+   <h2>Plan d'accès</h2>
 
    <?php include 'assets/includes/_footer.html'; ?>
 
