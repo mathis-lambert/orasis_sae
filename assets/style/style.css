@@ -285,9 +285,6 @@ header .header-container .logo img {
     transform: scale(1, 1);
   }
 }
-body {
-  background-image: url("../img/background.png");
-  background-repeat: no-repeat;}
 #connexion {
   background-color: #292a2a;
   color: #fff;
@@ -295,14 +292,14 @@ body {
   min-height: 100vh;
 }
 
-* {
-  border: 1px solid rgb(142, 78, 78);
+body {
+  background-image: url("../img/background.png");
+  background-repeat: no-repeat;
 }
 
 .contact {
   flex-wrap: wrap;
   color: white;
-  text-align: center;
 }
 
 /* reset */
