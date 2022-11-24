@@ -292,6 +292,14 @@ header .header-container .logo img {
   min-height: 100vh;
 }
 
+* {
+  border: 1px solid rgb(142, 78, 78);
+}
+
+body {
+  background-color: black;
+}
+
 /* reset */
 *,
 *:before,
