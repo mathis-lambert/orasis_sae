@@ -13,14 +13,14 @@
 
 <body>
   <?php include_once 'assets/includes/_navbar.html' ?>
-  <section id="contact">
-    <div id="root">Contact</div>
-  </section>
+  <!-- <div class="container"> -->
+    <div class="container"><h1>Contact</h1></div>
+  <!-- </div> -->
 
   <?php include_once 'assets/includes/_footer.html' ?>
   <!-- Javascript import files -->
 
-  <script src="assets/app/index.js"></script>
+<script src="assets/app/index.js"></script>  
 </body>
 
 </html>

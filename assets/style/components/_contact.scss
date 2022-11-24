@@ -1,7 +1,14 @@
-*{
-    border: 1px solid rgb(142, 78, 78);
+
+body{
+    background-image: url("../img/background.png");
+    // height: 10vh;
+    background-repeat: no-repeat;
 
 }
-body{
-    background-color: black;
+
+.contact{
+    flex-wrap: wrap;
+    color: white;
+    text-align: center;
+    
 }
