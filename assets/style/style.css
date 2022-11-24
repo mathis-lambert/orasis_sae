@@ -105,6 +105,68 @@ a {
   color: #292a2a;
 }
 
+.container {
+  padding-top: 125px;
+  width: 100%;
+  max-width: 1333px;
+  margin: 0 auto;
+  padding-inline: 1rem;
+}
+
+form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 0.75rem;
+}
+form * {
+  color: #292a2a;
+  font-family: "Lexend";
+}
+form .input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  margin-top: 1.75rem;
+  position: relative;
+}
+form .input-group label {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  transition: all 0.3s ease;
+  transform: translateY(-50%);
+}
+form .input-group input {
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  border-radius: 0.75rem;
+  border: 2px #292a2a solid;
+}
+form .input-group input:focus {
+  outline: none;
+  border: 2px #47c7ef solid;
+}
+form .input-group input:not(:-moz-placeholder-shown) + label {
+  top: -0.65rem;
+  left: 0.5rem;
+  font-size: 0.9rem;
+}
+form .input-group input:not(:-ms-input-placeholder) + label {
+  top: -0.65rem;
+  left: 0.5rem;
+  font-size: 0.9rem;
+}
+form .input-group input:focus + label, form .input-group input:not(:placeholder-shown) + label {
+  top: -0.65rem;
+  left: 0.5rem;
+  font-size: 0.9rem;
+}
+
 header {
   position: fixed;
   background-color: white;
@@ -223,10 +285,17 @@ header .header-container .logo img {
     transform: scale(1, 1);
   }
 }
+#connexion {
+  background-color: #292a2a;
+  color: #fff;
+  width: 100%;
+  min-height: 100vh;
+}
+
 /* reset */
 *,
-:before,
-:after {
+*:before,
+*:after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;

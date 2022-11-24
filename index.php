@@ -1,3 +1,7 @@
+<?php
+define('MyConst', TRUE);
+include_once 'assets/controllers/php/config.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
