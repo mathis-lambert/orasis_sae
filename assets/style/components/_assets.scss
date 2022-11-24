@@ -106,9 +106,10 @@ form {
   margin: 0 auto;
   padding: 1rem;
 
-  background-color: $color-white;
+  background-color: #94949485;
   border-radius: 0.75rem;
-  * {
+  input,
+  label {
     color: $color-black;
     font-family: "Lexend";
   }
@@ -121,6 +122,7 @@ form {
 
     position: relative;
     label {
+      color: $color-black;
       font-size: 1rem;
       margin-bottom: 0.5rem;
       position: absolute;
@@ -143,6 +145,7 @@ form {
         top: -0.65rem;
         left: 0.5rem;
         font-size: 0.9rem;
+        color: $color-white;
       }
     }
   }

@@ -118,10 +118,11 @@ form {
   max-width: 400px;
   margin: 0 auto;
   padding: 1rem;
-  background-color: #fff;
+  background-color: rgba(148, 148, 148, 0.5215686275);
   border-radius: 0.75rem;
 }
-form * {
+form input,
+form label {
   color: #292a2a;
   font-family: "Lexend";
 }
@@ -133,6 +134,7 @@ form .input-group {
   position: relative;
 }
 form .input-group label {
+  color: #292a2a;
   font-size: 1rem;
   margin-bottom: 0.5rem;
   position: absolute;
@@ -155,16 +157,19 @@ form .input-group input:not(:-moz-placeholder-shown) + label {
   top: -0.65rem;
   left: 0.5rem;
   font-size: 0.9rem;
+  color: #fff;
 }
 form .input-group input:not(:-ms-input-placeholder) + label {
   top: -0.65rem;
   left: 0.5rem;
   font-size: 0.9rem;
+  color: #fff;
 }
 form .input-group input:focus + label, form .input-group input:not(:placeholder-shown) + label {
   top: -0.65rem;
   left: 0.5rem;
   font-size: 0.9rem;
+  color: #fff;
 }
 
 header {
@@ -285,9 +290,6 @@ header .header-container .logo img {
     transform: scale(1, 1);
   }
 }
-body {
-  background-image: url("../img/background.png");
-  background-repeat: no-repeat;}
 #connexion {
   background-color: #292a2a;
   color: #fff;
@@ -295,8 +297,9 @@ body {
   min-height: 100vh;
 }
 
-* {
-  border: 1px solid rgb(142, 78, 78);
+body {
+  background-image: url("../img/background.png");
+  background-repeat: no-repeat;
 }
 
 .contact {
