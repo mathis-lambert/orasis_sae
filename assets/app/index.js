@@ -1,60 +1,62 @@
-if (window.location.pathname.includes("/")) {
-  let params = new URLSearchParams(window.location.search);
-  let pageName = params.get("page");
-  const root = document.querySelector("#root");
+console.time();
 
-  function init() {
-    renderPage(pageName);
-  }
+const root = document.querySelector("#root");
 
-  init();
+function fetchPage(page) {
+  fetch(`./views/${page}.html`)
+    .then((res) => res.text())
+    .then((data) => {
+      root.innerHTML = data;
+    });
+}
 
-  function fetchPage(page) {
-    fetch(`./views/${page}.html`)
-      .then((res) => res.text())
-      .then((data) => {
-        root.innerHTML = data;
-      });
-  }
+function fetchJs(page) {
+  fetch(`assets/controllers/js/${page}.js`)
+    .then((res) => res.text())
+    .then((data) => {
+      eval(data);
+    });
+}
 
-  function fetchJs(page) {
-    fetch(`assets/controllers/js/${page}.js`)
-      .then((res) => res.text())
-      .then((data) => {
-        eval(data);
-      });
-  }
-
-  function renderPage(page) {
-    switch (page) {
-      case "accueil":
-        fetchPage("accueil");
-        fetchJs("accueil");
-        break;
-      case "connexion":
-        fetchPage("connexion");
-        fetchJs("connexion");
-        break;
-      case "contact":
-        fetchPage("contact");
-        fetchJs("contact");
-        break;
-      default:
-        history.pushState({}, "", `?page=${"accueil"}`);
-        fetchPage("accueil");
-        fetchJs("accueil");
-        break;
-    }
-  }
-
-  function updateParam(p) {
-    history.pushState({}, "", `?page=${p}`);
-    renderPage(p);
+function renderPage(page) {
+  switch (page) {
+    case "accueil":
+      fetchPage("accueil");
+      fetchJs("accueil");
+      break;
+    case "connexion":
+      fetchPage("connexion");
+      fetchJs("connexion");
+      break;
+    case "contact":
+      fetchPage("contact");
+      fetchJs("contact");
+      break;
+    default:
+      history.pushState({}, "", `?page=${"accueil"}`);
+      fetchPage("accueil");
+      fetchJs("accueil");
+      break;
   }
 }
 
-const navbar = document.querySelector("header");
-const heroNav = document.querySelector(".landing-header");
+function updateParam(p) {
+  history.pushState({}, "", `?page=${p}`);
+  renderPage(p);
+  window.scrollTo(0, 0);
+}
+
+if (window.location.pathname.includes("/")) {
+  let params = new URLSearchParams(window.location.search);
+  let pageName = params.get("page");
+
+  renderPage(pageName);
+}
+
+const navbar = document.querySelector("header"),
+  heroNav = document.querySelector(".landing-header"),
+  burgerMenu = document.querySelectorAll(".burger-menu"),
+  menuButtons = document.querySelectorAll("#menu-button");
 
 document.addEventListener("scroll", () => {
   console.log(window.scrollY);
@@ -66,3 +68,12 @@ document.addEventListener("scroll", () => {
     heroNav.classList.remove("scrolled");
   }
 });
+
+menuButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    burgerMenu.forEach((burger) => {
+      burger.classList.toggle("active");
+    });
+  });
+});
+console.timeEnd();
