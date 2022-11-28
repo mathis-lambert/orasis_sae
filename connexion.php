@@ -1,6 +1,18 @@
 <?php
 define('MyConst', TRUE);
 include_once 'assets/controllers/php/config.php';
+
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require 'libs/PHPMailer/src/Exception.php';
+require 'libs/PHPMailer/src/PHPMailer.php';
+require 'libs/PHPMailer/src/SMTP.php';
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -187,28 +199,45 @@ include_once 'assets/controllers/php/config.php';
             echo '<div class="modal error" id="modal_' . $generated_id . '" onclick="close_modal(\'' . $generated_id . '\')"> Merci de remplir tous les champs <script> hideIt("modal_' . $generated_id . '"); </script> </div>';
         }
     }
-    if ($need_account) {
-        $generated_id = generateRandomString(5);
-        echo '<div class="modal error" id="modal_' . $generated_id . '" onclick="close_modal(\'' . $generated_id . '\')"> Vous devez d\'abord vous connecter ou crÃ©er un compte. <script> hideIt("modal_' . $generated_id . '",5000); </script> </div>';
-    }
-    if ($blocked) {
-        $generated_id = generateRandomString(5);
-        echo '<div class="modal error" id="modal_' . $generated_id . '" onclick="close_modal(\'' . $generated_id . '\')"> Vous n\'Ãªtes pas autorisÃ© Ã  modifier le code source. Votre compte a Ã©tÃ© restreint. <script> hideIt("modal_' . $generated_id . '",5000); </script> </div>';
-    }
-    if ($passwordEdited) {
-        $generated_id = generateRandomString(5);
-        echo '<div class="modal success" id="modal_' . $generated_id . '" onclick="close_modal(\'' . $generated_id . '\')"> Mot de passe modifiÃ© avec succÃ¨s. <script> hideIt("modal_' . $generated_id . '",5000); </script> </div>';
-    }
-    if ($accountCreated) {
-        $generated_id = generateRandomString(5);
-        echo '<div class="modal success" id="modal_' . $generated_id . '" onclick="close_modal(\'' . $generated_id . '\')"> Compte crÃ©Ã© avec succÃ¨s. <script> hideIt("modal_' . $generated_id . '",5000); </script> </div>';
-    }
     ?>
 
 
     <section id="connexion">
 
         <div class="container">
+            <?php
+            // envoi mail
+            if (isset($_POST["send_mail"])) {
+
+                $mail = new PHPMailer(true);
+
+                try {
+                    $mail->isSMTP(true);
+                    $mail->Host       = $settings['instance_email_host'];
+                    $mail->SMTPAuth   = true;
+                    $mail->Username   = $settings['instance_email_username'];
+                    $mail->Password   = $settings['instance_email_password'];
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+                    $mail->Port       = $settings['instance_email_port'];
+
+                    $mail->Encoding = 'base64';
+                    $mail->CharSet = 'UTF-8';
+
+                    $mail->setFrom($settings['instance_email_username'], $settings['name']);
+                    $mail->addAddress('mathislambert.dev@gmail.com', 'Mathis Lambert');
+
+                    $mail->isHTML(true);
+                    $mail->Subject = 'objet';
+                    $mail->Body    = 'Message test';
+
+
+                    $mail->send();
+                    echo "gg";
+                } catch (Exception $e) {
+                    echo "<br><p>Merci de transmettre ces informations à l'administrateur : {$mail->ErrorInfo} {$e}</p>";
+                }
+            }
+            ?>
             <form method="post" class="form">
                 <h1>Connexion</h1>
                 <div id="error_container" class="error" style="display: none;"></div>
@@ -235,6 +264,10 @@ include_once 'assets/controllers/php/config.php';
                 Inscription ?
                 </a>
 
+            </form>
+
+            <form action="" method="post">
+                <button type="submit" name="send_mail">Envoyer MAIL</button>
             </form>
 
         </div>

@@ -1,18 +1,9 @@
-
-body{
-    background-image: url("../img/background.png");
-    // height: 10vh;
-    background-repeat: no-repeat;
-
+.contact {
+  flex-wrap: wrap;
+  color: white;
 }
 
-.contact{
-    flex-wrap: wrap;
-    color: white;
-
-}
-
-.form{
-    border-radius: 30px;
-    color: white !important;
+.form {
+  border-radius: 30px;
+  color: white !important;
 }

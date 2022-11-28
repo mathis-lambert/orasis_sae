@@ -15,7 +15,7 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
 </head>
 
-<body>
+<body id="accessplan">
    <?php include 'assets/includes/_navbar.html'; ?>
 
    <div class="content">
