@@ -333,7 +333,7 @@ header .header-container .logo img {
 #accessplan .map {
   margin-top: 3rem;
   width: 100%;
-  max-height: 400px;
+  height: 400px;
   border-radius: 10px;
 }
 @media screen and (max-width: 720px) {
