@@ -303,8 +303,14 @@ body {
 }
 
 .contact {
-  flex-wrap: wrap;
   color: white;
+}
+.contact .form {
+  display: flex;
+  flex-wrap: wrap;
+}
+.contact .form .input-group {
+  flex: 1 1 auto;
 }
 
 .form {
