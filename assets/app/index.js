@@ -49,7 +49,8 @@ function updateParam(p) {
 const navbar = document.querySelector("header"),
   heroNav = document.querySelector(".landing-header"),
   burgerMenu = document.querySelectorAll(".burger-menu"),
-  menuButtons = document.querySelectorAll("#menu-button");
+  menuButtons = document.querySelectorAll("#menu-button"),
+  menu = document.querySelector(".navbar-menu");
 
 document.addEventListener("scroll", () => {
   console.log(window.scrollY);
@@ -67,6 +68,8 @@ menuButtons.forEach((button) => {
     burgerMenu.forEach((burger) => {
       burger.classList.toggle("active");
     });
+    heroNav.classList.toggle("toggled-landing");
+    menu.classList.toggle("menu-toggled");
   });
 });
 console.timeEnd();
