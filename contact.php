@@ -14,9 +14,9 @@
 <body>
   <?php include_once 'assets/includes/_navbar.html' ?>
   <!-- <div class="container"> -->
-  <div class="container">
-    <h1 class="contact">Contact</h1>
-    <div id="form">
+  <div class="container contact">
+    <h1> Contact</h1>
+
       <form action="" method="post" class="form">
         <div class="input-group">
         <input name="mail" id="mail" placeholder=" " required>
@@ -34,8 +34,9 @@
         <input name="message" id="message" placeholder=" " required>
         <label for="message">message</label>
         </div>
+        
+        <button type="submit" class="btn btn-blue">envoyer</button>
       </form>
-    </div>
   </div>
   <!-- </div> -->
 
