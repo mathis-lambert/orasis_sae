@@ -37,6 +37,11 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 
+  &.home {
+    background-image: none;
+    background-color: white;
+  }
+
   &::-webkit-scrollbar {
     width: 14px;
   }

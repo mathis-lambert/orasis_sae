@@ -19,7 +19,7 @@ include_once 'assets/controllers/php/config.php';
    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
 </head>
 
-<body>
+<body class="home">
    <?php include_once 'assets/includes/_navbar.html' ?>
    <?php include_once 'views/accueil.html' ?>
    <?php include_once 'assets/includes/_footer.html' ?>
