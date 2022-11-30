@@ -1,25 +1,9 @@
-
-body{
-    background-image: url("../img/background.png");
-    // height: 10vh;
-    background-repeat: no-repeat;
-
+.contact {
+  flex-wrap: wrap;
+  color: white;
 }
 
-.contact{
-    color: white;
-    .form{
-        display: flex;
-        flex-wrap: wrap;
-
-        .input-group{
-            flex: 1 1 auto;
-        }
-    }
-}
-
-.form{
-    border-radius: 30px;
-    color: white !important;
-    
+.form {
+  border-radius: 30px;
+  color: white !important;
 }
