@@ -131,6 +131,8 @@ form .input-group {
   flex-direction: column;
   margin-bottom: 1rem;
   margin-top: 1.75rem;
+  width: 100%;
+  flex: 1 1 40%;
   position: relative;
 }
 form .input-group label {
@@ -143,29 +145,29 @@ form .input-group label {
   transition: all 0.3s ease;
   transform: translateY(-50%);
 }
-form .input-group input {
+form .input-group input, form .input-group textarea {
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
   border-radius: 0.75rem;
   border: 2px #292a2a solid;
 }
-form .input-group input:focus {
+form .input-group input:focus, form .input-group textarea:focus {
   outline: none;
   border: 2px #47c7ef solid;
 }
-form .input-group input:not(:-moz-placeholder-shown) + label {
+form .input-group input:not(:-moz-placeholder-shown) + label, form .input-group textarea:not(:-moz-placeholder-shown) + label {
   top: -0.65rem;
   left: 0.5rem;
   font-size: 0.9rem;
   color: #fff;
 }
-form .input-group input:not(:-ms-input-placeholder) + label {
+form .input-group input:not(:-ms-input-placeholder) + label, form .input-group textarea:not(:-ms-input-placeholder) + label {
   top: -0.65rem;
   left: 0.5rem;
   font-size: 0.9rem;
   color: #fff;
 }
-form .input-group input:focus + label, form .input-group input:not(:placeholder-shown) + label {
+form .input-group input:focus + label, form .input-group input:not(:placeholder-shown) + label, form .input-group textarea:focus + label, form .input-group textarea:not(:placeholder-shown) + label {
   top: -0.65rem;
   left: 0.5rem;
   font-size: 0.9rem;
@@ -331,10 +333,17 @@ header .header-container .logo img {
   flex-direction: column;
   color: white;
 }
+.contact .form {
+  max-width: 900px;
+}
 
 .form {
   border-radius: 30px;
   color: white !important;
+}
+
+textarea {
+  font-family: "Lexend";
 }
 
 #accessplan .content {
