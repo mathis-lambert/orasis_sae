@@ -3,17 +3,45 @@ gsap.registerPlugin(ScrollTrigger);
 
 const body = document.querySelector("body");
 const hero = document.querySelector(".hero_container");
-console.log(hero);
+
 if (hero) {
-  gsap.to(hero, {
-    scale: 1.075,
-    scrollTrigger: {
-      trigger: hero,
-      start: `top top`,
-      end: `bottom top `,
-      scrub: true,
-      pin: true,
-    },
+  function heroScale() {
+    gsap.to(hero, {
+      scale: 1.075,
+      scrollTrigger: {
+        trigger: hero,
+        start: `top top`,
+        end: `bottom top `,
+        scrub: true,
+        pin: true,
+      },
+    });
+  }
+
+  window.addEventListener("load", () => {
+    if (window.innerWidth > 1024) {
+      heroScale();
+      window.scrollTo(0, 0);
+    } else {
+      // disable gsap animation
+      gsap.set(hero, { scale: 1 });
+
+      // remove scroll trigger
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1024) {
+      heroScale();
+      window.scrollTo(0, 0);
+    } else {
+      // disable gsap animation
+      gsap.set(hero, { scale: 1 });
+
+      // remove scroll trigger
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    }
   });
 }
 
@@ -23,7 +51,7 @@ const imgPath = document.querySelector(".imgReveal");
 if (imgPath) {
   imgPath.addEventListener("mousemove", (e) => {
     const x = e.pageX - imgPath.offsetLeft;
-    const y = e.pageY - imgPath.offsetTop;
+    const y = e.pageY - imgPath.offsetTop - window.scrollY;
 
     let clip_size = 150;
 

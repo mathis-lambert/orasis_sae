@@ -5,7 +5,6 @@ const navbar = document.querySelector("header"),
   menu = document.querySelector(".navbar-menu");
 
 document.addEventListener("scroll", () => {
-  console.log(window.scrollY);
   if (window.scrollY > 100) {
     navbar.classList.add("scrolled");
     heroNav.classList.add("scrolled");

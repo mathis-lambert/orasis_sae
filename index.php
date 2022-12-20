@@ -1,4 +1,5 @@
 <?php
+session_start();
 define('MyConst', TRUE);
 include_once 'config/config.php';
 ?>

@@ -1,6 +1,12 @@
 <?php
+session_start();
 define('MyConst', TRUE);
 include_once 'config/config.php';
+
+if (!empty($_SESSION) && isset($_SESSION)) {
+    header('Location: espace-perso.php');
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -27,35 +33,27 @@ include_once 'config/config.php';
             <h1 style="margin-bottom: 40px; text-align:center;">Inscription</h1>
             <h2 style="margin-bottom: 40px; text-align:center;">Formulaire d'Inscription</h2>
 
-            <form action="" method="post" class="form">
+            <form action="" method="post" class="form" id="inscription_form">
+                <div class="error-div"></div>
                 <div class="d-flex row" style="column-gap: 4rem; flex-wrap:wrap; ">
                     <div class="input-group" id="div-mail">
-                        <input name="mail" id="mail" placeholder=" " required>
+                        <input type="email" name="mail" id="mail" placeholder=" " required>
                         <label for="mail">Email</label>
                     </div>
-                    <div class="input-group" id="div-adr">
-                        <input name="adresse" id="adresse" placeholder=" " required>
-                        <label for="adresse">adresse</label>
-                    </div>
-
                     <div class="input-group" id="div-nom">
-                        <input name="nom" id="nom" placeholder=" " required>
+                        <input type="text" name="nom" id="nom" placeholder=" " required>
                         <label for="nom">nom</label>
                     </div>
                     <div class="input-group" id="div-prenom">
-                        <input name="prenom" id="prenom" placeholder=" " required>
+                        <input type="text" name="prenom" id="prenom" placeholder=" " required>
                         <label for="prenom">prénom</label>
                     </div>
-                    <div class="input-group" id="div-id">
-                        <input name="id" id="id" placeholder=" " required>
-                        <label for="id">identifiant</label>
-                    </div>
                     <div class="input-group" id="div-mp">
-                        <input name="mp" id="mp" placeholder=" " required>
-                        <label for="mp">mot de passe</label>
+                        <input type="password" name="password" id="password" placeholder=" " required>
+                        <label for="password">mot de passe</label>
                     </div>
-                    <button type="submit" class="btn btn-blue">Inscription</button>
                 </div>
+                <button type="submit" class="btn btn-blue margin-auto">Inscription</button>
             </form>
         </div>
     </section>
@@ -72,7 +70,7 @@ include_once 'config/config.php';
                 Vous avez le choix entre les options* suivantes (dans la limite des places disponibles) :
             </p>
         </div>
-        <div class="container-table" style="color:white; margin:auto;" >
+        <div class="container-table" style="color:white; margin:auto;">
             <table style="background-color:black ;border:2px solid white; border-collapse:collapse;">
                 <tr>
                     <td style="height: 100px ; width:500px; text-align:center; display:table-cell; vertical-align:center;border-bottom:2px solid white; border-right:2px solid white;">tarif chambre simple</td>
@@ -97,7 +95,7 @@ include_once 'config/config.php';
     <!-- Javascript import files -->
 
     <script src="assets/app/index.js"></script>
-    <script src="assets/controllers/js/accueil.js"></script>
+    <script src="assets/controllers/js/app.js"></script>
 </body>
 
 </html>

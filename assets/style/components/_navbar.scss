@@ -18,24 +18,29 @@ header {
     height: 100%;
     padding: 0 2rem;
     align-items: center;
-    > div {
-      width: clamp(15%, 150px, 20%);
-    }
     .button-left {
       .burger-menu {
         span {
           background-color: black;
         }
       }
-      span {
-      }
     }
     .logo {
-      img {
-        height: 100%;
+      height: clamp(30px, 4vw, 40px);
+      max-width: 250px;
+      display: flex;
+      align-items: center;
+
+      .logo-icon {
+        display: none;
       }
-    }
-    .button-right {
+      svg,
+      img {
+        object-fit: contain;
+        width: 100%;
+        max-height: 100%;
+        transition: all 0.3s ease-in-out;
+      }
     }
   }
 }
@@ -59,9 +64,6 @@ header {
     height: 100%;
     padding: 0 3rem;
     align-items: center;
-    > div {
-      width: clamp(15%, 150px, 20%);
-    }
     .landing-button-left {
       .burger-menu {
         span {
@@ -73,13 +75,26 @@ header {
       }
     }
     .landing-logo {
-      svg {
-        height: 100%;
+      height: clamp(30px, 4vw, 40px);
+      max-width: 250px;
+      display: flex;
+      align-items: center;
+
+      #logo-icon {
+        display: none;
+      }
+      #logo-full {
+        display: block;
+      }
+
+      svg,
+      img {
+        object-fit: contain;
+        width: 100%;
+        max-height: 100%;
         fill: #fff;
         transition: all 0.3s ease-in-out;
       }
-    }
-    .landing-button-right {
     }
   }
   &.toggled-landing {
@@ -146,11 +161,11 @@ header {
 
 .navbar-menu {
   position: fixed;
-  top: -60vh;
+  top: -100vh;
   left: 1rem;
   right: 1rem;
-  height: 50vh;
-  max-height: 600px;
+  min-height: 50vh;
+  // max-height: 600px;
   border-radius: 15px;
   background-color: white;
   padding: 1rem;
@@ -159,5 +174,89 @@ header {
   transition: all 0.3s ease-in-out;
   &.menu-toggled {
     top: 1rem;
+  }
+
+  .navbar-menu__container {
+    margin-top: 75px;
+    border-top: 1px solid #e5e5e5;
+    padding-block: 1rem;
+
+    display: flex;
+
+    .navbar-menu__left {
+      flex: 0 0 66.6666%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-right: 1px solid #e5e5e5;
+      .navbar-menu__left__item {
+        flex: 0 0 45%;
+        font-weight: 500;
+        color: #000;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        a {
+          text-decoration: none;
+          color: #000;
+          transition: all 0.3s ease-in-out;
+          &:hover {
+            color: rgb(26, 43, 57);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  header {
+    height: 75px;
+
+    .button-right {
+      display: none;
+    }
+  }
+  .landing-header {
+    height: 75px;
+    .landing-header-container {
+      flex-direction: row-reverse;
+      padding: 0 1rem;
+
+      #logo-full {
+        display: none !important;
+      }
+
+      #logo-icon {
+        display: block !important;
+      }
+
+      .landing-button-right {
+        display: none;
+      }
+    }
+  }
+  .logo {
+    .logo-full {
+      display: none !important;
+    }
+    .logo-icon {
+      display: block !important;
+    }
+  }
+
+  .navbar-menu {
+    left: 0;
+    right: 0;
+    border-radius: 0 0 15px 15px;
+    &.menu-toggled {
+      top: 0;
+    }
+  }
+
+  #modal-button {
+    display: none;
   }
 }

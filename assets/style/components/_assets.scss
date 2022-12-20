@@ -13,12 +13,44 @@ a {
   font-size: 1.2rem;
 }
 .btn {
-  display: inline-block;
+  display: block;
   padding: 0.5rem 1rem;
   border-radius: 0.75rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  &.loading {
+    pointer-events: none;
+    background-color: rgb(46, 230, 46);
+    color: rgb(46, 230, 46);
+    border: 2px rgb(46, 230, 46) solid;
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      border: 2px solid rgb(255, 255, 255);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      animation: spin 1s ease-out infinite;
+    }
+  }
 }
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
 .btn-blue {
   background-color: $color-primary;
   color: $color-white;
@@ -132,7 +164,8 @@ form {
       transition: all 0.3s ease;
       transform: translateY(-50%);
     }
-    input, textarea {
+    input,
+    textarea {
       padding: 0.5rem 1rem;
       font-size: 1.2rem;
       border-radius: 0.75rem;
