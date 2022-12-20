@@ -1,6 +1,6 @@
 <?php
 define('MyConst', TRUE);
-include_once 'assets/controllers/php/config.php';
+include_once 'config/config.php';
 
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function

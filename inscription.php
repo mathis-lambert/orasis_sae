@@ -1,6 +1,6 @@
 <?php
 define('MyConst', TRUE);
-include_once 'assets/controllers/php/config.php';
+include_once 'config/config.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -72,7 +72,7 @@ include_once 'assets/controllers/php/config.php';
                 Vous avez le choix entre les options* suivantes (dans la limite des places disponibles) :
             </p>
         </div>
-        <div class="container-table" style="color:white; margin:auto;" >
+        <div class="container-table" style="color:white; margin:auto;">
             <table style="background-color:black ;border:1px solid white;">
                 <tr>
                     <td style="height: 100px ; width:500px; text-align:center; display:table-cell; vertical-align:center;">tarif chambre simple</td>
@@ -84,12 +84,12 @@ include_once 'assets/controllers/php/config.php';
                 </tr>
             </table>
         </div>
-<div class="container" style="color:white";>
-    <p style="text-align: center;">
-L'inscription est ouverte à partir du 03 avril 2023</br>
-*Une majoration de 50€ sera appliquée sur les tarifs pour toute réservation faite à partir du 02 mai 2023, le choix de chambre simple ou double est possible en fonction de la disponibilité des chambres (70 chambres simples, 15 chambres doubles).
-    </p>
-</div>
+        <div class="container" style="color:white" ;>
+            <p style="text-align: center;">
+                L'inscription est ouverte à partir du 03 avril 2023</br>
+                *Une majoration de 50€ sera appliquée sur les tarifs pour toute réservation faite à partir du 02 mai 2023, le choix de chambre simple ou double est possible en fonction de la disponibilité des chambres (70 chambres simples, 15 chambres doubles).
+            </p>
+        </div>
 
     </section>
     <!-- </div> -->
