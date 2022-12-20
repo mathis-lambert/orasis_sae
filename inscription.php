@@ -72,14 +72,14 @@ include_once 'config/config.php';
                 Vous avez le choix entre les options* suivantes (dans la limite des places disponibles) :
             </p>
         </div>
-        <div class="container-table" style="color:white; margin:auto;">
-            <table style="background-color:black ;border:1px solid white;">
+        <div class="container-table" style="color:white; margin:auto;" >
+            <table style="background-color:black ;border:2px solid white; border-collapse:collapse;">
                 <tr>
-                    <td style="height: 100px ; width:500px; text-align:center; display:table-cell; vertical-align:center;">tarif chambre simple</td>
-                    <td style="height: 100px ; width:100px; text-align:center; display:table-cell; vertical-align:center;">650€</td>
+                    <td style="height: 100px ; width:500px; text-align:center; display:table-cell; vertical-align:center;border-bottom:2px solid white; border-right:2px solid white;">tarif chambre simple</td>
+                    <td style="height: 100px ; width:100px; text-align:center; display:table-cell; vertical-align:center; border-bottom:2px solid white;">650€</td>
                 </tr>
                 <tr>
-                    <td style="height: 100px ; width:500px; text-align:center; display:table-cell; vertical-align:center;">tarif chambre double</td>
+                    <td style="height: 100px ; width:500px; text-align:center; display:table-cell; vertical-align:center; border-right:2px solid white;">tarif chambre double</td>
                     <td style="height: 100px ; width:100px; text-align:center; display:table-cell; vertical-align:center;">550€</td>
                 </tr>
             </table>
