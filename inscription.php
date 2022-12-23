@@ -40,16 +40,16 @@ if (!empty($_SESSION) && isset($_SESSION)) {
                         <label for="mail">Email</label>
                     </div>
                     <div class="input-group" id="div-nom">
-                        <input type="text" name="nom" id="nom" placeholder=" " required>
-                        <label for="nom">nom</label>
+                        <input type="text" name="lastname" id="nom" placeholder=" " required>
+                        <label for="nom">Nom</label>
                     </div>
                     <div class="input-group" id="div-prenom">
-                        <input type="text" name="prenom" id="prenom" placeholder=" " required>
-                        <label for="prenom">prénom</label>
+                        <input type="text" name="firstname" id="prenom" placeholder=" " required>
+                        <label for="prenom">Prénom</label>
                     </div>
                     <div class="input-group" id="div-mp">
                         <input type="password" name="password" id="password" placeholder=" " required>
-                        <label for="password">mot de passe</label>
+                        <label for="password">Mot de passe</label>
                     </div>
                 </div>
                 <div class="error_div"></div>

@@ -19,6 +19,7 @@
 @import "components/contact";
 @import "components/accessplan";
 @import "components/inscription";
+@import "components/profil";
 
 /* reset */
 *,
@@ -130,8 +131,53 @@ h1 {
   }
 }
 
-ul {
+ul:not(.doted) {
   list-style: none;
+}
+
+.doted {
+  list-style: disc;
+
+  & > li {
+    margin-left: 1rem;
+  }
+}
+
+.tableContainer {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+
+  th,
+  td {
+    text-align: left;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(221, 221, 221, 0.331);
+  }
+
+  tr:nth-child(even) {
+    background-color: #2e2e2e;
+  }
+
+  tr {
+    background-color: #3c3c3c;
+  }
+
+  tr:hover {
+    background-color: rgb(92, 92, 92);
+  }
+
+  th {
+    text-align: center;
+    background-color: #0e1624;
+    color: white;
+  }
 }
 
 /* BODY DEVELOPMENT */

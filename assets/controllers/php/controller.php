@@ -65,7 +65,7 @@ if (isset($d['inscription'])) {
                 $stmt->bindValue(4, password_hash($password, PASSWORD_DEFAULT));
                 $stmt->execute();
 
-                $session = new Session($pdo->lastInsertId(), 0, $mail, $nom, $prenom);
+                $session = new Session($pdo->lastInsertId(), 0, $mail, $prenom, $nom);
                 $session->__setSession();
 
                 echo json_encode(["error" => $error, "method" => "inscription", $id = $pdo->lastInsertId()]);
@@ -120,3 +120,29 @@ if (isset($d['connexion'])) {
     }
 }
 /* ----- */
+
+/* TRAITEMENT DES MODIFICATIONS */
+if (isset($d['edit'])) {
+    $id = $d['edit']['id'];
+    $mail = $d['edit']['email'];
+    $nom = $d['edit']['nom'];
+    $prenom = $d['edit']['prenom'];
+    $role = $d['edit']['role'];
+
+    $sql = "UPDATE users SET userFirstname = ?, userLastname = ?, userEmail = ?, userRole = ? WHERE userId = ?";
+
+    if ($stmt = $pdo->prepare($sql)) {
+        $stmt->bindValue(1, htmlspecialchars($prenom, ENT_QUOTES, 'UTF-8'));
+        $stmt->bindValue(2, htmlspecialchars($nom, ENT_QUOTES, 'UTF-8'));
+        $stmt->bindValue(3, htmlspecialchars($mail, ENT_QUOTES, 'UTF-8'));
+        $stmt->bindValue(4, $role);
+        $stmt->bindValue(5, $id);
+        $stmt->execute();
+
+        echo json_encode(["error" => $error, "method" => "edit", $id = $id, "message" => "Modification réussie"]);
+        exit;
+    } else {
+        echo json_encode(["error" => $error = true, "method" => "edit", $id = null, "message" => "Erreur de modification"]);
+        exit;
+    }
+}

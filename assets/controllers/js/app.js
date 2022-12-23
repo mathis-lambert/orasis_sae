@@ -1,3 +1,8 @@
+function error(message) {
+  document.querySelector(".error_div").innerHTML = `
+    <p id='error'>${message}</p>`;
+}
+
 function xhr(data) {
   let xhr = new XMLHttpRequest();
   let json = JSON.stringify(data);
@@ -24,11 +29,24 @@ function traitement(data) {
 
   data.error == true ? error(data.message) : "";
 
-  if (data.error == false && data.method == "inscription") {
+  if (
+    (data.error == false && data.method == "inscription") ||
+    (data.error == false && data.method == "connexion")
+  ) {
     window.location.href = "espace-perso.php";
   }
-  if (data.error == false && data.method == "connexion") {
-    window.location.href = "espace-perso.php";
+
+  if (data.error == false && data.method == "edit") {
+    let parentTableRow = document.querySelector(
+      `.usersTable tr[data-userid='${data[0]}']`
+    );
+    parentTableRow.classList.toggle("editMode");
+    parentTableRow
+      .querySelectorAll("input:not(.userId), select")
+      .forEach((input) => {
+        input.toggleAttribute("disabled");
+      });
+    parentTableRow.querySelector(".deleteButton").classList.toggle("disabled");
   }
 }
 
@@ -75,7 +93,112 @@ if (connexion_form) {
   });
 }
 
-function error(message) {
-  document.querySelector(".error_div").innerHTML = `
-    <p id='error'>${message}</p>`;
+/* TABLE EDITING */
+const usersTable = document.querySelector(".usersTable");
+
+if (usersTable) {
+  const editButtons = document.querySelectorAll(".editButton");
+  const deleteButtons = document.querySelectorAll(".deleteButton");
+
+  let tempInputsValues = [];
+
+  editButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      let parentTableRow = button.parentElement.parentElement;
+      let userId = parentTableRow.dataset.userid;
+      let inputs = parentTableRow.querySelectorAll(
+        "input:not(.userId), select"
+      );
+      let inputsValues = [];
+
+      inputs.forEach((input) => {
+        inputsValues.push(input.value);
+      });
+
+      parentTableRow
+        .querySelector(".deleteButton")
+        .classList.toggle("disabled");
+
+      if (parentTableRow.classList.contains("editMode")) {
+        parentTableRow.classList.toggle("editMode");
+
+        inputs.forEach((input) => {
+          //reset inputs values
+          input.value = tempInputsValues.shift();
+          input.toggleAttribute("disabled");
+          input.classList.remove("invalid");
+        });
+      } else {
+        let data = {
+          edit: {
+            id: userId,
+            nom: inputsValues[0],
+            prenom: inputsValues[1],
+            email: inputsValues[2],
+            role: inputsValues[3],
+          },
+        };
+
+        parentTableRow.classList.toggle("editMode");
+        inputs.forEach((input) => {
+          input.toggleAttribute("disabled");
+          tempInputsValues.push(input.value);
+
+          /* if value of input changes */
+          input.addEventListener("input", (e) => {
+            parentTableRow
+              .querySelector(".validateButton")
+              .classList.add("validate");
+            inputsValues = [];
+            inputs.forEach((input) => {
+              inputsValues.push(input.value);
+            });
+
+            data = {
+              edit: {
+                id: userId,
+                nom: inputsValues[0],
+                prenom: inputsValues[1],
+                email: inputsValues[2],
+                role: inputsValues[3],
+              },
+            };
+
+            parentTableRow.querySelector(".validateButton").onclick = () => {
+              xhr(data);
+              parentTableRow
+                .querySelector(".validateButton")
+                .classList.remove("validate");
+              parentTableRow
+                .querySelector(".validateButton")
+                .classList.add("loading");
+            };
+          });
+        });
+      }
+    });
+  });
+
+  deleteButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+      let id = button.getAttribute("data-id");
+      let data = { delete: { id: id } };
+      xhr(data);
+    });
+  });
 }
+
+/* check all mails inputs  */
+const mailInputs = document.querySelectorAll("input[type='email']");
+mailInputs.forEach((input) => {
+  input.addEventListener("keyup", (e) => {
+    let value = input.value;
+    let regex = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+    if (regex.test(value)) {
+      input.classList.remove("invalid");
+    } else {
+      input.classList.add("invalid");
+    }
+  });
+});

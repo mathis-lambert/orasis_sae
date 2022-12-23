@@ -36,9 +36,9 @@ a:hover {
 }
 .btn.loading {
   pointer-events: none;
-  background-color: rgb(46, 230, 46);
-  color: rgb(46, 230, 46);
-  border: 2px rgb(46, 230, 46) solid;
+  background-color: rgb(46, 230, 46) !important;
+  color: rgb(46, 230, 46) !important;
+  border: 2px rgb(46, 230, 46) solid !important;
   position: relative;
   font-size: 0;
   line-height: 1rem;
@@ -227,6 +227,13 @@ form .input-group textarea:not(:placeholder-shown) + label {
   left: 0.5rem;
   font-size: 0.9rem;
   color: #fff;
+}
+
+input.invalid {
+  border: 2px #c22b2b solid !important;
+  color: #c22b2b !important;
+  border: none !important;
+  background-color: #ffc4c4 !important;
 }
 
 header {
@@ -612,6 +619,94 @@ footer .footer-ending p {
   justify-content: center;
 }
 
+.usersTable td:not(.action_links) {
+  padding: 5px;
+}
+.usersTable input,
+.usersTable select {
+  min-width: 100px;
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  color: white;
+  padding: 0.75rem 0.5rem;
+}
+.usersTable input:disabled,
+.usersTable select:disabled {
+  opacity: 0.7;
+}
+.usersTable input:not(:disabled),
+.usersTable select:not(:disabled) {
+  cursor: pointer;
+  outline: 1px solid rgba(255, 179, 0, 0.209);
+}
+.usersTable input:focus,
+.usersTable select:focus {
+  outline: 1px solid rgb(255, 179, 0);
+}
+.usersTable .action_links {
+  display: flex;
+  gap: 2rem;
+}
+.usersTable .action_links button {
+  flex: 1 1 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.usersTable .action_links button svg {
+  height: 1.25rem;
+}
+.usersTable .action_links button.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.usersTable .action_links .editButton svg:first-child {
+  display: block;
+}
+.usersTable .action_links .editButton svg:last-child {
+  display: none;
+}
+.usersTable .action_links .validateButton {
+  display: none;
+  border: 1px solid rgb(255, 179, 0);
+  background-color: rgb(255, 179, 0);
+}
+.usersTable .action_links .deleteButton {
+  display: block;
+}
+.usersTable select option {
+  color: black;
+}
+.usersTable tr.editMode {
+  background-color: rgb(91, 65, 5);
+}
+.usersTable tr.editMode .editButton {
+  border: 1px solid rgb(255, 179, 0);
+  background-color: rgb(255, 179, 0);
+  color: white;
+}
+.usersTable tr.editMode .editButton svg:first-child {
+  display: none;
+}
+.usersTable tr.editMode .editButton svg:last-child {
+  display: block;
+}
+.usersTable tr.editMode .validateButton {
+  display: block;
+}
+.usersTable tr.editMode .validateButton svg {
+  transform: rotate(180deg);
+}
+.usersTable tr.editMode .validateButton.validate {
+  background-color: rgb(0, 179, 0);
+  border: 1px solid rgb(0, 179, 0);
+}
+.usersTable tr.editMode .deleteButton {
+  display: none;
+}
+
 /* reset */
 *,
 *:before,
@@ -730,8 +825,47 @@ h1 {
   color: white;
 }
 
-ul {
+ul:not(.doted) {
   list-style: none;
+}
+
+.doted {
+  list-style: disc;
+}
+.doted > li {
+  margin-left: 1rem;
+}
+
+.tableContainer {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+table th,
+table td {
+  text-align: left;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(221, 221, 221, 0.331);
+}
+table tr:nth-child(even) {
+  background-color: #2e2e2e;
+}
+table tr {
+  background-color: #3c3c3c;
+}
+table tr:hover {
+  background-color: rgb(92, 92, 92);
+}
+table th {
+  text-align: center;
+  background-color: #0e1624;
+  color: white;
 }
 
 /* BODY DEVELOPMENT */

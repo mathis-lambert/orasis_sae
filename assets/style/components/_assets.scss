@@ -27,9 +27,9 @@ a {
   transition: all 0.3s ease;
   &.loading {
     pointer-events: none;
-    background-color: rgb(46, 230, 46);
-    color: rgb(46, 230, 46);
-    border: 2px rgb(46, 230, 46) solid;
+    background-color: rgb(46, 230, 46) !important;
+    color: rgb(46, 230, 46) !important;
+    border: 2px rgb(46, 230, 46) solid !important;
     position: relative;
     font-size: 0;
     line-height: 1rem;
@@ -191,5 +191,14 @@ form {
         color: $color-white;
       }
     }
+  }
+}
+
+input {
+  &.invalid {
+    border: 2px $color-secondary solid !important;
+    color: $color-secondary !important;
+    border: none !important;
+    background-color: #ffc4c4 !important;
   }
 }
