@@ -830,4 +830,10 @@ body::-webkit-scrollbar-thumb:hover {
     padding-inline: 5vw;
     border-radius: 0;
   }
+}
+.card_intervenant {
+  width: 333px;
+  height: 170px;
+  background-color: #ECECEC;
+  border-radius: 15px;
 }/*# sourceMappingURL=style.css.map */
