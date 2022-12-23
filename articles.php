@@ -20,8 +20,25 @@ include_once 'config/config.php';
 </head>
 
 <body>
-    <?php include_once 'assets/includes/_navbar.html' ?>
-    <?php include_once 'views/accueil.html' ?>
+    <?php include_once 'assets/includes/_navbar.php' ?>
+    <div class="container">
+        <h1>Articles</h1>
+        <?php
+        $sql = "SELECT * FROM articles";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($articles as $article) {
+            echo '<div class="card">';
+            echo '<div class="card-body">';
+            echo '<h5 class="card-title">' . $article['articleTitle'] . '</h5>';
+            echo '<p class="card-text">' . $article['articleText'] . '</p>';
+            echo '<a href="article?id=' . $article['articleId'] . '" class="btn btn-primary">Voir l\'article</a>';
+            echo '</div>';
+            echo '</div>';
+        }
+        ?>
+    </div>
     <?php include_once 'assets/includes/_footer.html' ?>
     <!-- Javascript import files -->
 

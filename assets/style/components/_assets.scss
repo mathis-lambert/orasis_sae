@@ -10,12 +10,19 @@ $color-white: #fff;
 /* buttons */
 a {
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  color: $color-white;
+  &:hover {
+    color: $color-primary;
+  }
 }
 .btn {
   display: block;
   padding: 0.5rem 1rem;
   border-radius: 0.75rem;
+  width: fit-content;
+  color: #fff;
+  border: $color-primary solid 2px;
   cursor: pointer;
   transition: all 0.3s ease;
   &.loading {
@@ -24,6 +31,9 @@ a {
     color: rgb(46, 230, 46);
     border: 2px rgb(46, 230, 46) solid;
     position: relative;
+    font-size: 0;
+    line-height: 1rem;
+    padding-inline: 2rem;
 
     &:after {
       content: "";
@@ -37,7 +47,7 @@ a {
       border: 2px solid rgb(255, 255, 255);
       border-top-color: transparent;
       border-right-color: transparent;
-      animation: spin 1s ease-out infinite;
+      animation: spin 1s ease-in-out infinite;
     }
   }
 }
@@ -143,7 +153,6 @@ form {
   input,
   label {
     color: $color-black;
-    font-family: "Lexend";
   }
 
   .input-group {

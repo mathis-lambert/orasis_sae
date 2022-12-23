@@ -38,7 +38,7 @@ require 'libs/PHPMailer/src/SMTP.php';
 </head>
 
 <body>
-    <?php include_once 'assets/includes/_navbar.html';
+    <?php include_once 'assets/includes/_navbar.php';
     if (isset($_SESSION["PlayerId"])) {
         header("Location: espace-perso.php");
         exit();

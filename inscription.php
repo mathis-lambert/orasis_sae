@@ -26,7 +26,7 @@ if (!empty($_SESSION) && isset($_SESSION)) {
 </head>
 
 <body>
-    <?php include_once 'assets/includes/_navbar.html' ?>
+    <?php include_once 'assets/includes/_navbar.php' ?>
     <section id="formulaire_inscription">
         <!-- <div class="container"> -->
         <div class="container contact">
@@ -34,7 +34,6 @@ if (!empty($_SESSION) && isset($_SESSION)) {
             <h2 style="margin-bottom: 40px; text-align:center;">Formulaire d'Inscription</h2>
 
             <form action="" method="post" class="form" id="inscription_form">
-                <div class="error-div"></div>
                 <div class="d-flex row" style="column-gap: 4rem; flex-wrap:wrap; ">
                     <div class="input-group" id="div-mail">
                         <input type="email" name="mail" id="mail" placeholder=" " required>
@@ -53,6 +52,7 @@ if (!empty($_SESSION) && isset($_SESSION)) {
                         <label for="password">mot de passe</label>
                     </div>
                 </div>
+                <div class="error_div"></div>
                 <button type="submit" class="btn btn-blue margin-auto">Inscription</button>
             </form>
         </div>

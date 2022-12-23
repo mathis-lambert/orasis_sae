@@ -120,6 +120,18 @@ h1 {
     background-color: rgba(255, 0, 0, 0.5);
     color: white;
   }
+
+  #success {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: rgba(0, 255, 0, 0.5);
+    color: white;
+  }
+}
+
+ul {
+  list-style: none;
 }
 
 /* BODY DEVELOPMENT */
@@ -236,7 +248,6 @@ h1 {
       transition-delay: 0;
 
       p {
-        font-family: "Lexend-Bold";
         font-size: 1.25rem;
       }
     }

@@ -15,13 +15,22 @@
 /* buttons */
 a {
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  color: #fff;
+}
+a:hover {
+  color: #47c7ef;
 }
 
 .btn {
   display: block;
   padding: 0.5rem 1rem;
   border-radius: 0.75rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #fff;
+  border: #47c7ef solid 2px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -31,6 +40,9 @@ a {
   color: rgb(46, 230, 46);
   border: 2px rgb(46, 230, 46) solid;
   position: relative;
+  font-size: 0;
+  line-height: 1rem;
+  padding-inline: 2rem;
 }
 .btn.loading:after {
   content: "";
@@ -44,8 +56,8 @@ a {
   border: 2px solid rgb(255, 255, 255);
   border-top-color: transparent;
   border-right-color: transparent;
-  -webkit-animation: spin 1s ease-out infinite;
-          animation: spin 1s ease-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+          animation: spin 1s ease-in-out infinite;
 }
 
 @-webkit-keyframes spin {
@@ -164,7 +176,6 @@ form {
 form input,
 form label {
   color: #292a2a;
-  font-family: "Lexend";
 }
 form .input-group {
   display: flex;
@@ -330,7 +341,7 @@ header .header-container .logo img {
   display: flex;
   cursor: pointer;
   height: 40px;
-  width: 40px;
+  width: 30px;
   flex-direction: column;
   align-items: stretch;
   justify-content: space-between;
@@ -340,7 +351,7 @@ header .header-container .logo img {
 #menu-button .burger-menu span {
   display: block;
   width: 100%;
-  height: 4px;
+  height: 3px;
   border-radius: 15px;
   transition: 0.5s ease;
 }
@@ -402,6 +413,29 @@ header .header-container .logo img {
 }
 .navbar-menu .navbar-menu__container .navbar-menu__left .navbar-menu__left__item a:hover {
   color: rgb(26, 43, 57);
+}
+
+.fast-links {
+  padding: 1rem;
+}
+.fast-links ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.fast-links ul li {
+  flex: 0 0 45%;
+  font-weight: 500;
+  color: #000;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.fast-links ul li a {
+  width: 100%;
+  text-align: center;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -525,10 +559,6 @@ footer .footer-ending p {
 .form {
   border-radius: 30px;
   color: white !important;
-}
-
-textarea {
-  font-family: "Lexend";
 }
 
 #accessplan .content {
@@ -692,6 +722,17 @@ h1 {
   background-color: rgba(255, 0, 0, 0.5);
   color: white;
 }
+.error_div #success {
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: rgba(0, 255, 0, 0.5);
+  color: white;
+}
+
+ul {
+  list-style: none;
+}
 
 /* BODY DEVELOPMENT */
 .hero_container {
@@ -802,7 +843,6 @@ h1 {
   transition-delay: 0;
 }
 .imgReveal .infoOverlay .overlayContent p {
-  font-family: "Lexend-Bold";
   font-size: 1.25rem;
 }
 .imgReveal .infoOverlay .overlayBtn {
