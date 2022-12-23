@@ -16,7 +16,7 @@
 </head>
 
 <body id="accessplan">
-   <?php include 'assets/includes/_navbar.html'; ?>
+   <?php include 'assets/includes/_navbar.php'; ?>
 
    <div class="content">
       <h2 class="title">Plan d'accès</h2>

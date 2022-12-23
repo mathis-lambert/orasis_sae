@@ -4,8 +4,18 @@ define('MyConst', TRUE);
 include_once 'config/config.php';
 
 if (empty($_SESSION) && !isset($_SESSION)) {
-    header('Location: connexion');
-    exit();
+    if ($_SESSION['logged'] == false) {
+        header('Location: connexion');
+        exit();
+    }
+} else {
+    //fetch all datas from user
+    $sql = "SELECT * FROM users WHERE userId = ?";
+    if ($stmt = $pdo->prepare($sql)) {
+        $stmt->bindValue(1, $_SESSION['id']);
+        $stmt->execute();
+        $user = $stmt->fetch();
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -26,16 +36,14 @@ if (empty($_SESSION) && !isset($_SESSION)) {
 </head>
 
 <body>
-    <?php include_once 'assets/includes/_navbar.html' ?>
-    <div class="container">
+    <?php include_once 'assets/includes/_navbar.php' ?>
+    <div class="container" style="height: 100vh; color:white;">
         <?php
-        if (isset($_SESSION['user'])) {
-            echo $_SESSION['user'];
-        } else {
-            echo 'Vous n\'êtes pas connecté';
-        }
+        echo $_SESSION['email'];
+        echo '<br>Vous êtes connecté<br>';
+        echo getRoleName($_SESSION['role']);
         ?>
-        <a href="logout">Déconnexion</a>
+        <a class="btn" href="logout">Déconnexion</a>
     </div>
     <!-- </div> -->
     <?php include_once 'assets/includes/_footer.html' ?>
