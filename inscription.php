@@ -73,12 +73,12 @@ if (!empty($_SESSION) && isset($_SESSION)) {
         <div class="container-table" style="color:white; margin:auto;">
             <table style="background-color:black ;border:2px solid white; border-collapse:collapse;">
                 <tr>
-                    <td style="height: 100px ; width:500px; text-align:center; display:table-cell; vertical-align:center;border-bottom:2px solid white; border-right:2px solid white;">tarif chambre simple</td>
-                    <td style="height: 100px ; width:100px; text-align:center; display:table-cell; vertical-align:center; border-bottom:2px solid white;">650€</td>
+                    <td style="height: 100px ; width:500px; text-align:center; display:table-cell; vertical-align:center;border-bottom:2px solid white; border-right:2px solid white; color:white;">tarif chambre simple</td>
+                    <td style="height: 100px ; width:100px; text-align:center; display:table-cell; vertical-align:center; border-bottom:2px solid white;color:white;">650€</td>
                 </tr>
                 <tr>
-                    <td style="height: 100px ; width:500px; text-align:center; display:table-cell; vertical-align:center; border-right:2px solid white;">tarif chambre double</td>
-                    <td style="height: 100px ; width:100px; text-align:center; display:table-cell; vertical-align:center;">550€</td>
+                    <td style="height: 100px ; width:500px; text-align:center; display:table-cell; vertical-align:center; border-right:2px solid white;color:white;">tarif chambre double</td>
+                    <td style="height: 100px ; width:100px; text-align:center; display:table-cell; vertical-align:center;color:white;">550€</td>
                 </tr>
             </table>
         </div>
