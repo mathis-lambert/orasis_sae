@@ -3,6 +3,11 @@ function error(message) {
     <p id='error'>${message}</p>`;
 }
 
+function success(message) {
+  document.querySelector(".error_div").innerHTML = `
+    <p id='success'>${message}</p>`;
+}
+
 function xhr(data) {
   let xhr = new XMLHttpRequest();
   let json = JSON.stringify(data);
@@ -51,6 +56,16 @@ function traitement(data) {
       .querySelector(".validateButton")
       .classList.remove("validate");
     parentTableRow.querySelector(".validateButton").classList.remove("loading");
+
+    success(data.message);
+  }
+
+  if (data.error == false && data.method == "delete") {
+    let parentTableRow = document.querySelector(
+      `.usersTable tr[data-userid='${data[0]}']`
+    );
+    parentTableRow.remove();
+    success(data.message);
   }
 }
 
@@ -185,10 +200,12 @@ if (usersTable) {
 
   deleteButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
-      e.preventDefault();
-      let id = button.getAttribute("data-id");
-      let data = { delete: { id: id } };
-      xhr(data);
+      if (!button.classList.contains("disabled")) {
+        let parentTableRow = button.parentElement.parentElement;
+        let userId = parentTableRow.dataset.userid;
+        let data = { delete: { id: userId } };
+        xhr(data);
+      }
     });
   });
 }

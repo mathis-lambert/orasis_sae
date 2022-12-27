@@ -2,8 +2,7 @@
 session_start();
 define('MyConst', TRUE);
 include_once 'config/config.php';
-
-if (empty($_SESSION) && !isset($_SESSION)) {
+if (empty($_SESSION)) {
     if ($_SESSION['logged'] == false) {
         header('Location: connexion');
         exit();
@@ -25,7 +24,7 @@ if (empty($_SESSION) && !isset($_SESSION)) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Orasis 2023</title>
+    <title>Orasis 2023 | Mon espace</title>
 
     <!-- import css -->
     <link rel="stylesheet" href="assets/style/style.css" />
@@ -38,12 +37,15 @@ if (empty($_SESSION) && !isset($_SESSION)) {
 <body>
     <?php include_once 'assets/includes/_navbar.php' ?>
     <div class="container" style="min-height: 100vh; color:white;">
-        <h1>Bonjour <?= $_SESSION['firstname'] ?> </h1>
-        <p>
-            Vous êtes connecté en tant que <?= getRoleName($_SESSION['role']) ?>
-        </p>
-        <br>
-        <a class="btn" href="logout">Déconnexion</a>
+        <div class="d-flex row f-width justify-between align-center">
+            <div>
+                <h1 class="no-style">Bonjour <?= $_SESSION['firstname'] ?> </h1>
+                <p>
+                    Vous êtes connecté en tant que <?= getRoleName($_SESSION['role']) ?>
+                </p>
+            </div>
+            <a class="btn" href="logout">Déconnexion</a>
+        </div>
         <br>
         <p>
             Dans votre espace, vous pouvez :
@@ -76,6 +78,8 @@ if (empty($_SESSION) && !isset($_SESSION)) {
                 <li>Supprimer un utilisateur</li>
             <?php endif; ?>
         </ul>
+        <br>
+        <div class="error_div"></div>
         <?php if ($_SESSION['role'] == 3) : ?>
             <?php include_once 'assets/includes/usersTable.php' ?>
         <?php endif; ?>

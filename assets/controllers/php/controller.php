@@ -146,3 +146,26 @@ if (isset($d['edit'])) {
         exit;
     }
 }
+
+/* TRAITEMENT DES SUPPRESSIONS */
+if (isset($d['delete'])) {
+    if ($_SESSION['id'] == $d['delete']['id']) {
+        echo json_encode(["error" => $error = true, "method" => "delete", $id = null, "message" => "Vous ne pouvez pas vous supprimer"]);
+        exit;
+    } else {
+        $id = $d['delete']['id'];
+
+        $sql = "DELETE FROM users WHERE userId = ?";
+
+        if ($stmt = $pdo->prepare($sql)) {
+            $stmt->bindValue(1, $id);
+            $stmt->execute();
+
+            echo json_encode(["error" => $error, "method" => "delete", $id = $id, "message" => "Suppression réussie"]);
+            exit;
+        } else {
+            echo json_encode(["error" => $error = true, "method" => "delete", $id = null, "message" => "Erreur de suppression"]);
+            exit;
+        }
+    }
+}

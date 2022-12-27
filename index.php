@@ -10,7 +10,7 @@ include_once 'config/config.php';
    <meta charset="UTF-8" />
    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>Orasis 2023</title>
+   <title>Orasis 2023 | Accueil</title>
 
    <!-- import css -->
    <link rel="stylesheet" href="assets/style/style.css" />
@@ -178,51 +178,55 @@ include_once 'config/config.php';
                <h2>Dates importantes</h2>
                <div id="dates_importantes">
                   <div class="dadates">
-                  <p class="p_dates"><b>Ouverture de soumission</b> - 15 janvier 2023</p>
+                     <p class="p_dates"><b>Ouverture de soumission</b> - 15 janvier 2023</p>
 
-                  <p class="p_dates"><b>Soumission des articles</b> - 15 février 2023</p>
+                     <p class="p_dates"><b>Soumission des articles</b> - 15 février 2023</p>
 
-                  <p class="p_dates"><b>Notifications aux auteurs</b> - 02 avril 2023</p>
+                     <p class="p_dates"><b>Notifications aux auteurs</b> - 02 avril 2023</p>
 
-                  <p class="p_dates"><b>Version finale</b> - 16 avril 2023</p>
+                     <p class="p_dates"><b>Version finale</b> - 16 avril 2023</p>
 
-                  <p class="p_dates"><b>Ouverture des inscriptions</b> - 03 avril 2023</p>
+                     <p class="p_dates"><b>Ouverture des inscriptions</b> - 03 avril 2023</p>
 
-                  <p class="p_dates"><b>Inscription non majorée</b> - Avant le 2 mai 2023</p>
+                     <p class="p_dates"><b>Inscription non majorée</b> - Avant le 2 mai 2023</p>
 
-                  <p class="p_dates"><b>Dates de la conférence</b> - 22 au 26 Mai 2023</p>
-</div>
+                     <p class="p_dates"><b>Dates de la conférence</b> - 22 au 26 Mai 2023</p>
+                  </div>
                </div>
             </div>
             <div id="carte">
                <h2>Carte</h2>
-               <iframe id="emplacement_map" src="https://www.google.fr/maps/place/Village+Club+Mil%C3%A9ade+Carqueiranne/@43.0901393,6.0929664,17z/data=!3m1!4b1!4m8!3m7!1s0x12c9218a0e6f68e7:0x77c8a07f5a809fbd!5m2!4m1!1i2!8m2!3d43.0901393!4d6.0929664"></iframe>
-            <div id="nav_bas">
-                  <div id="bulles1">
+               <iframe class="emplacement_map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d46611.73923899836!2d6.005719507128119!3d43.099603312579895!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x77c8a07f5a809fbd!2sVillage%20Club%20Mil%C3%A9ade%20Carqueiranne!5e0!3m2!1sfr!2sfr!4v1669663331592!5m2!1sfr!2sfr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+               <div id="nav_bas">
+                  <div id="bulles1" class="bulle">
                      <h6 class="txt_bulles">S'inscrire</h6>
-                     <div class="flèches">
+                     <a href="./inscription" aria-label="inscription" class="flèches">
+
                         <div class="flèches_background">
-                           <img src="./assets/img/Arrow 1.png" alt="" style="margin: 5px;">
+                           <img src="./assets/img/Arrow 1.png" alt="">
                         </div>
-                     </div>
+
+                     </a>
                   </div>
-                  <div id="bulles2">
-                  <h6 class="txt_bulles">Plan d'accès</h6>
-                  <div class="flèches">
+                  <div id="bulles2" class="bulle">
+                     <h6 class="txt_bulles">Plan d'accès</h6>
+                     <a href="./plan-dacces" aria-label="plan-dacces" class="flèches">
+
                         <div class="flèches_background">
-                        <img src="./assets/img/Arrow 1.png" alt="" style="margin: 5px;">
+                           <img src="./assets/img/Arrow 1.png" alt="">
                         </div>
-                     </div>
+
+                     </a>
                   </div>
-                  <div id="bulles3">
-                  <h6 class="txt_bulles">Contact</h6>
-                  <div class="flèches">
+                  <div id="bulles3" class="bulle">
+                     <h6 class="txt_bulles">Contact</h6>
+                     <a href="./contact.php" aria-label="contact" class="flèches">
                         <div class="flèches_background">
-                        <img src="./assets/img/Arrow 1.png" alt="" style="margin: 5px;">
+                           <img src="./assets/img/Arrow 1.png" alt="">
                         </div>
-                     </div>
+                     </a>
                   </div>
-            </div>
+               </div>
             </div>
          </div>
       </section>
