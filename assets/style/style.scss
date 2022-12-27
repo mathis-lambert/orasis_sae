@@ -87,8 +87,8 @@ h1:not(.no-style):before {
   margin-right: 1rem;
   display: inline-block;
   height: 2px;
-  width: 2rem;
-  background-color: #000;
+  width: 1.5rem;
+  background-color: currentColor;
 }
 
 h1:not(.no-style):after {
@@ -377,6 +377,30 @@ table {
   }
 }
 
+.more-infos {
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding-top: 2rem;
+
+  > div {
+    height: 650px;
+  }
+}
+
+#dates {
+  flex: 1 1 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#carte {
+  flex: 1 1 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 #card_intervenant {
   width: 350px;
   height: 100px;
@@ -387,22 +411,27 @@ table {
 }
 
 #dates_importantes {
-  width: 500px;
-  height: 500px;
+  padding: 1rem;
   background-color: #ececec;
   border-radius: 15px;
   margin: 20px;
-  text-align: center;
   justify-content: space-around;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-shadow: 5px 8px 14px 3px rgba(0, 0, 0, 0.15);
 }
+.dadates {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  font-style: normal;
+  font-size: 21px;
+}
 
 .emplacement_map {
-  width: 560px;
-  height: 310px;
+  height: 350px;
   border-radius: 20px;
   box-shadow: 5px 8px 14px 3px rgba(0, 0, 0, 0.15);
   margin: 20px;
@@ -410,8 +439,7 @@ table {
 }
 
 #nav_bas {
-  width: 560px;
-  height: 145px;
+  height: 150px;
   background-color: #ececec;
   border-radius: 15px;
   margin: 20px;
@@ -419,6 +447,7 @@ table {
   justify-content: space-between;
   display: flex;
   padding: 1rem;
+  gap: 1rem;
 
   align-items: center;
   box-shadow: 5px 8px 14px 3px rgba(0, 0, 0, 0.15);
@@ -443,18 +472,6 @@ table {
 }
 #bulles3 {
   background: linear-gradient(98.7deg, #7adfdf 0%, #4a87ff 98.66%);
-}
-
-.dadates {
-  position: absolute;
-  width: 471px;
-  height: 480px;
-  display: flex;
-  flex-direction: column;
-  font-style: normal;
-  font-size: 21px;
-  line-height: 26px;
-  align-items: center;
 }
 
 .p_dates {

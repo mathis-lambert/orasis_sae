@@ -173,7 +173,7 @@ include_once 'config/config.php';
       <br />
       <section id="utiles">
          <h1>Infos utiles</h1>
-         <div class="container" style="display: flex; flex-direction:row; flex-wrap: wrap; justify-content: center;">
+         <div class="container d-flex row align-center more-infos">
             <div id="dates">
                <h2>Dates importantes</h2>
                <div id="dates_importantes">
