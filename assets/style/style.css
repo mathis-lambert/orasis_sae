@@ -764,6 +764,12 @@ h6 {
 
 h1 {
   font-size: clamp(1.5rem, 1.5vw, 2rem);
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  z-index: 1;
+  letter-spacing: -1.5px;
 }
 
 h1::before {
@@ -779,9 +785,12 @@ h1::before {
 
 h1::after {
   content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAOCAYAAAArMezNAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAArSURBVHgB7dHBCQAACEJRaf8FnK5Vwh0qEHzgxesHLpFsbfMvxIvEM5Z4MsmiP/cFQiy5AAAAAElFTkSuQmCC");
-  position: relative;
+  position: absolute;
+  -o-object-fit: cover;
+     object-fit: cover;
   top: -10px;
-  left: -15px;
+  right: -15px;
+  z-index: -1;
 }
 
 /*  main classes  */
