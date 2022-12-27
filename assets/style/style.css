@@ -1025,7 +1025,7 @@ table th {
 #card_intervenant {
   width: 350px;
   height: 100px;
-  background-color: #ECECEC;
+  background-color: #ececec;
   border-radius: 15px;
   margin: 20px;
   align-items: center;
@@ -1034,7 +1034,7 @@ table th {
 #dates_importantes {
   width: 500px;
   height: 500px;
-  background-color: #ECECEC;
+  background-color: #ececec;
   border-radius: 15px;
   margin: 20px;
   text-align: center;
@@ -1048,15 +1048,16 @@ table th {
 #emplacement_map {
   width: 560px;
   height: 310px;
-  border-radius: 47px;
+  border-radius: 20px;
   box-shadow: 5px 8px 14px 3px rgba(0, 0, 0, 0.15);
   margin: 20px;
+  border: 0;
 }
 
 #nav_bas {
   width: 560px;
   height: 145px;
-  background-color: #ECECEC;
+  background-color: #ececec;
   border-radius: 15px;
   margin: 20px;
   text-align: center;
@@ -1072,8 +1073,8 @@ table th {
   flex-wrap: wrap;
   width: 140px;
   height: 129px;
-  background: linear-gradient(98.7deg, #2163E1 0%, #2DDAE6 98.66%);
-  border-radius: 36px;
+  background: linear-gradient(98.7deg, #2163e1 0%, #2ddae6 98.66%);
+  border-radius: 20px;
   color: #fff;
   text-align: left;
 }
@@ -1084,8 +1085,8 @@ table th {
   flex-wrap: wrap;
   width: 140px;
   height: 129px;
-  background: linear-gradient(98.7deg, #48B66D 0%, #40E0D0 98.66%);
-  border-radius: 36px;
+  background: linear-gradient(98.7deg, #48b66d 0%, #40e0d0 98.66%);
+  border-radius: 20px;
   color: #fff;
   text-align: left;
 }
@@ -1096,8 +1097,8 @@ table th {
   flex-wrap: wrap;
   width: 140px;
   height: 129px;
-  background: linear-gradient(98.7deg, #7ADFDF 0%, #4A87FF 98.66%);
-  border-radius: 36px;
+  background: linear-gradient(98.7deg, #7adfdf 0%, #4a87ff 98.66%);
+  border-radius: 20px;
   color: #fff;
   text-align: left;
 }

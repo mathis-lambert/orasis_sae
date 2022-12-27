@@ -47,6 +47,10 @@ function traitement(data) {
         input.toggleAttribute("disabled");
       });
     parentTableRow.querySelector(".deleteButton").classList.toggle("disabled");
+    parentTableRow
+      .querySelector(".validateButton")
+      .classList.remove("validate");
+    parentTableRow.querySelector(".validateButton").classList.remove("loading");
   }
 }
 
