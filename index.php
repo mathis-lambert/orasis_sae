@@ -168,7 +168,32 @@ include_once 'config/config.php';
       <section id="evenement">
          <h1>L'événement</h1>
          <h2>Les derniers articles</h2>
-         <a href="articles">Voir tous les articles</a>
+         <div id="articles_container" class="container articles_container">
+            <div id="articles">
+               <div id="article1" class="article">
+                  <h4>Titre</h4>
+                  <p id="txt_article">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi iste quas magnam commodi illum dolore facilis facere culpa illo perferendis id soluta, labore est molestias quos distinctio, veniam minima mollitia!</p>
+                  <button class="btn_blue">Voir l'article</button>
+
+               </div>
+               <div id="article2" class="article">
+                  <h4>Titre</h4>
+                  <p id="txt_article">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi iste quas magnam commodi illum dolore facilis facere culpa illo perferendis id soluta, labore est molestias quos distinctio, veniam minima mollitia!</p>
+                  <button class="btn_blue">Voir l'article</button>
+
+               </div>
+               <div id="article3" class="article">
+                  <h4>Titre</h4>
+                  <p id="txt_article">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi iste quas magnam commodi illum dolore facilis facere culpa illo perferendis id soluta, labore est molestias quos distinctio, veniam minima mollitia!</p>
+                  <button class="btn_blue">Voir l'article</button>
+
+               </div>
+            </div>
+         </div>
+         <div id="bouton_articles">
+            <button style="background-color: #47C7EF; color:white; border:solid 2px white; border-radius:15px; padding:4px;"><a href="articles">Voir tous les articles</a></button>
+      </div>
+
       </section>
       <br />
       <section id="utiles">

@@ -388,7 +388,7 @@ table {
 }
 
 #dates {
-  flex: 1 1 40%;
+  flex: 1 1 25%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -506,3 +506,116 @@ table {
     aspect-ratio: 1;
   }
 }
+
+.btn_blue{
+  border: 2px solid #47C7EF;
+  border-radius:30px ;
+  color: #47C7EF;
+  padding: 4px;
+  }
+  
+  .articles_container{
+    background: #F1F1F1;
+  box-shadow: 5px 8px 14px 3px rgba(0, 0, 0, 0.15);
+  border-radius: 47px;
+  width: 1200px;
+  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px !important;
+  align-content: center;
+  margin-top: 20px;
+  }
+  #articles{
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+  }
+  
+  .article{
+    margin:10px
+  }
+  
+  @media(max-width:1200px){
+    #articles{
+      display: flex;
+      flex-wrap: nowrap;
+      align-content: center;
+      max-width: 900px;
+    }
+    .article{
+      margin:10px
+    }
+    .articles_container{
+      background: #F1F1F1;
+    box-shadow: 5px 8px 14px 3px rgba(0, 0, 0, 0.15);
+    border-radius: 47px;
+    max-width: 900px;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px !important;
+    align-content: center;
+    margin-top: 20px;
+    }
+  }
+  
+  @media(max-width:900px){
+    #articles{
+      display: flex;
+      flex-wrap: nowrap;
+      max-width: 700px;
+      align-content: center;
+    }
+    .article{
+      margin:10px
+    }
+    .articles_container{
+      background: #F1F1F1;
+    box-shadow: 5px 8px 14px 3px rgba(0, 0, 0, 0.15);
+    border-radius: 47px;
+    max-width: 700px;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px !important;
+    align-content: center;
+    margin-top: 20px;
+    }
+  }
+  
+  @media(max-width:720px){
+    #articles{
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 290px;
+      align-content: center;
+    }
+    .article{
+      margin:10px
+    }
+    .articles_container{
+      background: #F1F1F1;
+    box-shadow: 5px 8px 14px 3px rgba(0, 0, 0, 0.15);
+    border-radius: 47px;
+    max-width: 290px;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px !important;
+    align-content: center;
+    margin-top: 20px;
+    }
+    #txt_article{
+      font-size: 8px;
+    }
+  }
+  
+  #bouton_articles{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 50px;
+    margin-top: 20px;
+    
+  }
+  
