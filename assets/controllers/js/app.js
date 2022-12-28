@@ -113,9 +113,9 @@ if (connexion_form) {
 }
 
 /* TABLE EDITING */
-const usersTable = document.querySelector(".usersTable");
+const editTable = document.querySelectorAll(".editTable");
 
-if (usersTable) {
+if (editTable) {
   const editButtons = document.querySelectorAll(".editButton");
   const deleteButtons = document.querySelectorAll(".deleteButton");
 
@@ -126,7 +126,7 @@ if (usersTable) {
       let parentTableRow = button.parentElement.parentElement;
       let userId = parentTableRow.dataset.userid;
       let inputs = parentTableRow.querySelectorAll(
-        "input:not(.userId), select"
+        "input:not(.userId), select, textarea"
       );
       let inputsValues = [];
 

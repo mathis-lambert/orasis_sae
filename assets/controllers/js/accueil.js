@@ -17,13 +17,10 @@ if (hero) {
       },
     });
   }
-  /*     if (
-      window.innerWidth > 1024 &&
-      window.location.hash.includes("#") == false
-    ) {
-      heroScale();
-         window.scrollTo(0, 0); 
-    } else  */ if (window.location.hash.includes("#")) {
+  if (window.innerWidth > 1024 && window.location.hash.includes("#") == false) {
+    heroScale();
+    window.scrollTo(0, 0);
+  } else if (window.location.hash.includes("#") && window.innerWidth > 1024) {
     heroScale();
     gsap.set(hero, { scale: 1 });
   } else {

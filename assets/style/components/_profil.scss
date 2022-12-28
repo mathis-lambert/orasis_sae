@@ -1,9 +1,25 @@
-.usersTable {
+.editTable {
+  margin-block: 3rem;
+
+  h2 {
+    margin-bottom: 1rem;
+  }
   td:not(.action_links) {
     padding: 5px;
   }
+
+  .textarea_container {
+    width: 500px;
+    textarea {
+      width: 100%;
+      height: 100%;
+      resize: vertical;
+    }
+  }
+
   input,
-  select {
+  select,
+  textarea {
     min-width: 100px;
     display: block;
     width: 100%;
@@ -25,6 +41,7 @@
   .action_links {
     display: flex;
     gap: 2rem;
+    border: none;
     button {
       svg {
         height: 1.25rem;
@@ -55,7 +72,7 @@
     }
 
     .deleteButton {
-      display: block;
+      display: flex;
     }
   }
 
@@ -83,7 +100,7 @@
       color: white;
     }
     .validateButton {
-      display: block;
+      display: flex;
       svg {
         transform: rotate(180deg);
       }

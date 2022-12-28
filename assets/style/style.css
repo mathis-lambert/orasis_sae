@@ -627,11 +627,26 @@ footer .footer-ending p {
   justify-content: center;
 }
 
-.usersTable td:not(.action_links) {
+.editTable {
+  margin-block: 3rem;
+}
+.editTable h2 {
+  margin-bottom: 1rem;
+}
+.editTable td:not(.action_links) {
   padding: 5px;
 }
-.usersTable input,
-.usersTable select {
+.editTable .textarea_container {
+  width: 500px;
+}
+.editTable .textarea_container textarea {
+  width: 100%;
+  height: 100%;
+  resize: vertical;
+}
+.editTable input,
+.editTable select,
+.editTable textarea {
   min-width: 100px;
   display: block;
   width: 100%;
@@ -640,78 +655,82 @@ footer .footer-ending p {
   color: white;
   padding: 0.75rem 0.5rem;
 }
-.usersTable input:disabled,
-.usersTable select:disabled {
+.editTable input:disabled,
+.editTable select:disabled,
+.editTable textarea:disabled {
   opacity: 0.7;
 }
-.usersTable input:not(:disabled),
-.usersTable select:not(:disabled) {
+.editTable input:not(:disabled),
+.editTable select:not(:disabled),
+.editTable textarea:not(:disabled) {
   cursor: pointer;
   outline: 1px solid rgba(255, 179, 0, 0.209);
 }
-.usersTable input:focus,
-.usersTable select:focus {
+.editTable input:focus,
+.editTable select:focus,
+.editTable textarea:focus {
   outline: 1px solid rgb(255, 179, 0);
 }
-.usersTable .action_links {
+.editTable .action_links {
   display: flex;
   gap: 2rem;
+  border: none;
 }
-.usersTable .action_links button {
+.editTable .action_links button {
   flex: 1 1 50%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.usersTable .action_links button svg {
+.editTable .action_links button svg {
   height: 1.25rem;
 }
-.usersTable .action_links button.disabled {
+.editTable .action_links button.disabled {
   cursor: not-allowed;
   opacity: 0.5;
 }
-.usersTable .action_links .editButton svg:first-child {
+.editTable .action_links .editButton svg:first-child {
   display: block;
 }
-.usersTable .action_links .editButton svg:last-child {
+.editTable .action_links .editButton svg:last-child {
   display: none;
 }
-.usersTable .action_links .validateButton {
+.editTable .action_links .validateButton {
   display: none;
   border: 1px solid rgb(255, 179, 0);
   background-color: rgb(255, 179, 0);
 }
-.usersTable .action_links .deleteButton {
-  display: block;
+.editTable .action_links .deleteButton {
+  display: flex;
 }
-.usersTable select option {
+.editTable select option {
   color: black;
 }
-.usersTable tr.editMode {
+.editTable tr.editMode {
   background-color: rgb(91, 65, 5);
 }
-.usersTable tr.editMode .editButton {
+.editTable tr.editMode .editButton {
   border: 1px solid rgb(255, 179, 0);
   background-color: rgb(255, 179, 0);
   color: white;
 }
-.usersTable tr.editMode .editButton svg:first-child {
+.editTable tr.editMode .editButton svg:first-child {
   display: none;
 }
-.usersTable tr.editMode .editButton svg:last-child {
+.editTable tr.editMode .editButton svg:last-child {
   display: block;
 }
-.usersTable tr.editMode .validateButton {
-  display: block;
+.editTable tr.editMode .validateButton {
+  display: flex;
 }
-.usersTable tr.editMode .validateButton svg {
+.editTable tr.editMode .validateButton svg {
   transform: rotate(180deg);
 }
-.usersTable tr.editMode .validateButton.validate {
+.editTable tr.editMode .validateButton.validate {
   background-color: rgb(0, 179, 0);
   border: 1px solid rgb(0, 179, 0);
 }
-.usersTable tr.editMode .deleteButton {
+.editTable tr.editMode .deleteButton {
   display: none;
 }
 

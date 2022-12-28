@@ -1,4 +1,4 @@
-<div class="usersTable">
+<div class="editTable usersTable">
     <h2>Utilisateurs</h2>
     <div class="tableContainer">
         <table>

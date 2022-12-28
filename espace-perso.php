@@ -80,9 +80,18 @@ if (empty($_SESSION)) {
         </ul>
         <br>
         <div class="error_div"></div>
-        <?php if ($_SESSION['role'] == 3) : ?>
-            <?php include_once 'assets/includes/usersTable.php' ?>
-        <?php endif; ?>
+        <?php
+        if ($_SESSION['role'] == 3) :
+            include_once 'assets/includes/usersTable.php';
+            include_once 'assets/includes/articlesTable.php';
+        elseif ($_SESSION['role'] == 2) :
+            include_once 'assets/includes/articlesTable.php';
+        elseif ($_SESSION['role'] == 1) :
+            include_once 'assets/includes/articlesTable.php';
+        elseif ($_SESSION['role'] == 0) :
+            include_once 'assets/includes/articlesTable.php';
+        endif;
+        ?>
 
     </div>
     <!-- </div> -->
