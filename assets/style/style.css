@@ -1317,4 +1317,28 @@ table th {
   justify-content: flex-end;
   margin-right: 50px;
   margin-top: 20px;
+}
+
+#btn_article {
+  background-color: #47C7EF;
+  color: white;
+  border: solid 2px white;
+  border-radius: 15px;
+  padding: 4px;
+}
+
+.bouton:hover {
+  color: black;
+}
+
+.bouton {
+  color: #47C7EF;
+}
+
+.bouton_art {
+  color: white;
+}
+
+.bouton_art:hover {
+  color: black;
 }/*# sourceMappingURL=style.css.map */

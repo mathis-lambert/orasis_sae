@@ -102,7 +102,7 @@ include_once 'config/config.php';
          <div class="container" style="padding: 50px; text-align: center; display:flex; flex-wrap:wrap; flex-direction:row; ">
             <div id="card_intervenant">
                <h3>Jhon Doe</h3>
-               <p>Docteur dans la
+               <p>Docteur dans la représentation
                   intelligente des système numériques </p>
             </div>
 
@@ -179,7 +179,7 @@ include_once 'config/config.php';
                <div id="article2" class="article">
                   <h4>Titre</h4>
                   <p id="txt_article">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi iste quas magnam commodi illum dolore facilis facere culpa illo perferendis id soluta, labore est molestias quos distinctio, veniam minima mollitia!</p>
-                  <button class="btn_blue">Voir l'article</button>
+                  <button class="btn_blue"><a class="bouton" href="#">voir l'article</a></button>
 
                </div>
                <div id="article3" class="article">
@@ -191,7 +191,7 @@ include_once 'config/config.php';
             </div>
          </div>
          <div id="bouton_articles">
-            <button style="background-color: #47C7EF; color:white; border:solid 2px white; border-radius:15px; padding:4px;"><a href="articles">Voir tous les articles</a></button>
+            <button id="btn_article"><a class="bouton_art"  href="articles.php">Voir tous les articles</a></button>
       </div>
 
       </section>
@@ -225,7 +225,7 @@ include_once 'config/config.php';
                <div id="nav_bas">
                   <div id="bulles1" class="bulle">
                      <h6 class="txt_bulles">S'inscrire</h6>
-                     <a href="./inscription" aria-label="inscription" class="flèches">
+                     <a href="./inscription.php" aria-label="inscription" class="flèches">
 
                         <div class="flèches_background">
                            <img src="./assets/img/Arrow 1.png" alt="">
@@ -235,7 +235,7 @@ include_once 'config/config.php';
                   </div>
                   <div id="bulles2" class="bulle">
                      <h6 class="txt_bulles">Plan d'accès</h6>
-                     <a href="./plan-dacces" aria-label="plan-dacces" class="flèches">
+                     <a href="./plan-dacces.php" aria-label="plan-dacces" class="flèches">
 
                         <div class="flèches_background">
                            <img src="./assets/img/Arrow 1.png" alt="">
