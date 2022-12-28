@@ -229,9 +229,9 @@
     <div class="navbar-menu__left">
       <div class="navbar-menu__left__item">
         <h1>L'événement</h1>
-        <a href="#programme">Le programme</a>
-        <a href="#invites">Les invités</a>
-        <a href="#comite">Comités</a>
+        <a href="./#programme">Le programme</a>
+        <a href="./#invites">Les invités</a>
+        <a href="./#comite">Comités</a>
       </div>
       <div class="navbar-menu__left__item">
         <h1>Informations</h1>

@@ -17,24 +17,27 @@ if (hero) {
       },
     });
   }
-
-  window.addEventListener("load", () => {
-    if (window.innerWidth > 1024) {
+  /*     if (
+      window.innerWidth > 1024 &&
+      window.location.hash.includes("#") == false
+    ) {
       heroScale();
-      window.scrollTo(0, 0);
-    } else {
-      // disable gsap animation
-      gsap.set(hero, { scale: 1 });
+         window.scrollTo(0, 0); 
+    } else  */ if (window.location.hash.includes("#")) {
+    heroScale();
+    gsap.set(hero, { scale: 1 });
+  } else {
+    // disable gsap animation
+    gsap.set(hero, { scale: 1 });
 
-      // remove scroll trigger
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    }
-  });
+    // remove scroll trigger
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  }
 
   window.addEventListener("resize", () => {
     if (window.innerWidth > 1024) {
       heroScale();
-      window.scrollTo(0, 0);
+      /* window.scrollTo(0, 0); */
     } else {
       // disable gsap animation
       gsap.set(hero, { scale: 1 });

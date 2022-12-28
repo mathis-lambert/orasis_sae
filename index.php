@@ -10,7 +10,7 @@ include_once 'config/config.php';
    <meta charset="UTF-8" />
    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>Orasis 2023</title>
+   <title>Orasis 2023 | Accueil</title>
 
    <!-- import css -->
    <link rel="stylesheet" href="assets/style/style.css" />
@@ -205,50 +205,55 @@ include_once 'config/config.php';
                      <p class="p_dates"><b>Ouverture de soumission</b> - 15 janvier 2023</p>
 
                      <p class="p_dates"><b>Soumission des articles</b> - 15 février 2023</p>
+                     <p class="p_dates"><b>Soumission des articles</b> - 15 février 2023</p>
 
+                     <p class="p_dates"><b>Notifications aux auteurs</b> - 02 avril 2023</p>
                      <p class="p_dates"><b>Notifications aux auteurs</b> - 02 avril 2023</p>
 
                      <p class="p_dates"><b>Version finale</b> - 16 avril 2023</p>
+                     <p class="p_dates"><b>Version finale</b> - 16 avril 2023</p>
 
+                     <p class="p_dates"><b>Ouverture des inscriptions</b> - 03 avril 2023</p>
                      <p class="p_dates"><b>Ouverture des inscriptions</b> - 03 avril 2023</p>
 
                      <p class="p_dates"><b>Inscription non majorée</b> - Avant le 2 mai 2023</p>
+                     <p class="p_dates"><b>Inscription non majorée</b> - Avant le 2 mai 2023</p>
 
+                     <p class="p_dates"><b>Dates de la conférence</b> - 22 au 26 Mai 2023</p>
+                  </div>
                      <p class="p_dates"><b>Dates de la conférence</b> - 22 au 26 Mai 2023</p>
                   </div>
                </div>
             </div>
             <div id="carte">
                <h2>Carte</h2>
-               <div id='down_content'>
-                  <iframe id="emplacement_map" src="https://www.google.fr/maps/place/Village+Club+Mil%C3%A9ade+Carqueiranne/@43.0901393,6.0929664,17z/data=!3m1!4b1!4m8!3m7!1s0x12c9218a0e6f68e7:0x77c8a07f5a809fbd!5m2!4m1!1i2!8m2!3d43.0901393!4d6.0929664"></iframe>
-                  <div id="nav_bas">
-                     <div id="bulles1">
-                        <h6 class="txt_bulles">S'inscrire</h6>
-                        <div class="flèches">
-                           <div class="flèches_background">
-                              <img src="./assets/img/Arrow 1.png" alt="" style="margin: 5px;">
-                           </div>
-                        </div>
-                     </div>
-                     <div id="bulles2">
-                        <h6 class="txt_bulles">Plan d'accès</h6>
-                        <div class="flèches">
-                           <div class="flèches_background">
-                              <img src="./assets/img/Arrow 1.png" alt="" style="margin: 5px;">
-                           </div>
-                        </div>
-                     </div>
-                     <div id="bulles3">
-                        <h6 class="txt_bulles">Contact</h6>
-                        <div class="flèches">
-                           <div class="flèches_background">
-                              <img src="./assets/img/Arrow 1.png" alt="" style="margin: 5px;">
-                           </div>
+               <iframe id="emplacement_map" src="https://www.google.fr/maps/place/Village+Club+Mil%C3%A9ade+Carqueiranne/@43.0901393,6.0929664,17z/data=!3m1!4b1!4m8!3m7!1s0x12c9218a0e6f68e7:0x77c8a07f5a809fbd!5m2!4m1!1i2!8m2!3d43.0901393!4d6.0929664"></iframe>
+            <div id="nav_bas">
+                  <div id="bulles1">
+                     <h6 class="txt_bulles">S'inscrire</h6>
+                     <div class="flèches">
+                        <div class="flèches_background">
+                           <img src="./assets/img/Arrow 1.png" alt="" style="margin: 5px;">
                         </div>
                      </div>
                   </div>
-               </div>
+                  <div id="bulles2">
+                  <h6 class="txt_bulles">Plan d'accès</h6>
+                  <div class="flèches">
+                        <div class="flèches_background">
+                        <img src="./assets/img/Arrow 1.png" alt="" style="margin: 5px;">
+                        </div>
+                     </div>
+                  </div>
+                  <div id="bulles3">
+                  <h6 class="txt_bulles">Contact</h6>
+                  <div class="flèches">
+                        <div class="flèches_background">
+                        <img src="./assets/img/Arrow 1.png" alt="" style="margin: 5px;">
+                        </div>
+                     </div>
+                  </div>
+            </div>
             </div>
          </div>
       </section>
