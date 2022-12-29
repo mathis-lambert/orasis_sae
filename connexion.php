@@ -38,50 +38,11 @@ require 'libs/PHPMailer/src/SMTP.php';
 </head>
 
 <body>
-    <?php include_once 'assets/includes/_navbar.php';
-    if (isset($_SESSION["PlayerId"])) {
-        header("Location: espace-perso.php");
-        exit();
-    }
-    ?>
-
+    <?php include_once 'assets/includes/_navbar.php' ?>
 
     <section id="connexion">
 
         <div class="container">
-            <?php
-            // envoi mail
-            if (isset($_POST["send_mail"])) {
-
-                $mail = new PHPMailer(true);
-
-                try {
-                    $mail->isSMTP(true);
-                    $mail->Host       = $settings['instance_email_host'];
-                    $mail->SMTPAuth   = true;
-                    $mail->Username   = $settings['instance_email_username'];
-                    $mail->Password   = $settings['instance_email_password'];
-                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-                    $mail->Port       = $settings['instance_email_port'];
-
-                    $mail->Encoding = 'base64';
-                    $mail->CharSet = 'UTF-8';
-
-                    $mail->setFrom($settings['instance_email_username'], $settings['name']);
-                    $mail->addAddress('mathislambert.dev@gmail.com', 'Mathis Lambert');
-
-                    $mail->isHTML(true);
-                    $mail->Subject = 'objet';
-                    $mail->Body    = 'Message test';
-
-
-                    $mail->send();
-                    echo "gg";
-                } catch (Exception $e) {
-                    echo "<br><p>Merci de transmettre ces informations à l'administrateur : {$mail->ErrorInfo} {$e}</p>";
-                }
-            }
-            ?>
             <form method="post" class="form" id="connexion_form">
                 <h1 class="no-style text-center f-width">Connexion</h1>
                 <div id="error_container" class="error" style="display: none;"></div>
@@ -96,15 +57,10 @@ require 'libs/PHPMailer/src/SMTP.php';
                 <div class="error_div"></div>
                 <button type="submit" class="btn btn-blue margin-auto">Connexion</button>
                 <br>
-                <a href="recover.php">Mot de passe oublié ? </a>
-                <a href="inscription">Inscription</a>
-
+                <a href="inscription">Je veux m'inscrire</a>
+                <br>
+                <a href="recover.php">Mot de passe oublié</a>
             </form>
-
-            <!--             <form action="" method="post">
-                <button type="submit" name="send_mail">Envoyer MAIL</button>
-            </form> -->
-
         </div>
 
 

@@ -170,29 +170,47 @@ include_once 'config/config.php';
          <h2>Les derniers articles</h2>
          <div id="articles_container" class="container articles_container">
             <div id="articles">
-               <div id="article1" class="article">
-                  <h4>Titre</h4>
-                  <p id="txt_article">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi iste quas magnam commodi illum dolore facilis facere culpa illo perferendis id soluta, labore est molestias quos distinctio, veniam minima mollitia!</p>
-                  <button class="btn_blue">Voir l'article</button>
+               <?php
+               $sql = "SELECT * FROM articles, written WHERE articles.articleId = written.writtenArticleId ORDER BY written.writtenDate DESC";
+               $stmt = $pdo->prepare($sql);
+               $stmt->execute();
+               $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-               </div>
-               <div id="article2" class="article">
-                  <h4>Titre</h4>
-                  <p id="txt_article">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi iste quas magnam commodi illum dolore facilis facere culpa illo perferendis id soluta, labore est molestias quos distinctio, veniam minima mollitia!</p>
-                  <button class="btn_blue"><a class="bouton" href="#">voir l'article</a></button>
+               if (!empty($stmt)) {
+                  if (count($articles) < 3) {
+                     for ($i = 0; $i < count($articles); $i++) {
+                        echo '<div class="article">';
+                        echo '<div class="card">';
+                        echo '<div class="card-body">';
+                        echo '<h5 class="card-title">' . $articles[$i]['articleTitle'] . '</h5>';
+                        echo '<div class="card-text">' . $articles[$i]['articleText'] . '</div>';
+                        echo '<a href="article?id=' . $articles[$i]['articleId'] . '" class="btn btn-blue card-link">Voir l\'article</a>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                     }
+                  } else {
+                     for ($i = 0; $i < 3; $i++) {
+                        echo '<div class="article">';
+                        echo '<div class="card">';
+                        echo '<div class="card-body">';
+                        echo '<h5 class="card-title">' . $articles[$i]['articleTitle'] . '</h5>';
+                        echo '<div class="card-text">' . $articles[$i]['articleText'] . '</div>';
+                        echo '<a href="article?id=' . $articles[$i]['articleId'] . '" class="btn btn-blue card-link">Voir l\'article</a>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                     }
+                  }
+               } else {
+                  echo "Il n'y a aucun article pour le moment.";
+               }
 
-               </div>
-               <div id="article3" class="article">
-                  <h4>Titre</h4>
-                  <p id="txt_article">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi iste quas magnam commodi illum dolore facilis facere culpa illo perferendis id soluta, labore est molestias quos distinctio, veniam minima mollitia!</p>
-                  <button class="btn_blue">Voir l'article</button>
-
-               </div>
+               ?>
             </div>
+            <a class="btn btn-blue margin-auto" href="articles.php">Voir tous les articles</a>
          </div>
-         <div id="bouton_articles">
-            <button id="btn_article"><a class="bouton_art"  href="articles.php">Voir tous les articles</a></button>
-      </div>
+
 
       </section>
       <br />

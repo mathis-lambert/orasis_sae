@@ -27,16 +27,16 @@ if (!empty($_SESSION) && isset($_SESSION)) {
 
 <body>
     <?php include_once 'assets/includes/_navbar.php' ?>
-    <section id="formulaire_inscription">
+    <section id="connexion">
         <!-- <div class="container"> -->
         <div class="container contact">
             <h1 style="margin-bottom: 40px; text-align:center;">Inscription</h1>
-            <h2 style="margin-bottom: 40px; text-align:center;">Formulaire d'Inscription</h2>
 
             <form action="" method="post" class="form" id="inscription_form">
+                <h2 style="margin-bottom: 1rem; text-align:center;">Formulaire d'Inscription</h2>
                 <div class="d-flex row" style="column-gap: 4rem; flex-wrap:wrap; ">
                     <div class="input-group" id="div-mail">
-                        <input type="email" name="mail" id="mail" placeholder=" " required>
+                        <input type="email" pattern="[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}" name="mail" id="mail" placeholder=" " required>
                         <label for="mail">Email</label>
                     </div>
                     <div class="input-group" id="div-nom">

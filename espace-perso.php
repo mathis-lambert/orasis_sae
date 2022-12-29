@@ -88,8 +88,6 @@ if (empty($_SESSION)) {
             include_once 'assets/includes/articlesTable.php';
         elseif ($_SESSION['role'] == 1) :
             include_once 'assets/includes/articlesTable.php';
-        elseif ($_SESSION['role'] == 0) :
-            include_once 'assets/includes/articlesTable.php';
         endif;
         ?>
 

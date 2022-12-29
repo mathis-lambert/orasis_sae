@@ -1,4 +1,4 @@
-<div class="editTable usersTable">
+<div class="editTable userTable">
     <h2>Utilisateurs</h2>
     <div class="tableContainer">
         <table>
@@ -20,7 +20,7 @@
                     $users = $stmt->fetchAll();
                 }
                 foreach ($users as $user) : ?>
-                    <tr data-userId="<?= $user['userId'] ?>">
+                    <tr data-userId="<?= $user['userId'] ?>" data-target="users">
                         <td>
                             <input type="number" name="userId" class="userId" value="<?= $user['userId'] ?>" disabled>
                         </td>

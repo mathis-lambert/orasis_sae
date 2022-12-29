@@ -15,6 +15,7 @@
 @import "components/navbar";
 @import "components/footer";
 @import "components/animations";
+@import "components/articles";
 @import "components/connexion";
 @import "components/contact";
 @import "components/accessplan";
@@ -507,135 +508,79 @@ table {
   }
 }
 
-.btn_blue{
-  border: 2px solid #47C7EF;
-  border-radius:30px ;
-  color: #47C7EF;
+.btn_blue {
+  border: 2px solid #47c7ef;
+  border-radius: 30px;
+  color: #47c7ef;
   padding: 4px;
-  }
-  
-  .articles_container{
-    background: #F1F1F1;
+}
+
+.articles_container {
+  background: #f1f1f1;
   box-shadow: 5px 8px 14px 3px rgba(0, 0, 0, 0.15);
-  border-radius: 47px;
-  width: 1200px;
-  height: 300px;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0px !important;
+  border-radius: 20px;
   align-content: center;
   margin-top: 20px;
-  }
-  #articles{
+  padding: 1rem;
+
+  #articles {
+    width: 100%;
     display: flex;
-    flex-wrap: nowrap;
-    align-content: center;
-  }
-  
-  .article{
-    margin:10px
-  }
-  
-  @media(max-width:1200px){
-    #articles{
-      display: flex;
-      flex-wrap: nowrap;
-      align-content: center;
-      max-width: 900px;
-    }
-    .article{
-      margin:10px
-    }
-    .articles_container{
-      background: #F1F1F1;
-    box-shadow: 5px 8px 14px 3px rgba(0, 0, 0, 0.15);
-    border-radius: 47px;
-    max-width: 900px;
-    height: 300px;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0px !important;
-    align-content: center;
-    margin-top: 20px;
-    }
-  }
-  
-  @media(max-width:900px){
-    #articles{
-      display: flex;
-      flex-wrap: nowrap;
-      max-width: 700px;
-      align-content: center;
-    }
-    .article{
-      margin:10px
-    }
-    .articles_container{
-      background: #F1F1F1;
-    box-shadow: 5px 8px 14px 3px rgba(0, 0, 0, 0.15);
-    border-radius: 47px;
-    max-width: 700px;
-    height: 300px;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0px !important;
-    align-content: center;
-    margin-top: 20px;
+    flex-flow: row wrap;
+
+    .card {
+      width: 100%;
+      width: 33.333333%;
+      padding: 0.5rem;
+
+      .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: rgba($color: #a8a8a8, $alpha: 0.2);
+        border-radius: 0.75rem;
+        backdrop-filter: blur(10px);
+        padding: 1rem;
+        gap: 1rem;
+
+        .card-title {
+          font-size: clamp(1rem, 5vw, 1.5rem);
+          line-height: 1;
+          font-weight: 700;
+        }
+        .card-text {
+          * {
+            all: unset;
+            font-family: "DM Sans", sans-serif;
+            font-weight: 400;
+          }
+
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          font-size: 0.95rem;
+        }
+        .card-link {
+          font-size: 0.875rem;
+          font-weight: 400;
+        }
+      }
     }
   }
-  
-  @media(max-width:720px){
-    #articles{
-      display: flex;
-      flex-wrap: wrap;
-      max-width: 290px;
-      align-content: center;
+  @media only screen and (max-width: 998px) {
+    #articles {
+      .card {
+        width: 50%;
+      }
     }
-    .article{
-      margin:10px
-    }
-    .articles_container{
-      background: #F1F1F1;
-    box-shadow: 5px 8px 14px 3px rgba(0, 0, 0, 0.15);
-    border-radius: 47px;
-    max-width: 290px;
-    height: 300px;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0px !important;
-    align-content: center;
-    margin-top: 20px;
-    }
-    #txt_article{
-      font-size: 8px;
-    }
-  }
-  
-  #bouton_articles{
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 50px;
-    margin-top: 20px;
-    
   }
 
-  #btn_article{
-    background-color: #47C7EF; 
-    color:white; 
-    border:solid 2px white; 
-    border-radius:15px; 
-    padding:4px;
+  @media only screen and (max-width: 560px) {
+    #articles {
+      .card {
+        width: 100%;
+      }
+    }
   }
-  .bouton:hover{
-    color: black;
-  }
-.bouton{
-  color:#47C7EF ;
 }
-.bouton_art{
-color: white;
-}
-
-.bouton_art:hover{
-  color: black;
-  }

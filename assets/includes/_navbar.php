@@ -12,10 +12,10 @@
 
     <div class="button-right">
       <?php
-      if (empty($_SESSION) && !isset($_SESSION)) {
-        echo '<a href="connexion" class="btn btn-black">Connexion</a>';
+      if (!empty($_SESSION) && isset($_SESSION)) {
+        echo '<a href="espace-perso" class="btn btn-white">Espace perso</a>';
       } else {
-        echo '<a href="espace-perso" class="btn btn-black">Espace perso</a>';
+        echo '<a href="connexion" class="btn btn-white">Connexion</a>';
       }
       ?>
     </div>
@@ -213,10 +213,10 @@
 
     <div class="landing-button-right">
       <?php
-      if (empty($_SESSION) && !isset($_SESSION)) {
-        echo '<a href="connexion" class="btn btn-white">Connexion</a>';
-      } else {
+      if (!empty($_SESSION) && isset($_SESSION)) {
         echo '<a href="espace-perso" class="btn btn-white">Espace perso</a>';
+      } else {
+        echo '<a href="connexion" class="btn btn-white">Connexion</a>';
       }
       ?>
     </div>
@@ -228,29 +228,29 @@
   <div class="navbar-menu__container">
     <div class="navbar-menu__left">
       <div class="navbar-menu__left__item">
-        <h1>L'événement</h1>
+        <h2>L'événement</h2>
         <a href="./#programme">Le programme</a>
         <a href="./#invites">Les invités</a>
+        <a href="articles">Les articles</a>
         <a href="./#comite">Comités</a>
       </div>
       <div class="navbar-menu__left__item">
-        <h1>Informations</h1>
+        <h2>Informations</h2>
         <a href="plan-dacces">Informations d'accés</a>
-        <a href="#logements">Logement/Tarifs</a>
+        <a href="tarifs">Logement/Tarifs</a>
         <a href="contact">Contact</a>
       </div>
       <div class="navbar-menu__left__item">
-        <h1>Adhérer</h1>
+        <h2>Adhérer</h2>
         <a href="inscription">S'inscrire</a>
         <a href="connexion">Se connecter</a>
         <a href="afrif">Adhérer à l'AFRIF</a>
       </div>
       <div class="navbar-menu__left__item">
-        <h1>Auteur</h1>
+        <h2>Auteur</h2>
         <a href="auteur">Espace auteur</a>
         <a href="article">Soummetre un article</a>
         <a href="connexion">Connexion Auteur</a>
-        <a href="articles">articles</a>
       </div>
     </div>
     <div class="navbar-menu__right">

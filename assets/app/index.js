@@ -14,8 +14,20 @@ document.addEventListener("scroll", () => {
   }
 });
 
+/* OUVRE OU FERME LE MENU SI LE BURGER EST CLIQUE */
 menuButtons.forEach((button) => {
   button.addEventListener("click", () => {
+    burgerMenu.forEach((burger) => {
+      burger.classList.toggle("active");
+    });
+    heroNav.classList.toggle("toggled-landing");
+    menu.classList.toggle("menu-toggled");
+  });
+});
+
+/* FERME LE MENU SI UN LIEN EST CLIQUE */
+menu.querySelectorAll("a").forEach((links) => {
+  links.addEventListener("click", () => {
     burgerMenu.forEach((burger) => {
       burger.classList.toggle("active");
     });
