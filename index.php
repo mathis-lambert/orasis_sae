@@ -163,6 +163,9 @@ include_once 'config/config.php';
       <br />
       <section id="programme">
          <h1>Le programme</h1>
+         <div class="container">
+         <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23ffffff&ctz=Europe%2FParis&showTitle=0&showNav=1&showTabs=1&showCalendars=0&showTz=0&mode=WEEK&src=MjNjODg4YjhhZjJlMzBmMDQxNDE4ZTNiNTBiNGUwMDlmOTBlOTVlZjQ2N2ZiYzc5ZmZiMTliYTQxNmE3ODAxOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23616161" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+         </div>
       </section>
       <br />
       <section id="evenement">
