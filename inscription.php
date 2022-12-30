@@ -15,28 +15,29 @@ if (!empty($_SESSION) && isset($_SESSION)) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Orasis 2023</title>
+    <title>Orasis 2023 | inscription</title>
+
+    <meta name="description" content="Colloque ORASIS 2023 sur le traitement de l'image par ordinateur et l'intelligence artificielle à Carqueiranne, Var. Inscriptions et programme complet bientôt disponibles.">
+
+    <!-- import favicon -->
+    <link rel="icon" href="assets/img/ico-white.svg" type="image/png" />
 
     <!-- import css -->
-    <link rel="stylesheet" href="assets/style/style.css" />
-
-    <!-- import GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+    <link rel=" stylesheet" href="assets/style/style.css" />
 </head>
 
 <body>
     <?php include_once 'assets/includes/_navbar.php' ?>
-    <section id="formulaire_inscription">
+    <section id="connexion">
         <!-- <div class="container"> -->
         <div class="container contact">
             <h1 style="margin-bottom: 40px; text-align:center;">Inscription</h1>
-            <h2 style="margin-bottom: 40px; text-align:center;">Formulaire d'Inscription</h2>
 
             <form action="" method="post" class="form" id="inscription_form">
+                <h2 style="margin-bottom: 1rem; text-align:center;">Formulaire d'Inscription</h2>
                 <div class="d-flex row" style="column-gap: 4rem; flex-wrap:wrap; ">
                     <div class="input-group" id="div-mail">
-                        <input type="email" name="mail" id="mail" placeholder=" " required>
+                        <input type="email" pattern="[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}" name="mail" id="mail" placeholder=" " required>
                         <label for="mail">Email</label>
                     </div>
                     <div class="input-group" id="div-nom">

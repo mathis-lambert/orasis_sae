@@ -1,0 +1,92 @@
+#articles_body {
+  color: white;
+  .container {
+    min-height: 100dvh;
+
+    .articles_grid {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      .card {
+        width: 100%;
+        width: 33.333333%;
+        padding: 1rem;
+
+        .card-body {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          background-color: rgba($color: #464646, $alpha: 0.4);
+          border-radius: 0.5rem;
+          backdrop-filter: blur(10px);
+          padding: 1rem;
+          gap: 1rem;
+
+          .card-title {
+            font-size: clamp(1rem, 5vw, 1.5rem);
+            line-height: 1;
+            font-weight: 700;
+          }
+          .card-text {
+            * {
+              all: unset;
+              font-family: "DM Sans", sans-serif;
+              font-weight: 400;
+            }
+
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-size: 0.95rem;
+          }
+          .card-link {
+            font-size: 0.875rem;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+
+    .card {
+      .card-body {
+        ul {
+          margin-block: 1rem;
+          display: flex;
+          flex-direction: column;
+
+          list-style: disc;
+          gap: 1rem;
+          li {
+            margin-left: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 998px) {
+  #articles_body {
+    .container {
+      .articles_grid {
+        .card {
+          width: 50%;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  #articles_body {
+    .container {
+      .articles_grid {
+        .card {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

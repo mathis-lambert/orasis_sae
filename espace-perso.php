@@ -26,12 +26,13 @@ if (empty($_SESSION)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Orasis 2023 | Mon espace</title>
 
-    <!-- import css -->
-    <link rel="stylesheet" href="assets/style/style.css" />
+    <meta name="description" content="Colloque ORASIS 2023 sur le traitement de l'image par ordinateur et l'intelligence artificielle à Carqueiranne, Var. Inscriptions et programme complet bientôt disponibles.">
 
-    <!-- import GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+    <!-- import favicon -->
+    <link rel="icon" href="assets/img/ico-white.svg" type="image/png" />
+
+    <!-- import css -->
+    <link rel=" stylesheet" href="assets/style/style.css" />
 </head>
 
 <body>
@@ -87,8 +88,6 @@ if (empty($_SESSION)) {
         elseif ($_SESSION['role'] == 2) :
             include_once 'assets/includes/articlesTable.php';
         elseif ($_SESSION['role'] == 1) :
-            include_once 'assets/includes/articlesTable.php';
-        elseif ($_SESSION['role'] == 0) :
             include_once 'assets/includes/articlesTable.php';
         endif;
         ?>

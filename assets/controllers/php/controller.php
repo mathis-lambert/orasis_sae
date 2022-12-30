@@ -5,9 +5,10 @@ session_start();
 
 $data = file_get_contents('php://input');
 
-$error = false;
 
 if ($data == "") die();
+
+$error = false;
 
 $d = json_decode($data, true);
 
@@ -42,80 +43,89 @@ class Session
 
 /* TRAITEMENT DES INSCRIPTIONS */
 if (isset($d['inscription'])) {
-    $mail = $d['inscription']['email'];
-    $nom = $d['inscription']['nom'];
-    $prenom = $d['inscription']['prenom'];
-    $password = $d['inscription']['password'];
+    if (!isset($_SESSION) || !isset($_SESSION['logged']) || $_SESSION['logged'] == false) {
+        $mail = $d['inscription']['email'];
+        $nom = $d['inscription']['nom'];
+        $prenom = $d['inscription']['prenom'];
+        $password = $d['inscription']['password'];
 
-    $checkMail = "SELECT * FROM users WHERE userEmail = ?";
-    if ($stmt = $pdo->prepare($checkMail)) {
-        $stmt->bindValue(1, htmlspecialchars($mail, ENT_QUOTES, 'UTF-8'));
-        $stmt->execute();
-        $user = $stmt->fetch();
-        if ($user) {
-            echo json_encode(["error" => $error = true, "method" => "inscription", $id = null, "message" => "Cet email est déjà utilisé"]);
-            exit;
-        } else {
-            $sql = "INSERT INTO users (userFirstname, userLastname, userEmail, userPassword) VALUES (?, ?, ?, ?)";
-
-            if ($stmt = $pdo->prepare($sql)) {
-                $stmt->bindValue(1, htmlspecialchars($nom, ENT_QUOTES, 'UTF-8'));
-                $stmt->bindValue(2, htmlspecialchars($prenom, ENT_QUOTES, 'UTF-8'));
-                $stmt->bindValue(3, htmlspecialchars($mail, ENT_QUOTES, 'UTF-8'));
-                $stmt->bindValue(4, password_hash($password, PASSWORD_DEFAULT));
-                $stmt->execute();
-
-                $session = new Session($pdo->lastInsertId(), 0, $mail, $prenom, $nom);
-                $session->__setSession();
-
-                echo json_encode(["error" => $error, "method" => "inscription", $id = $pdo->lastInsertId()]);
+        $checkMail = "SELECT * FROM users WHERE userEmail = ?";
+        if ($stmt = $pdo->prepare($checkMail)) {
+            $stmt->bindValue(1, htmlspecialchars($mail, ENT_QUOTES, 'UTF-8'));
+            $stmt->execute();
+            $user = $stmt->fetch();
+            if ($user) {
+                echo json_encode(["error" => $error = true, "method" => "inscription", $id = null, "message" => "Cet email est déjà utilisé"]);
                 exit;
             } else {
-                echo json_encode(["error" => $error = true, "method" => "inscription", $id = null]);
-                exit;
+                $sql = "INSERT INTO users (userFirstname, userLastname, userEmail, userPassword) VALUES (?, ?, ?, ?)";
+
+                if ($stmt = $pdo->prepare($sql)) {
+                    $stmt->bindValue(1, htmlspecialchars($nom, ENT_QUOTES, 'UTF-8'));
+                    $stmt->bindValue(2, htmlspecialchars($prenom, ENT_QUOTES, 'UTF-8'));
+                    $stmt->bindValue(3, htmlspecialchars($mail, ENT_QUOTES, 'UTF-8'));
+                    $stmt->bindValue(4, password_hash($password, PASSWORD_DEFAULT));
+                    $stmt->execute();
+
+                    $session = new Session($pdo->lastInsertId(), 0, $mail, $prenom, $nom);
+                    $session->__setSession();
+
+                    echo json_encode(["error" => $error, "method" => "inscription", $id = $pdo->lastInsertId()]);
+                    exit;
+                } else {
+                    echo json_encode(["error" => $error = true, "method" => "inscription", $id = null]);
+                    exit;
+                }
             }
         }
+    } else {
+        echo json_encode(["error" => $error = true, "method" => "inscription", $id = null, "message" => "Vous êtes déjà connecté"]);
+        exit;
     }
 }
 /* ----- */
 
 /* TRAITEMENT DES CONNEXIONS */
 if (isset($d['connexion'])) {
+    if (!isset($_SESSION) || !isset($_SESSION['logged']) || $_SESSION['logged'] == false) {
+        $pseudo = $d['connexion']['email'];
+        $password = $d['connexion']['password'];
 
-    $pseudo = $d['connexion']['email'];
-    $password = $d['connexion']['password'];
+        $sql = "SELECT * FROM users WHERE userEmail = ?";
 
-    $sql = "SELECT * FROM users WHERE userEmail = ?";
+        if ($stmt = $pdo->prepare($sql)) {
+            $stmt->bindValue(1, htmlspecialchars($pseudo, ENT_QUOTES, 'UTF-8'));
+            $stmt->execute();
 
-    if ($stmt = $pdo->prepare($sql)) {
-        $stmt->bindValue(1, htmlspecialchars($pseudo, ENT_QUOTES, 'UTF-8'));
-        $stmt->execute();
+            if ($stmt->rowCount() == 1) {
+                if ($row = $stmt->fetch()) {
+                    $userId = $row["userId"];
+                    $pseudo = $row["userEmail"];
+                    $hashed_password = $row["userPassword"];
+                    $role = $row["userRole"];
 
-        if ($stmt->rowCount() == 1) {
-            if ($row = $stmt->fetch()) {
-                $userId = $row["userId"];
-                $pseudo = $row["userEmail"];
-                $hashed_password = $row["userPassword"];
-                $role = $row["userRole"];
+                    if (password_verify($password, $hashed_password)) {
 
-                if (password_verify($password, $hashed_password)) {
+                        $session = new Session($userId, $role, $pseudo, $row["userFirstname"], $row["userLastname"]);
+                        $session->__setSession();
 
-                    $session = new Session($userId, $role, $pseudo, $row["userFirstname"], $row["userLastname"]);
-                    $session->__setSession();
-
-                    echo json_encode(["error" => $error, "method" => "connexion", $id = $userId, "message" => "Connexion réussie"]);
-                    exit;
-                } else {
-                    echo json_encode(["error" => $error = true, "method" => "connexion", $id = null, "message" => "Le mot de passe est incorrect"]);
-                    exit;
+                        echo json_encode(["error" => $error, "method" => "connexion", $id = $userId, "message" => "Connexion réussie"]);
+                        exit;
+                    } else {
+                        echo json_encode(["error" => $error = true, "method" => "connexion", $id = null, "message" => "Le mot de passe est incorrect"]);
+                        exit;
+                    }
                 }
+            } else {
+                echo json_encode(["error" => $error = true, "method" => "connexion", $id = null, "message" => "Le mail est incorrect"]);
+                exit;
             }
         } else {
-            echo json_encode(["error" => $error = true, "method" => "connexion", $id = null, "message" => "Le mail est incorrect"]);
+            echo json_encode(["error" => $error = true, "method" => "connexion", $id  = null, "message" => "Erreur de connexion"]);
             exit;
         }
     } else {
-        echo json_encode(["error" => $error = true, "method" => "connexion", $id  = null, "message" => "Erreur de connexion"]);
+        echo json_encode(["error" => $error = true, "method" => "connexion", $id = null, "message" => "Vous êtes déjà connecté"]);
         exit;
     }
 }
@@ -123,49 +133,103 @@ if (isset($d['connexion'])) {
 
 /* TRAITEMENT DES MODIFICATIONS */
 if (isset($d['edit'])) {
-    $id = $d['edit']['id'];
-    $mail = $d['edit']['email'];
-    $nom = $d['edit']['nom'];
-    $prenom = $d['edit']['prenom'];
-    $role = $d['edit']['role'];
+    if (in_array($_SESSION['role'], [1, 2, 3])) {
+        if ($d['edit']['target'] == "users") {
+            $id = $d['edit']['id'];
+            $mail = $d['edit']['email'];
+            $nom = $d['edit']['nom'];
+            $prenom = $d['edit']['prenom'];
+            $role = $d['edit']['role'];
 
-    $sql = "UPDATE users SET userFirstname = ?, userLastname = ?, userEmail = ?, userRole = ? WHERE userId = ?";
+            $sql = "UPDATE users SET userFirstname = ?, userLastname = ?, userEmail = ?, userRole = ? WHERE userId = ?";
 
-    if ($stmt = $pdo->prepare($sql)) {
-        $stmt->bindValue(1, htmlspecialchars($prenom, ENT_QUOTES, 'UTF-8'));
-        $stmt->bindValue(2, htmlspecialchars($nom, ENT_QUOTES, 'UTF-8'));
-        $stmt->bindValue(3, htmlspecialchars($mail, ENT_QUOTES, 'UTF-8'));
-        $stmt->bindValue(4, $role);
-        $stmt->bindValue(5, $id);
-        $stmt->execute();
+            if ($stmt = $pdo->prepare($sql)) {
+                $stmt->bindValue(1, htmlspecialchars($prenom, ENT_QUOTES, 'UTF-8'));
+                $stmt->bindValue(2, htmlspecialchars($nom, ENT_QUOTES, 'UTF-8'));
+                $stmt->bindValue(3, htmlspecialchars($mail, ENT_QUOTES, 'UTF-8'));
+                $stmt->bindValue(4, $role);
+                $stmt->bindValue(5, $id);
+                $stmt->execute();
 
-        echo json_encode(["error" => $error, "method" => "edit", $id = $id, "message" => "Modification réussie"]);
-        exit;
+                echo json_encode(["error" => $error, "method" => "edit", "target" => "user", $id = $id, "message" => "Modification réussie"]);
+                exit;
+            } else {
+                echo json_encode(["error" => $error = true, "method" => "edit", "target" => "user", $id = null, "message" => "Erreur de modification"]);
+                exit;
+            }
+        } else if ($d['edit']['target'] == "articles") {
+            $id = $d['edit']['id'];
+            $titre = $d['edit']['titre'];
+            $contenu = $d['edit']['contenu'];
+            $auteur = $d['edit']['auteur'];
+            $statut = $d['edit']['statut'];
+
+            $sql = "UPDATE articles SET articleTitle = ?, articleText = ? WHERE articleId = ?";
+            $sql2 = "UPDATE written SET writtenStatus = ?, writtenUserId = ? WHERE writtenArticleId = ?";
+
+            if ($stmt = $pdo->prepare($sql)) {
+                $stmt->bindValue(1, htmlspecialchars($titre, ENT_QUOTES, 'UTF-8'));
+                $stmt->bindValue(2, $contenu);
+                $stmt->bindValue(3, $id);
+                $stmt->execute();
+
+                // second statement
+                if ($stmt2 = $pdo->prepare($sql2)) {
+                    $stmt2->bindValue(1, $statut);
+                    $stmt2->bindValue(2, $auteur);
+                    $stmt2->bindValue(3, $id);
+                    try {
+
+                        $stmt2->execute();
+                    } catch (PDOException $e) {
+                        echo json_encode(["error" => $error = true, "method" => "edit", "target" => "article", $id = null, "message" => "Cet auteur n'existe pas"]);
+                        exit;
+                    }
+                } else {
+                    echo json_encode(["error" => $error = true, "method" => "edit", "target" => "article", $id = null, "message" => "Erreur de modification"]);
+                    exit;
+                }
+
+                echo json_encode(["error" => $error, "method" => "edit", "target" => "article", $id = $id, "message" => "Modification réussie"]);
+                exit;
+            } else {
+                echo json_encode(["error" => $error = true, "method" => "edit", "target" => "article", $id = null, "message" => "Erreur de modification"]);
+                exit;
+            }
+        }
     } else {
-        echo json_encode(["error" => $error = true, "method" => "edit", $id = null, "message" => "Erreur de modification"]);
+        echo json_encode(["error" => $error = true, "method" => "edit", "target" => "article", $id = null, "message" => "Vous n'avez pas les droits pour effectuer cette action"]);
         exit;
     }
 }
 
 /* TRAITEMENT DES SUPPRESSIONS */
 if (isset($d['delete'])) {
-    if ($_SESSION['id'] == $d['delete']['id']) {
-        echo json_encode(["error" => $error = true, "method" => "delete", $id = null, "message" => "Vous ne pouvez pas vous supprimer"]);
-        exit;
-    } else {
-        $id = $d['delete']['id'];
-
-        $sql = "DELETE FROM users WHERE userId = ?";
-
-        if ($stmt = $pdo->prepare($sql)) {
-            $stmt->bindValue(1, $id);
-            $stmt->execute();
-
-            echo json_encode(["error" => $error, "method" => "delete", $id = $id, "message" => "Suppression réussie"]);
+    if (in_array($_SESSION['role'], [2, 3])) {
+        if ($_SESSION['id'] == $d['delete']['id']) {
+            echo json_encode(["error" => $error = true, "method" => "delete", $id = null, "message" => "Vous ne pouvez pas vous supprimer"]);
             exit;
         } else {
-            echo json_encode(["error" => $error = true, "method" => "delete", $id = null, "message" => "Erreur de suppression"]);
-            exit;
+            $id = $d['delete']['id'];
+
+            $sql = "DELETE FROM users WHERE userId = ?";
+
+            if ($stmt = $pdo->prepare($sql)) {
+                $stmt->bindValue(1, $id);
+                $stmt->execute();
+
+                echo json_encode(["error" => $error, "method" => "delete", $id = $id, "message" => "Suppression réussie"]);
+                exit;
+            } else {
+                echo json_encode(["error" => $error = true, "method" => "delete", $id = null, "message" => "Erreur de suppression"]);
+                exit;
+            }
         }
+    } else {
+        echo json_encode(["error" => $error = true, "method" => "delete", $id = null, "message" => "Vous n'avez pas les droits pour supprimer un utilisateur"]);
+        exit;
     }
 }
+
+/* si aucune action remplie renvoyer erreur */
+// echo json_encode(["error" => $error = true, "method" => null, $id = null, "message" => "Aucune action effectuée"]);

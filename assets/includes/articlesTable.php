@@ -5,6 +5,7 @@
     <br>
     <?php
     $articlesPending = $pdo->query('SELECT * FROM articles, written WHERE articles.articleId = written.writtenArticleId AND written.writtenStatus = "pending"')->fetchAll(PDO::FETCH_ASSOC);
+    $authors = $pdo->query('SELECT * FROM users WHERE users.userRole >= 1')->fetchAll(PDO::FETCH_ASSOC);
     ?>
     <div class="tableContainer">
         <table>
@@ -19,10 +20,16 @@
             </thead>
             <tbody>
                 <?php foreach ($articlesPending as $article) : ?>
-                    <tr>
+                    <tr data-target="articles" data-articleid="<?= $article['articleId'] ?>">
                         <td><input type="text" class="title" value="<?= $article['articleTitle'] ?>" disabled></td>
                         <td class="textarea_container"><textarea class="content" disabled><?= $article['articleText'] ?></textarea></td>
-                        <td><input type="text" class="author" value="<?= $article['writtenUserId'] ?>" disabled></td>
+                        <td>
+                            <select class="author" disabled>
+                                <?php foreach ($authors as $author) : ?>
+                                    <option value="<?= $author['userId'] ?>" <?= $article['writtenUserId'] == $author['userId'] ? 'selected' : '' ?>><?= $author['userFirstname'] . ' ' . $author['userLastname'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </td>
                         <td>
                             <select class="status" disabled>
                                 <option value="pending" <?= $article['writtenStatus'] == 'pending' ? 'selected' : '' ?>>En attente</option>
@@ -75,10 +82,16 @@
             </thead>
             <tbody>
                 <?php foreach ($articlesPublished as $article) : ?>
-                    <tr>
+                    <tr data-target="articles" data-articleid="<?= $article['articleId'] ?>">
                         <td><input type="text" class="title" value="<?= $article['articleTitle'] ?>" disabled></td>
                         <td class="textarea_container"><textarea class="content" disabled><?= $article['articleText'] ?></textarea></td>
-                        <td><input type="text" class="author" value="<?= $article['writtenUserId'] ?>" disabled></td>
+                        <td>
+                            <select class="author" disabled>
+                                <?php foreach ($authors as $author) : ?>
+                                    <option value="<?= $author['userId'] ?>" <?= $article['writtenUserId'] == $author['userId'] ? 'selected' : '' ?>><?= $author['userFirstname'] . ' ' . $author['userLastname'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </td>
                         <td>
                             <select class="status" disabled>
                                 <option value="pending" <?= $article['writtenStatus'] == 'pending' ? 'selected' : '' ?>>En attente</option>
@@ -131,10 +144,16 @@
             </thead>
             <tbody>
                 <?php foreach ($allArticles as $article) : ?>
-                    <tr>
+                    <tr data-target="articles" data-articleid="<?= $article['articleId'] ?>">
                         <td><input type="text" class="title" value="<?= $article['articleTitle'] ?>" disabled></td>
                         <td class="textarea_container"><textarea class="content" disabled><?= $article['articleText'] ?></textarea></td>
-                        <td><input type="text" class="author" value="<?= $article['writtenUserId'] ?>" disabled></td>
+                        <td>
+                            <select class="author" disabled>
+                                <?php foreach ($authors as $author) : ?>
+                                    <option value="<?= $author['userId'] ?>" <?= $article['writtenUserId'] == $author['userId'] ? 'selected' : '' ?>><?= $author['userFirstname'] . ' ' . $author['userLastname'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </td>
                         <td>
                             <select class="status" disabled>
                                 <option value="pending" <?= $article['writtenStatus'] == 'pending' ? 'selected' : '' ?>>En attente</option>

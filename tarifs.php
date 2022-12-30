@@ -7,22 +7,24 @@ include_once 'config/config.php';
 <html lang="fr">
 
 <head>
-   <meta charset="UTF-8" />
-   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>Orasis 2023 | Accueil</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orasis 2023 | Tarifs</title>
 
-   <!-- import css -->
-   <link rel="stylesheet" href="./assets/style/style.css" />
+    <meta name="description" content="Colloque ORASIS 2023 sur le traitement de l'image par ordinateur et l'intelligence artificielle à Carqueiranne, Var. Inscriptions et programme complet bientôt disponibles.">
 
-   <!-- import GSAP -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+    <!-- import favicon -->
+    <link rel="icon" href="assets/img/ico-white.svg" type="image/png" />
+
+    <!-- import css -->
+    <link rel=" stylesheet" href="assets/style/style.css" />
 </head>
-<body>
-   <?php include_once 'assets/includes/_navbar.php' ?>
 
-   <section>
+<body>
+    <?php include_once 'assets/includes/_navbar.php' ?>
+
+    <section>
         <div class="container contact">
             <h2 style="margin-bottom: 40px; text-align:center;">Tarifs</h2>
             <p>Tarifs d'inscription à ORASIS 2023

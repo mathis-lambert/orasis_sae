@@ -42,20 +42,22 @@ function traitement(data) {
   }
 
   if (data.error == false && data.method == "edit") {
-    let parentTableRow = document.querySelector(
-      `.usersTable tr[data-userid='${data[0]}']`
+    let parentTableRow = document.querySelectorAll(
+      `.${data.target}Table tr[data-${data.target}id='${data[0]}']`
     );
-    parentTableRow.classList.toggle("editMode");
-    parentTableRow
-      .querySelectorAll("input:not(.userId), select")
-      .forEach((input) => {
-        input.toggleAttribute("disabled");
+    parentTableRow.forEach((row) => {
+      row.classList.remove("editMode");
+      row.querySelectorAll("input:not(.userId), select").forEach((input) => {
+        input.setAttribute("disabled", "disabled");
       });
-    parentTableRow.querySelector(".deleteButton").classList.toggle("disabled");
-    parentTableRow
-      .querySelector(".validateButton")
-      .classList.remove("validate");
-    parentTableRow.querySelector(".validateButton").classList.remove("loading");
+      row.querySelector(".deleteButton").classList.remove("disabled");
+      row.querySelector(".validateButton").classList.remove("validate");
+      row.querySelector(".validateButton").classList.remove("loading");
+    });
+
+    if (data.target == "article") {
+      window.location.reload();
+    }
 
     success(data.message);
   }
@@ -119,15 +121,33 @@ if (editTable) {
   const editButtons = document.querySelectorAll(".editButton");
   const deleteButtons = document.querySelectorAll(".deleteButton");
 
+  /* 
+    tempInputsValues is used to store inputs values to undo changes
+  */
   let tempInputsValues = [];
 
+  /* 
+    edit buttons event listener
+  */
   editButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
+      // get parent table row
       let parentTableRow = button.parentElement.parentElement;
-      let userId = parentTableRow.dataset.userid;
+
+      // get userid
+      let userId = parentTableRow.dataset.userid || null;
+      let articleId = parentTableRow.dataset.articleid || null;
+
+      // get all inputs in parent table row
       let inputs = parentTableRow.querySelectorAll(
         "input:not(.userId), select, textarea"
       );
+
+      // get target table
+      let target = button.parentElement.parentElement.dataset.target;
+
+      console.log(target);
+
       let inputsValues = [];
 
       inputs.forEach((input) => {
@@ -148,15 +168,30 @@ if (editTable) {
           input.classList.remove("invalid");
         });
       } else {
-        let data = {
-          edit: {
-            id: userId,
-            nom: inputsValues[0],
-            prenom: inputsValues[1],
-            email: inputsValues[2],
-            role: inputsValues[3],
-          },
-        };
+        let data = {};
+        if (target == "users") {
+          data = {
+            edit: {
+              target: target,
+              id: userId,
+              nom: inputsValues[0],
+              prenom: inputsValues[1],
+              email: inputsValues[2],
+              role: inputsValues[3],
+            },
+          };
+        } else if (target == "articles") {
+          data = {
+            edit: {
+              target: target,
+              id: articleId,
+              titre: inputsValues[0],
+              contenu: inputsValues[1],
+              auteur: inputsValues[2],
+              statut: inputsValues[3],
+            },
+          };
+        }
 
         parentTableRow.classList.toggle("editMode");
         inputs.forEach((input) => {
@@ -173,15 +208,29 @@ if (editTable) {
               inputsValues.push(input.value);
             });
 
-            data = {
-              edit: {
-                id: userId,
-                nom: inputsValues[0],
-                prenom: inputsValues[1],
-                email: inputsValues[2],
-                role: inputsValues[3],
-              },
-            };
+            if (target == "users") {
+              data = {
+                edit: {
+                  target: target,
+                  id: userId,
+                  nom: inputsValues[0],
+                  prenom: inputsValues[1],
+                  email: inputsValues[2],
+                  role: inputsValues[3],
+                },
+              };
+            } else if (target == "articles") {
+              data = {
+                edit: {
+                  target: target,
+                  id: articleId,
+                  titre: inputsValues[0],
+                  contenu: inputsValues[1],
+                  auteur: inputsValues[2],
+                  statut: inputsValues[3],
+                },
+              };
+            }
 
             parentTableRow.querySelector(".validateButton").onclick = () => {
               xhr(data);
