@@ -64,7 +64,7 @@ function traitement(data) {
 
   if (data.error == false && data.method == "delete") {
     let parentTableRow = document.querySelector(
-      `.usersTable tr[data-userid='${data[0]}']`
+      `.tableContainer tr[data-userid='${data[0]}'][data-target='${data.target}']`
     );
     parentTableRow.remove();
     success(data.message);

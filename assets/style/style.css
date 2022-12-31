@@ -301,6 +301,7 @@ header .header-container .logo img {
   flex-direction: row;
   justify-content: space-between;
   height: 100%;
+  width: 100%;
   padding: 0 3rem;
   align-items: center;
 }
@@ -853,19 +854,16 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Lexend-Bold", sans-serif;
-  font-weight: 400;
-  letter-spacing: -1px;
+  font-weight: 800;
 }
 
 h1 {
-  font-size: clamp(1.5rem, 1.5vw, 2rem);
+  font-size: clamp(2rem, 1.5vw, 3rem);
   position: relative;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   z-index: 1;
-  letter-spacing: -1.5px;
 }
 
 h1:not(.no-style):before {

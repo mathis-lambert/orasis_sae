@@ -20,7 +20,7 @@
                     $users = $stmt->fetchAll();
                 }
                 foreach ($users as $user) : ?>
-                    <tr data-userId="<?= $user['userId'] ?>" data-target="users">
+                    <tr data-userId="<?= $user['userId'] ?>" data-target="user">
                         <td>
                             <input type="number" name="userId" class="userId" value="<?= $user['userId'] ?>" disabled>
                         </td>

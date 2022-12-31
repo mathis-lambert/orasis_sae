@@ -207,7 +207,7 @@ if (isset($d['edit'])) {
 if (isset($d['delete'])) {
     if (in_array($_SESSION['role'], [2, 3])) {
         if ($_SESSION['id'] == $d['delete']['id']) {
-            echo json_encode(["error" => $error = true, "method" => "delete", $id = null, "message" => "Vous ne pouvez pas vous supprimer"]);
+            echo json_encode(["error" => $error = true, "method" => "delete", "target" => "user", $id = null, "message" => "Vous ne pouvez pas vous supprimer"]);
             exit;
         } else {
             $id = $d['delete']['id'];
@@ -218,15 +218,15 @@ if (isset($d['delete'])) {
                 $stmt->bindValue(1, $id);
                 $stmt->execute();
 
-                echo json_encode(["error" => $error, "method" => "delete", $id = $id, "message" => "Suppression réussie"]);
+                echo json_encode(["error" => $error, "method" => "delete", "target" => "user", $id = $id, "message" => "Suppression réussie"]);
                 exit;
             } else {
-                echo json_encode(["error" => $error = true, "method" => "delete", $id = null, "message" => "Erreur de suppression"]);
+                echo json_encode(["error" => $error = true, "method" => "delete", "target" => "user", $id = null, "message" => "Erreur de suppression"]);
                 exit;
             }
         }
     } else {
-        echo json_encode(["error" => $error = true, "method" => "delete", $id = null, "message" => "Vous n'avez pas les droits pour supprimer un utilisateur"]);
+        echo json_encode(["error" => $error = true, "method" => "delete", "target" => "user", $id = null, "message" => "Vous n'avez pas les droits pour supprimer un utilisateur"]);
         exit;
     }
 }

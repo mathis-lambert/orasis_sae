@@ -62,7 +62,6 @@ session_start();
     <!-- Javascript import files -->
 
     <script src="assets/app/index.js"></script>
-    <script src="assets/controllers/js/accueil.js"></script>
 </body>
 
 </html>

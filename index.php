@@ -79,7 +79,7 @@ include_once 'config/config.php';
 
    <div class="container">
       <section id="accueil">
-         <h1>Accueil</h1>
+         <h1>Orasis</h1>
          <p>
             La 19ième édition du colloque d’ORASIS, journées francophones des jeunes
             chercheurs en vision par ordinateur, se déroulera du 22 au 26 mai 2023 à
