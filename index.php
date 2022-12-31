@@ -104,35 +104,47 @@ include_once 'config/config.php';
       <section id="intervenants">
          <h1>Les intervenants</h1>
          <h2>Intelligence artificielle</h2>
-         <div class="container" style="padding: 50px; text-align: center; display:flex; flex-wrap:wrap; flex-direction:row; ">
-            <div id="card_intervenant">
-               <h3>Marc ANTONINI</h3>
-               <p>DR,I3S, CNRS</p>
+         <div class="container intervenants_container">
+            <div class="card_container">
+               <div id="card_intervenant">
+                  <h3>Marc ANTONINI</h3>
+                  <p>DR,I3S, CNRS</p>
+               </div>
             </div>
 
-            <div id="card_intervenant">
-               <h3>Claire DUNE</h3>
-               <p>MCF, Université de Toulon</p>
+            <div class="card_container">
+               <div id="card_intervenant">
+                  <h3>Claire DUNE</h3>
+                  <p>MCF, Université de Toulon</p>
+               </div>
             </div>
 
-            <div id="card_intervenant">
-               <h3>Frédéric JURIE</h3>
-               <p>PU, Université de Caen</p>
+            <div class="card_container">
+               <div id="card_intervenant">
+                  <h3>Frédéric JURIE</h3>
+                  <p>PU, Université de Caen</p>
+               </div>
             </div>
 
-            <div id="card_intervenant">
-               <h3>Patrick PEREZ</h3>
-               <p>Valeo VP of AI and Scientific Director of valeo.ai</p>
+            <div class="card_container">
+               <div id="card_intervenant">
+                  <h3>Patrick PEREZ</h3>
+                  <p>Valeo VP of AI and Scientific Director of valeo.ai</p>
+               </div>
             </div>
 
-            <div id="card_intervenant">
-               <h3>Peter STURM</h3>
-               <p>DR, INRIA</p>
+            <div class="card_container">
+               <div id="card_intervenant">
+                  <h3>Peter STURM</h3>
+                  <p>DR, INRIA</p>
+               </div>
             </div>
 
-            <div id="card_intervenant">
-               <h3>Stefanie WUHRER</h3>
-               <p>CR, INRIA</p>
+            <div class="card_container">
+               <div id="card_intervenant">
+                  <h3>Stefanie WUHRER</h3>
+                  <p>CR, INRIA</p>
+               </div>
             </div>
          </div>
 
@@ -142,7 +154,7 @@ include_once 'config/config.php';
       <section id="programme">
          <h1>Le programme</h1>
          <div id="calendar" class="container" style="padding-top: 20px;">
-         <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23ffffff&ctz=Europe%2FParis&showTitle=0&showNav=1&showTabs=1&showCalendars=0&showTz=0&mode=WEEK&src=MjNjODg4YjhhZjJlMzBmMDQxNDE4ZTNiNTBiNGUwMDlmOTBlOTVlZjQ2N2ZiYzc5ZmZiMTliYTQxNmE3ODAxOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23616161" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23ffffff&ctz=Europe%2FParis&showTitle=0&showNav=1&showTabs=1&showCalendars=0&showTz=0&mode=WEEK&src=MjNjODg4YjhhZjJlMzBmMDQxNDE4ZTNiNTBiNGUwMDlmOTBlOTVlZjQ2N2ZiYzc5ZmZiMTliYTQxNmE3ODAxOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23616161" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
          </div>
       </section>
       <br />
@@ -197,7 +209,7 @@ include_once 'config/config.php';
       <br />
       <section id="utiles">
          <h1>Infos utiles</h1>
-         <div class="container d-flex row align-center more-infos">
+         <div class="container d-flex row more-infos">
             <div id="dates">
                <h2>Dates importantes</h2>
                <div id="dates_importantes">
@@ -225,21 +237,17 @@ include_once 'config/config.php';
                   <div id="bulles1" class="bulle">
                      <h6 class="txt_bulles">S'inscrire</h6>
                      <a href="./inscription.php" aria-label="inscription" class="flèches">
-
                         <div class="flèches_background">
                            <img src="./assets/img/Arrow 1.png" alt="">
                         </div>
-
                      </a>
                   </div>
                   <div id="bulles2" class="bulle">
                      <h6 class="txt_bulles">Plan d'accès</h6>
                      <a href="./plan-dacces.php" aria-label="plan-dacces" class="flèches">
-
                         <div class="flèches_background">
                            <img src="./assets/img/Arrow 1.png" alt="">
                         </div>
-
                      </a>
                   </div>
                   <div id="bulles3" class="bulle">

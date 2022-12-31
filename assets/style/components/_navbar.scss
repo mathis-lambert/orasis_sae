@@ -16,6 +16,7 @@ header {
     flex-direction: row;
     justify-content: space-between;
     height: 100%;
+    width: 100%;
     padding: 0 2rem;
     align-items: center;
     .button-left {
@@ -239,6 +240,9 @@ header {
   header {
     height: 75px;
 
+    .header-container {
+      flex-direction: row-reverse;
+    }
     .button-right {
       display: none;
     }
