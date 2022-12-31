@@ -403,12 +403,15 @@ table {
 }
 
 #card_intervenant {
+  display: flex;
   width: 350px;
   height: 100px;
   background-color: #ececec;
   border-radius: 15px;
   margin: 20px;
   align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #dates_importantes {
@@ -583,4 +586,72 @@ table {
       }
     }
   }
+}
+
+@media (max-width: 500px) {
+  .emplacement_map {
+    height: 300px;
+    width: 300px;
+    border-radius: 20px;
+    box-shadow: 5px 8px 14px 3px rgba(0, 0, 0, 0.15);
+    margin: 20px;
+    border: 0;
+  }
+  
+
+    #carte {
+      flex: 1 1 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 40px;
+    
+  }
+  #dates_importantes {
+    padding: 1rem;
+    background-color: #ececec;
+    border-radius: 15px;
+    margin-top: 20px;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 5px 8px 14px 3px rgb(0 0 0 / 15%);
+}
+.txt_bulles {
+  margin: 7px;
+  font-size: 12px;
+}
+.bulle {
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 15px;
+  color: #fff;
+  text-align: left;
+}
+#nav_bas {
+  height: 150px;
+  width: 300px;
+  background-color: #ececec;
+  border-radius: 15px;
+  margin: 20px;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+  align-items: center;
+  box-shadow: 5px 8px 14px 3px rgb(0 0 0 / 15%);
+  flex-direction: row;
+}
+  }
+#calendar{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
