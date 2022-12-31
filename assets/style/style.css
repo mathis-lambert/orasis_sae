@@ -458,6 +458,16 @@ header .header-container .logo img {
   header .header-container {
     flex-direction: row-reverse;
   }
+  header .header-container .logo {
+    aspect-ratio: 1;
+    max-width: none;
+  }
+  header .header-container .logo .logo-full {
+    display: none !important;
+  }
+  header .header-container .logo .logo-icon {
+    display: block !important;
+  }
   header .button-right {
     display: none;
   }
@@ -468,6 +478,10 @@ header .header-container .logo img {
     flex-direction: row-reverse;
     padding: 0 1rem;
   }
+  .landing-header .landing-header-container .landing-logo {
+    aspect-ratio: 1;
+    max-width: none;
+  }
   .landing-header .landing-header-container #logo-full {
     display: none !important;
   }
@@ -476,12 +490,6 @@ header .header-container .logo img {
   }
   .landing-header .landing-header-container .landing-button-right {
     display: none;
-  }
-  .logo .logo-full {
-    display: none !important;
-  }
-  .logo .logo-icon {
-    display: block !important;
   }
   .navbar-menu {
     left: 0;

@@ -242,6 +242,16 @@ header {
 
     .header-container {
       flex-direction: row-reverse;
+      .logo {
+        aspect-ratio: 1;
+        max-width: none;
+        .logo-full {
+          display: none !important;
+        }
+        .logo-icon {
+          display: block !important;
+        }
+      }
     }
     .button-right {
       display: none;
@@ -252,6 +262,11 @@ header {
     .landing-header-container {
       flex-direction: row-reverse;
       padding: 0 1rem;
+
+      .landing-logo {
+        aspect-ratio: 1;
+        max-width: none;
+      }
 
       #logo-full {
         display: none !important;
@@ -264,14 +279,6 @@ header {
       .landing-button-right {
         display: none;
       }
-    }
-  }
-  .logo {
-    .logo-full {
-      display: none !important;
-    }
-    .logo-icon {
-      display: block !important;
     }
   }
 
