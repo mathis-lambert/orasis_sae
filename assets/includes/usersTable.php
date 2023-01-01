@@ -39,6 +39,7 @@
                                 <option value="1" <?= $user['userRole'] == 1 ? 'selected' : '' ?>>Relecteur</option>
                                 <option value="2" <?= $user['userRole'] == 2 ? 'selected' : '' ?>>Auteur</option>
                                 <option value="3" <?= $user['userRole'] == 3 ? 'selected' : '' ?>>Administrateur</option>
+                                <option value="10" <?= $user['userRole'] == 10 ? 'selected' : '' ?>>Nouveau membre</option>
                             </select>
                         </td>
                         <td class="action_links">

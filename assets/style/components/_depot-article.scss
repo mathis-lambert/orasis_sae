@@ -1,3 +1,12 @@
 .long {
-   min-height: 200px;
+  min-height: 200px;
+}
+
+#depot_article {
+  h1 {
+    color: white;
+  }
+  .container {
+    min-height: 100dvh;
+  }
 }

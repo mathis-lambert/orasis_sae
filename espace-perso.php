@@ -42,15 +42,21 @@ if (empty($_SESSION)) {
             <div>
                 <h1 class="no-style">Bonjour <?= $_SESSION['firstname'] ?> </h1>
                 <p>
-                    Vous êtes connecté en tant que <?= getRoleName($_SESSION['role']) ?>
+                    Vous êtes connecté en tant que <?= getRoleName(10) ?>
                 </p>
             </div>
             <a class="btn" href="logout">Déconnexion</a>
         </div>
         <br>
-        <p>
+        <?php
+        if ($_SESSION['role'] !== 10) {
+            echo "        <p>
             Dans votre espace, vous pouvez :
-        </p>
+        </p>";
+        } else {
+            echo "<p> Merci de patienter, votre compte est en cours de validation par un administrateur. </p>";
+        }
+        ?>
         <ul class="doted">
             <?php if ($_SESSION['role'] == 0) : ?>
                 <li>Consulter les articles</li>

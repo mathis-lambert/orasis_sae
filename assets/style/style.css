@@ -686,6 +686,13 @@ footer .footer-ending p {
   min-height: 200px;
 }
 
+#depot_article h1 {
+  color: white;
+}
+#depot_article .container {
+  min-height: 100dvh;
+}
+
 #accessplan .content {
   margin: 0 auto;
   max-width: 1728px;

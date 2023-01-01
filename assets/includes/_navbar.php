@@ -248,8 +248,8 @@
       </div>
       <div class="navbar-menu__left__item">
         <h2>Auteur</h2>
-        <a href="auteur">Espace auteur</a>
-        <a href="article">Soummetre un article</a>
+        <a href="espace-perso">Espace auteur</a>
+        <a href="depot-article">Soummetre un article</a>
         <a href="connexion">Connexion Auteur</a>
       </div>
     </div>
