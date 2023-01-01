@@ -682,6 +682,10 @@ footer .footer-ending p {
   color: white !important;
 }
 
+.long {
+  min-height: 200px;
+}
+
 #accessplan .content {
   margin: 0 auto;
   max-width: 1728px;
