@@ -230,7 +230,7 @@
       <div class="navbar-menu__left__item">
         <h2>L'événement</h2>
         <a href="./#programme">Le programme</a>
-        <a href="./comite">Comités</a>
+        <a href="comite">Comités</a>
         <a href="articles">Les articles</a>
         <a href="activite">Les activités</a>
 
