@@ -106,7 +106,6 @@ include_once 'config/config.php';
       <br />
       <section id="intervenants">
          <h1>Les intervenants</h1>
-         <h2>Intelligence artificielle</h2>
          <div class="container intervenants_container">
             <div class="card_container">
                <div id="card_intervenant">
@@ -150,7 +149,8 @@ include_once 'config/config.php';
                </div>
             </div>
          </div>
-
+<button><a href="./comite.php">Voir les membres du Comité</a></button>
+      
          <h2></h2>
       </section>
       <br />
