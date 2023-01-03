@@ -149,7 +149,7 @@ include_once 'config/config.php';
                </div>
             </div>
          </div>
-<button><a href="./comite.php">Voir les membres du Comité</a></button>
+<a class="btn btn-blue margin-auto"href="./comite.php">Voir les membres du Comité</a>
       
          <h2></h2>
       </section>
