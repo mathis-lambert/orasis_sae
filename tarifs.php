@@ -69,8 +69,20 @@ Les photos suivantes présentent les locaux et l’emplacement de cet établisse
         <div class="container" style="color:white" ;>
             <p style="text-align: center;">
                 L'inscription est ouverte à partir du 03 avril 2023</br>
-                *Une majoration de 50€ sera appliquée sur les tarifs pour toute réservation faite à partir du 02 mai 2023, le choix de chambre simple ou double est possible en fonction de la disponibilité des chambres (70 chambres simples, 15 chambres doubles).
+                *Une majoration de 50€ sera appliquée sur les tarifs pour toute réservation faite à partir du 02 mai 2023, le choix de chambre simple ou double est possible en fonction de la disponibilité des chambres.
             </p>
+
+            <div class="content-container d-flex row">
+                <div class="main-container">
+                    <div class="para" style="margin-top:20px;">
+                        <p>
+                        Le site peut accueillir jusqu’à 100 participants avec la configuration suivante : 70 chambres simples et 15 chambres doubles 
+                        </p>
+                    </div>
+                    <div class="imgReveal" style="margin-bottom: 20px;">
+                    <img src="./assets/img/104316005.jpg" alt="" style="width: 70%;border-radius: 20px;height: 100%;">
+                    </div>
+                </div>
         </div>
 
     </section>
