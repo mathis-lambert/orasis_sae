@@ -6,6 +6,7 @@ define('DB_SERVER', 'SERVER_NAME');
 define('DB_USERNAME', 'USERNAME');
 define('DB_PASSWORD', 'PASSWORD');
 define('DB_NAME', 'DB_NAME');
+$globalAdminMail = "ENTREZ VOTRE ADRESSE MAIL ICI";
 
 setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 date_default_timezone_set('Europe/Paris');
@@ -35,7 +36,6 @@ $roleArray = [
     10 => 'Nouvel utilisateur',
 ];
 
-$globalAdminMail = "ENTREZ VOTRE ADRESSE MAIL ICI";
 
 function getRoleName($role)
 {
