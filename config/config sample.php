@@ -2,10 +2,10 @@
 if (!defined('MyConst')) {
     die('Direct access not permitted');
 }
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'orasis');
+define('DB_SERVER', 'SERVER_NAME');
+define('DB_USERNAME', 'USERNAME');
+define('DB_PASSWORD', 'PASSWORD');
+define('DB_NAME', 'DB_NAME');
 
 setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 date_default_timezone_set('Europe/Paris');
@@ -13,12 +13,35 @@ date_default_timezone_set('Europe/Paris');
 try {
     $pdo = new PDO("mysql:host=" . DB_SERVER . ";dbname=" . DB_NAME, DB_USERNAME, DB_PASSWORD);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->exec("set names utf8");
+
+    $settings = [];
+    $sql = "SELECT * FROM settings";
+    $result = $pdo->prepare($sql);
+    $result->execute();
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        $settings[$row['SettingsName']] = $row['SettingsValue'];
+    }
+    // var_dump($settings);
 } catch (PDOException $e) {
     die("ERROR: Could not connect. " . $e->getMessage());
 }
 
-$conn2 = new PDO("mysql:dbname=" . DB_NAME . ";host=" . DB_SERVER, DB_USERNAME, DB_PASSWORD);
-$conn2->exec("set names utf8");
+$roleArray = [
+    0 => 'Lecteur',
+    1 => 'Relecteur',
+    2 => 'Auteur',
+    3 => 'Administrateur',
+    10 => 'Nouvel utilisateur',
+];
+
+$globalAdminMail = "ENTREZ VOTRE ADRESSE MAIL ICI";
+
+function getRoleName($role)
+{
+    global $roleArray;
+    return $roleArray[$role];
+}
 
 function generateRandomString($length = 20)
 {

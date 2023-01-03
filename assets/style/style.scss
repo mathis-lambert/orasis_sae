@@ -225,7 +225,7 @@ table {
   height: 100vh;
   max-width: 100%;
   padding: 1.5rem;
-  animation: zoom 750ms ease-in-out;
+  /* animation: zoom 750ms ease-in-out; */
   color: white;
   .content {
     position: relative;
@@ -305,6 +305,7 @@ table {
     inset: 0;
     overflow: hidden;
     z-index: 20;
+    border-radius: 20px;
 
     .overlayCard {
       position: absolute;
@@ -630,4 +631,14 @@ table {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  height: 600px;
+
+  tr {
+    height: 2.3rem;
+  }
+  //slot time grid color
+  .fc-timegrid-slot-label-cushion,
+  .fc-timegrid-axis-cushion {
+    color: #fff !important;
+  }
 }

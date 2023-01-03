@@ -22,6 +22,22 @@ function xhr(data) {
   xhr.send(json);
 }
 
+/* check all mails inputs  */
+const mailInputs = document.querySelectorAll("input[type='email']");
+if (mailInputs) {
+  mailInputs.forEach((input) => {
+    input.addEventListener("keyup", (e) => {
+      let value = input.value;
+      let regex = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+      if (regex.test(value)) {
+        input.classList.remove("invalid");
+      } else {
+        input.classList.add("invalid");
+      }
+    });
+  });
+}
+
 const inscription_form = document.querySelector("#inscription_form");
 const connexion_form = document.querySelector("#connexion_form");
 
@@ -62,11 +78,25 @@ function traitement(data) {
     success(data.message);
   }
 
+  if (data.error == false && data.method == "submitArticle") {
+    document.querySelectorAll("input, textarea").forEach((input) => {
+      input.value = "";
+    });
+
+    success(data.message);
+  }
+
+  if (data.error == true && data.method == "submitArticle") {
+    error(data.message);
+  }
+
   if (data.error == false && data.method == "delete") {
-    let parentTableRow = document.querySelector(
-      `.tableContainer tr[data-userid='${data[0]}'][data-target='${data.target}']`
+    let parentTableRow = document.querySelectorAll(
+      `.tableContainer tr[data-${data.target}id='${data[0]}'][data-target='${data.target}']`
     );
-    parentTableRow.remove();
+    parentTableRow.forEach((row) => {
+      row.remove();
+    });
     success(data.message);
   }
 }
@@ -180,7 +210,7 @@ if (editTable) {
               role: inputsValues[3],
             },
           };
-        } else if (target == "articles") {
+        } else if (target == "article") {
           data = {
             edit: {
               target: target,
@@ -219,7 +249,7 @@ if (editTable) {
                   role: inputsValues[3],
                 },
               };
-            } else if (target == "articles") {
+            } else if (target == "article") {
               data = {
                 edit: {
                   target: target,
@@ -251,24 +281,41 @@ if (editTable) {
     button.addEventListener("click", (e) => {
       if (!button.classList.contains("disabled")) {
         let parentTableRow = button.parentElement.parentElement;
-        let userId = parentTableRow.dataset.userid;
-        let data = { delete: { id: userId } };
+        let target = parentTableRow.dataset.target;
+
+        let id =
+          target == "user"
+            ? parentTableRow.dataset.userid
+            : parentTableRow.dataset.articleid;
+
+        let data = {
+          delete: {
+            target: target,
+            id: id,
+          },
+        };
+
         xhr(data);
       }
     });
   });
 }
 
-/* check all mails inputs  */
-const mailInputs = document.querySelectorAll("input[type='email']");
-mailInputs.forEach((input) => {
-  input.addEventListener("keyup", (e) => {
-    let value = input.value;
-    let regex = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
-    if (regex.test(value)) {
-      input.classList.remove("invalid");
-    } else {
-      input.classList.add("invalid");
-    }
+const articleForm = document.querySelector("#article-form");
+
+if (articleForm) {
+  articleForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let titre = document.querySelector("#articleTitle").value;
+    let resume = document.querySelector("#articleResume").value;
+    let file = document.querySelector("#file").files[0];
+    let data = {
+      submitArticle: {
+        titre: titre,
+        resume: resume,
+        file: file,
+      },
+    };
+    xhr(data);
   });
-});
+}

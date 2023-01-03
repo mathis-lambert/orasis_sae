@@ -157,7 +157,7 @@ if (isset($d['edit'])) {
                 echo json_encode(["error" => $error = true, "method" => "edit", "target" => "user", $id = null, "message" => "Erreur de modification"]);
                 exit;
             }
-        } else if ($d['edit']['target'] == "articles") {
+        } else if ($d['edit']['target'] == "article") {
             $id = $d['edit']['id'];
             $titre = $d['edit']['titre'];
             $contenu = $d['edit']['contenu'];
@@ -206,30 +206,100 @@ if (isset($d['edit'])) {
 /* TRAITEMENT DES SUPPRESSIONS */
 if (isset($d['delete'])) {
     if (in_array($_SESSION['role'], [2, 3])) {
-        if ($_SESSION['id'] == $d['delete']['id']) {
-            echo json_encode(["error" => $error = true, "method" => "delete", "target" => "user", $id = null, "message" => "Vous ne pouvez pas vous supprimer"]);
-            exit;
-        } else {
+        if ($d['delete']['target'] == 'users') {
+            if ($_SESSION['id'] == $d['delete']['id']) {
+                echo json_encode(["error" => $error = true, "method" => "delete", "target" => "user", $id = null, "message" => "Vous ne pouvez pas vous supprimer"]);
+                exit;
+            } else {
+                $id = $d['delete']['id'];
+
+                $sql = "DELETE FROM users WHERE userId = ?";
+
+                if ($stmt = $pdo->prepare($sql)) {
+                    $stmt->bindValue(1, $id);
+                    $stmt->execute();
+
+                    echo json_encode(["error" => $error, "method" => "delete", "target" => "user", $id = $id, "message" => "Suppression réussie"]);
+                    exit;
+                } else {
+                    echo json_encode(["error" => $error = true, "method" => "delete", "target" => "user", $id = null, "message" => "Erreur de suppression"]);
+                    exit;
+                }
+            }
+        } else if ($d['delete']['target'] == 'article') {
             $id = $d['delete']['id'];
 
-            $sql = "DELETE FROM users WHERE userId = ?";
+            $sql = "DELETE FROM articles WHERE articleId = ?";
+            $sql2 = "DELETE FROM written WHERE writtenArticleId = ?";
 
             if ($stmt = $pdo->prepare($sql)) {
                 $stmt->bindValue(1, $id);
                 $stmt->execute();
 
-                echo json_encode(["error" => $error, "method" => "delete", "target" => "user", $id = $id, "message" => "Suppression réussie"]);
+                // second statement
+                if ($stmt2 = $pdo->prepare($sql2)) {
+                    $stmt2->bindValue(1, $id);
+                    $stmt2->execute();
+                } else {
+                    echo json_encode(["error" => $error = true, "method" => "delete", "target" => "article", $id = null, "message" => "Erreur de suppression"]);
+                    exit;
+                }
+
+                echo json_encode(["error" => $error, "method" => "delete", "target" => "article", $id = $id, "message" => "Suppression réussie"]);
                 exit;
             } else {
-                echo json_encode(["error" => $error = true, "method" => "delete", "target" => "user", $id = null, "message" => "Erreur de suppression"]);
+                echo json_encode(["error" => $error = true, "method" => "delete", "target" => "article", $id = null, "message" => "Erreur de suppression"]);
                 exit;
             }
         }
     } else {
-        echo json_encode(["error" => $error = true, "method" => "delete", "target" => "user", $id = null, "message" => "Vous n'avez pas les droits pour supprimer un utilisateur"]);
+        echo json_encode(["error" => $error = true, "method" => "delete", "target" => "user", $id = null, "message" => "Vous n'avez pas les droits pour effectuer cette action"]);
         exit;
     }
 }
 
-/* si aucune action remplie renvoyer erreur */
-// echo json_encode(["error" => $error = true, "method" => null, $id = null, "message" => "Aucune action effectuée"]);
+if (isset($d['submitArticle'])) {
+    if (in_array($_SESSION['role'], [1, 2, 3])) {
+        $titre = $d['submitArticle']['titre'];
+        $contenu = $d['submitArticle']['resume'];
+        $auteur = $_SESSION['id'];
+        $file = $d['submitArticle']['file'];
+
+        /* stocker titre, resumé et auteur dans la bdd, et envoyer le fichier pdf par mail */
+        $sql = "INSERT INTO articles (articleTitle, articleText) VALUES (?, ?)";
+        $sql2 = "INSERT INTO written (writtenStatus, writtenUserId, writtenArticleId) VALUES ('pending', ?, ?)";
+
+        if ($stmt = $pdo->prepare($sql)) {
+            $stmt->bindValue(1, htmlspecialchars($titre, ENT_QUOTES, 'UTF-8'));
+            $stmt->bindValue(2, $contenu);
+            $stmt->execute();
+
+            $lastId = $pdo->lastInsertId();
+
+            if ($stmt2 = $pdo->prepare($sql2)) {
+                $stmt2->bindValue(1, $auteur);
+                $stmt2->bindValue(2, $lastId);
+                $stmt2->execute();
+
+                $to = $globalAdminMail;
+                $subject = "Nouvel article en attente de validation";
+                $message = "Un nouvel article a été soumis par " . $_SESSION['firstname'] . " et est en attente de validation. Vous pouvez le consulter en vous connectant à l'adresse suivante : http://localhost:8888/Projet%20PHP%20-%20Blog/admin.php";
+                $headers = "From: " . $_SESSION['firstname'] . " <" . $_SESSION['email'] . ">";
+                try {
+                    mail($to, $subject, $message, $headers);
+                } catch (Exception $e) {
+                    echo json_encode(["error" => $error = true, "method" => "submitArticle", "target" => "article", $id = null, "message" => "Erreur d'envoi du fichier, veuillez contacter " . $globalAdminMail . " pour signaler le problème"]);
+                    exit;
+                }
+
+                echo json_encode(["error" => $error, "method" => "submitArticle", "target" => "article", $id = $lastId, "message" => "Article soumis"]);
+                exit;
+            } else {
+                echo json_encode(["error" => $error = true, "method" => "submitArticle", "target" => "article", $id = null, "message" => "Erreur de soumission"]);
+                exit;
+            }
+        } else {
+            echo json_encode(["error" => $error = true, "method" => "submitArticle", "target" => "article", $id = null, "message" => "Vous n'avez pas les droits pour créer un article"]);
+        }
+    }
+}

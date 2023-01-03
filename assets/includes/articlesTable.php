@@ -20,7 +20,7 @@
             </thead>
             <tbody>
                 <?php foreach ($articlesPending as $article) : ?>
-                    <tr data-target="articles" data-articleid="<?= $article['articleId'] ?>">
+                    <tr data-target="article" data-articleid="<?= $article['articleId'] ?>">
                         <td><input type="text" class="title" value="<?= $article['articleTitle'] ?>" disabled></td>
                         <td class="textarea_container"><textarea class="content" disabled><?= $article['articleText'] ?></textarea></td>
                         <td>
@@ -82,7 +82,7 @@
             </thead>
             <tbody>
                 <?php foreach ($articlesPublished as $article) : ?>
-                    <tr data-target="articles" data-articleid="<?= $article['articleId'] ?>">
+                    <tr data-target="article" data-articleid="<?= $article['articleId'] ?>">
                         <td><input type="text" class="title" value="<?= $article['articleTitle'] ?>" disabled></td>
                         <td class="textarea_container"><textarea class="content" disabled><?= $article['articleText'] ?></textarea></td>
                         <td>
@@ -144,7 +144,7 @@
             </thead>
             <tbody>
                 <?php foreach ($allArticles as $article) : ?>
-                    <tr data-target="articles" data-articleid="<?= $article['articleId'] ?>">
+                    <tr data-target="article" data-articleid="<?= $article['articleId'] ?>">
                         <td><input type="text" class="title" value="<?= $article['articleTitle'] ?>" disabled></td>
                         <td class="textarea_container"><textarea class="content" disabled><?= $article['articleText'] ?></textarea></td>
                         <td>

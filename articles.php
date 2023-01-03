@@ -36,16 +36,14 @@ session_start();
         <div class="articles_grid">
             <?php
             if (!empty($articles)) {
-                for ($i = 0; $i < 9; $i++) {
-                    foreach ($articles as $article) {
-                        echo '<div class="card">';
-                        echo '<div class="card-body">';
-                        echo '<h5 class="card-title">' . $article['articleTitle'] . '</h5>';
-                        echo '<div class="card-text">' . $article['articleText'] . '</div>';
-                        echo '<a href="article?id=' . $article['articleId'] . '" class="btn btn-primary card-link">Voir l\'article</a>';
-                        echo '</div>';
-                        echo '</div>';
-                    }
+                foreach ($articles as $article) {
+                    echo '<div class="card">';
+                    echo '<div class="card-body">';
+                    echo '<h5 class="card-title">' . $article['articleTitle'] . '</h5>';
+                    echo '<div class="card-text">' . $article['articleText'] . '</div>';
+                    echo '<a href="article?id=' . $article['articleId'] . '" class="btn btn-primary card-link">Voir l\'article</a>';
+                    echo '</div>';
+                    echo '</div>';
                 }
             } else {
                 echo '<div class="card">';

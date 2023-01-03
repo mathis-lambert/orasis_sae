@@ -163,10 +163,8 @@ a:hover {
 
 .container {
   padding-top: 125px;
-  width: 100%;
-  max-width: 1333px;
   margin: 0 auto;
-  padding-inline: 1rem;
+  width: min(100% - 2rem, 1200px);
 }
 
 form {
@@ -616,6 +614,7 @@ footer .footer-ending p {
           backdrop-filter: blur(10px);
   padding: 1rem;
   gap: 1rem;
+  height: 100%;
 }
 #articles_body .container .articles_grid .card .card-body .card-title {
   font-size: clamp(1rem, 5vw, 1.5rem);
@@ -1058,8 +1057,7 @@ table th {
   height: 100vh;
   max-width: 100%;
   padding: 1.5rem;
-  -webkit-animation: zoom 750ms ease-in-out;
-          animation: zoom 750ms ease-in-out;
+  /* animation: zoom 750ms ease-in-out; */
   color: white;
 }
 .hero .content {
@@ -1133,6 +1131,7 @@ table th {
   inset: 0;
   overflow: hidden;
   z-index: 20;
+  border-radius: 20px;
 }
 .imgReveal .infoOverlay .overlayCard {
   position: absolute;
@@ -1422,4 +1421,12 @@ table th {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  height: 600px;
+}
+#calendar tr {
+  height: 2.3rem;
+}
+#calendar .fc-timegrid-slot-label-cushion,
+#calendar .fc-timegrid-axis-cushion {
+  color: #fff !important;
 }/*# sourceMappingURL=style.css.map */

@@ -23,6 +23,9 @@ include_once 'config/config.php';
    <!-- import GSAP -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+
+   <!-- Import full calendar -->
+   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.2/index.global.min.js"></script>
 </head>
 
 <body class="home">
@@ -154,7 +157,7 @@ include_once 'config/config.php';
       <section id="programme">
          <h1>Le programme</h1>
          <div id="calendar" class="container" style="padding-top: 20px;">
-            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23ffffff&ctz=Europe%2FParis&showTitle=0&showNav=1&showTabs=1&showCalendars=0&showTz=0&mode=WEEK&src=MjNjODg4YjhhZjJlMzBmMDQxNDE4ZTNiNTBiNGUwMDlmOTBlOTVlZjQ2N2ZiYzc5ZmZiMTliYTQxNmE3ODAxOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23616161" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+            <!-- <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23ffffff&ctz=Europe%2FParis&showTitle=0&showNav=1&showTabs=1&showCalendars=0&showTz=0&mode=WEEK&src=MjNjODg4YjhhZjJlMzBmMDQxNDE4ZTNiNTBiNGUwMDlmOTBlOTVlZjQ2N2ZiYzc5ZmZiMTliYTQxNmE3ODAxOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23616161" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe> -->
          </div>
       </section>
       <br />
@@ -203,6 +206,7 @@ include_once 'config/config.php';
             </div>
             <a class="btn btn-blue margin-auto" href="articles.php">Voir tous les articles</a>
          </div>
+
 
 
       </section>
@@ -269,6 +273,430 @@ include_once 'config/config.php';
    <!-- Javascript import files -->
    <script src="assets/app/index.js"></script>
    <script src="assets/controllers/js/accueil.js"></script>
+
+   <script>
+      // made a comment to describe the code below
+
+      /*
+       * FullCalendar v5.7.0
+       * Docs & License: https://fullcalendar.io/
+       * Ce code sert à afficher le calendrier des dates importantes de l'évènement sur la page d'accueil
+       */
+      const calendarEl = document.getElementById('calendar');
+      const calendar = new FullCalendar.Calendar(calendarEl, {
+         initialView: 'timeGridWeek',
+
+         // able to switch to day view
+         headerToolbar: {
+            left: 'prev,next today myCustomButton',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+         },
+
+         // edit myCustomButton
+         customButtons: {
+            myCustomButton: {
+               text: 'ORASIS',
+               click: function() {
+                  calendar.changeView('timeGridWeek');
+                  calendar.gotoDate('2023-05-22');
+               }
+            }
+         },
+
+         initialDate: '2023-05-22T08:00:00',
+         // display 4 days
+         duration: {
+            days: 4
+         },
+         // avoid displaying time on cards
+         displayEventTime: false,
+         // set the zone
+         locale: 'fr',
+         // set monday as first day of the week
+         firstDay: 1,
+         // start the week at 8:00
+         slotMinTime: '08:00:00',
+         // end the week at 22:00
+         slotMaxTime: '22:00:00',
+         // padding between events
+         slotLabelInterval: '01:00:00',
+
+         hiddenDays: [0, 6],
+
+         eventClick: function(info) {
+            // display a popup when clicking on an event
+            alert(info.event.extendedProps.description);
+         },
+
+         events: [{
+               title: 'ORASIS 2023',
+               start: '2023-05-22',
+               end: '2023-05-27',
+               extendedProps: {
+                  description: 'ORASIS 2023'
+               }
+            },
+            {
+               title: 'Accueil des participants',
+               start: '2023-05-22T19:00:00',
+               end: '2023-05-22T20:00:00',
+
+               extendedProps: {
+                  description: 'Accueil des participants, cocktail de bienvenue'
+               }
+            },
+            {
+               title: 'Accueil des participants',
+               start: '2023-05-23T08:00:00',
+               end: '2023-05-23T08:45:00',
+
+               extendedProps: {
+                  description: 'Accueil des participants et remise des badges'
+               }
+            },
+            {
+               title: 'Dîner',
+               start: '2023-05-22T20:00:00',
+               end: '2023-05-22T22:00:00',
+
+               extendedProps: {
+                  description: 'Dîner'
+               }
+            },
+            {
+               title: 'Dîner',
+               start: '2023-05-23T20:00:00',
+               end: '2023-05-23T22:00:00',
+
+               extendedProps: {
+                  description: 'Dîner'
+               }
+            },
+            {
+               title: 'Dîner',
+               start: '2023-05-24T20:00:00',
+               end: '2023-05-24T22:00:00',
+
+               extendedProps: {
+                  description: 'Dîner'
+               }
+            },
+            {
+               title: 'Gala de clôture',
+               start: '2023-05-25T20:00:00',
+               end: '2023-05-25T22:00:00',
+
+               extendedProps: {
+                  description: 'Gala de clôture, remise des prix, dîner'
+               }
+            },
+            {
+               title: 'Ouverture',
+               start: '2023-05-23T08:45:00',
+               end: '2023-05-23T09:00:00',
+
+               extendedProps: {
+                  description: 'Ouverture de la conférence par le président du comité d’organisation'
+               }
+            },
+            {
+               title: "Présentation du conférencier 1",
+               start: '2023-05-23T09:00:00',
+               end: '2023-05-23T10:00:00',
+
+               extendedProps: {
+                  description: "Présentation du conférencier 1 "
+               }
+            },
+            {
+               title: "3D",
+               start: '2023-05-23T10:00:00',
+               end: '2023-05-23T11:00:00',
+
+               extendedProps: {
+                  description: "Les applications de la 3D"
+               }
+            },
+
+            {
+               title: "Pause café",
+               start: '2023-05-23T11:00:00',
+               end: '2023-05-23T11:15:00',
+
+               extendedProps: {
+                  description: "Pause café"
+               }
+            },
+            {
+               title: "Classification",
+               start: '2023-05-23T11:15:00',
+               end: '2023-05-23T12:15:00',
+
+               extendedProps: {
+                  description: "Classification"
+               }
+            },
+            {
+               title: "Déjeuner",
+               start: '2023-05-23T12:15:00',
+               end: '2023-05-23T14:00:00',
+
+               extendedProps: {
+                  description: "Déjeuner"
+               }
+            },
+            {
+               title: "Présentation du conférencier 2",
+               start: '2023-05-23T14:00:00',
+               end: '2023-05-23T15:00:00',
+
+               extendedProps: {
+                  description: "Présentation du conférencier 2"
+               }
+            },
+            {
+               title: "Détection et classification",
+               start: '2023-05-23T15:00:00',
+               end: '2023-05-23T16:00:00',
+
+               extendedProps: {
+                  description: "Détection et classification"
+               }
+            },
+            {
+               title: "Pause café",
+               start: '2023-05-23T16:00:00',
+               end: '2023-05-23T16:15:00',
+
+               extendedProps: {
+                  description: "Pause café"
+               }
+            },
+            {
+               title: "Robotique",
+               start: '2023-05-23T16:15:00',
+               end: '2023-05-23T17:15:00',
+
+               extendedProps: {
+                  description: "Applications de la robotique"
+               }
+            },
+            {
+               title: "Télédétection",
+               start: '2023-05-23T17:15:00',
+               end: '2023-05-23T18:15:00',
+
+               extendedProps: {
+                  description: "Télédétection"
+               }
+            },
+            {
+               title: "Présentation du conférencier 3",
+               start: '2023-05-24T09:00:00',
+               end: '2023-05-24T10:00:00',
+
+               extendedProps: {
+                  description: "Présentation du conférencier 3"
+               }
+            },
+            {
+               title: "Géométrie",
+               start: '2023-05-24T10:00:00',
+               end: '2023-05-24T11:00:00',
+
+               extendedProps: {
+                  description: "Géométrie"
+               }
+            },
+            {
+               title: "Pause café",
+               start: '2023-05-24T11:00:00',
+               end: '2023-05-24T11:15:00',
+
+               extendedProps: {
+                  description: "Pause café"
+               }
+            },
+            {
+               title: "Appariement",
+               start: '2023-05-24T11:15:00',
+               end: '2023-05-24T12:15:00',
+
+               extendedProps: {
+                  description: "Appariement"
+               }
+            },
+            {
+               title: "Déjeuner",
+               start: '2023-05-24T12:15:00',
+               end: '2023-05-24T14:00:00',
+
+               extendedProps: {
+                  description: "Déjeuner"
+               }
+            },
+            {
+               title: "Présentation du conférencier 4",
+               start: '2023-05-24T14:00:00',
+               end: '2023-05-24T15:00:00',
+
+               extendedProps: {
+                  description: "Présentation du conférencier 4"
+               }
+            },
+            {
+               title: "Activités",
+               start: '2023-05-24T15:00:00',
+               end: '2023-05-24T19:00:00',
+
+               extendedProps: {
+                  description: "Activités"
+               }
+            },
+            {
+               title: "Présentation du conférencier 5",
+               start: '2023-05-25T09:00:00',
+               end: '2023-05-25T10:00:00',
+
+               extendedProps: {
+                  description: "Présentation du conférencier 5"
+               }
+
+            },
+            {
+               title: "Apprentissage profond",
+               start: '2023-05-25T10:00:00',
+               end: '2023-05-25T11:00:00',
+
+               extendedProps: {
+                  description: "Apprentissage profond"
+               }
+            },
+            {
+               title: "Pause café",
+               start: '2023-05-25T11:00:00',
+               end: '2023-05-25T11:15:00',
+
+               extendedProps: {
+                  description: "Pause café"
+               }
+            },
+            {
+               title: "Apprentissage profond",
+               start: '2023-05-25T11:15:00',
+               end: '2023-05-25T12:15:00',
+
+               extendedProps: {
+                  description: "Apprentissage profond"
+               }
+            },
+            {
+               title: "Déjeuner",
+               start: '2023-05-25T12:15:00',
+               end: '2023-05-25T14:00:00',
+
+               extendedProps: {
+                  description: "Déjeuner"
+               }
+            },
+            {
+               title: "Présentation du conférencier 6 POSTER",
+               start: '2023-05-25T14:00:00',
+               end: '2023-05-25T16:00:00',
+
+               extendedProps: {
+                  description: "Présentation du conférencier 6"
+               }
+            },
+            {
+               title: "Pause café",
+               start: '2023-05-25T16:00:00',
+               end: '2023-05-25T16:15:00',
+
+               extendedProps: {
+                  description: "Pause café"
+               }
+
+            },
+            {
+               title: "Imagerie médicale",
+               start: '2023-05-25T16:15:00',
+               end: '2023-05-25T17:15:00',
+
+               extendedProps: {
+                  description: "Imagerie médicale"
+               }
+            },
+            {
+               title: "Poster",
+               start: '2023-05-25T17:15:00',
+               end: '2023-05-25T18:15:00',
+
+               extendedProps: {
+                  description: "Poster"
+               }
+            },
+            {
+               title: "Présentation du conférencier 7",
+               start: '2023-05-26T09:00:00',
+               end: '2023-05-26T10:00:00',
+
+               extendedProps: {
+                  description: "Présentation du conférencier 7"
+               }
+            },
+            {
+               title: "Signal",
+               start: '2023-05-26T10:00:00',
+               end: '2023-05-26T11:00:00',
+
+               extendedProps: {
+                  description: "Signal"
+               }
+
+            },
+            {
+               title: "Pause café",
+               start: '2023-05-26T11:00:00',
+               end: '2023-05-26T11:15:00',
+
+               extendedProps: {
+                  description: "Pause café"
+               }
+            },
+            {
+               title: "Appariement",
+               start: '2023-05-26T11:15:00',
+               end: '2023-05-26T12:15:00',
+
+               extendedProps: {
+                  description: "Appariement"
+               },
+            },
+            {
+               title: "Déjeuner",
+               start: '2023-05-26T12:15:00',
+               end: '2023-05-26T14:00:00',
+
+               extendedProps: {
+                  description: "Déjeuner"
+               }
+            },
+            {
+               title: "Départ",
+               start: '2023-05-26T14:00:00',
+               end: '2023-05-26T15:00:00',
+
+               extendedProps: {
+                  description: "Départ, merci de votre participation"
+               }
+            }
+         ]
+
+      });
+      calendar.render();
+   </script>
 </body>
 
 </html>

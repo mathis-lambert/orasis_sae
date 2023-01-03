@@ -137,10 +137,8 @@ a {
 
 .container {
   padding-top: 125px;
-  width: 100%;
-  max-width: 1333px;
   margin: 0 auto;
-  padding-inline: 1rem;
+  width: min(100% - 2rem, 1200px);
 }
 
 form {

@@ -42,7 +42,7 @@ if (empty($_SESSION)) {
             <div>
                 <h1 class="no-style">Bonjour <?= $_SESSION['firstname'] ?> </h1>
                 <p>
-                    Vous êtes connecté en tant que <?= getRoleName(10) ?>
+                    Vous êtes connecté en tant que <?= getRoleName($_SESSION['role']) ?>
                 </p>
             </div>
             <a class="btn" href="logout">Déconnexion</a>

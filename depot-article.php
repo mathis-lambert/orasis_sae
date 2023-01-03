@@ -37,18 +37,18 @@ if (!empty($_SESSION) && isset($_SESSION)) {
       ?>
          <h1>Dépôt d'articles</h1>
          <!-- je te laisse mettre la méthode et le action pour le back -->
-         <form method="" class="form" style="max-width: 600px; margin-bottom: 3.5rem;">
+         <form method="" class="form" style="max-width: 600px; margin-bottom: 3.5rem;" id="article-form">
             <div class="input-group">
-               <input type="text" name="titreArticle" required placeholder=" " />
+               <input type="text" name="titreArticle" id="articleTitle" required placeholder=" " />
                <label for="titreArticle">Titre de l'article</label>
             </div>
             <div class="input-group">
-               <textarea name="resumeArticle" class="long" placeholder=" " required></textarea>
+               <textarea name="resumeArticle" class="long" id="articleResume" placeholder=" " required></textarea>
                <label for="resumeArticle">Résumé de l'article</label>
             </div>
             <div class="input-group">
                <input type="file" name="article" placeholder=" " accept=".pdf" id="file" required style="background-color: #fff;" />
-               <label for="article">Résumé de l'article</label>
+               <label for="article">PDF de l'article</label>
             </div>
             <div class="error_div" style="margin-bottom: 1rem;"></div>
             <button type="submit" id="send" class="btn btn-blue margin-auto">Envoyer</button>
@@ -69,26 +69,26 @@ if (!empty($_SESSION) && isset($_SESSION)) {
    <?php include_once 'assets/includes/_footer.html' ?>
 
    <script>
-      const userRole = "<?php $session_role ?>";
+      const userRole = <?= $session_role ?>;
       console.log(userRole);
 
       const file = document.getElementById('file');
       const errorDiv = document.querySelector('.error_div');
 
-      file.addEventListener('change', () => {
+      file.addEventListener("change", () => {
          // verify if the file is a pdf
-         if (file.files[0].type !== 'application/pdf') {
-            errorDiv.innerHTML = 'Le fichier doit être un pdf';
-            file.value = '';
+         if (file.files[0].type !== "application/pdf") {
+            errorDiv.innerHTML = "Le fichier doit être un pdf";
+            file.value = "";
          } else {
-            errorDiv.innerHTML = '';
+            errorDiv.innerHTML = "";
          }
       });
    </script>
 
    <!-- Javascript import files -->
    <script src="assets/app/index.js"></script>
-   <script defer src="assets/controllers/js/article.js"></script>
+   <script src="assets/controllers/js/app.js"></script>
 </body>
 
 </html>

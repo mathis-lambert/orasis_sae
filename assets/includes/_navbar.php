@@ -30,7 +30,7 @@
       <span data-modal="#main-menu" id="modal-button">menu</span>
     </div>
 
-    <a href="/" class="landing-logo">
+    <a href="./" class="landing-logo">
       <svg id="logo-full" data-name="Calque 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 746.41 76.03">
         <defs>
           <style>
