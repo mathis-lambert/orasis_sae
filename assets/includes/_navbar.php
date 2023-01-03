@@ -230,9 +230,9 @@
       <div class="navbar-menu__left__item">
         <h2>L'événement</h2>
         <a href="./#programme">Le programme</a>
-        <a href="./#invites">Les invités</a>
+        <a href="./comite">Comités</a>
         <a href="articles">Les articles</a>
-        <a href="./#comite">Comités</a>
+
       </div>
       <div class="navbar-menu__left__item">
         <h2>Informations</h2>
@@ -241,20 +241,40 @@
         <a href="contact">Contact</a>
       </div>
       <div class="navbar-menu__left__item">
-        <h2>Adhérer</h2>
-        <a href="inscription">S'inscrire</a>
-        <a href="connexion">Se connecter</a>
-        <a href="afrif">Adhérer à l'AFRIF</a>
+        <h2> <?php
+              if (!empty($_SESSION) && isset($_SESSION)) {
+                echo 'Mon compte';
+              } else {
+                echo 'Adhérer';
+              }
+              ?></h2>
+        <?php
+        if (!empty($_SESSION) && isset($_SESSION)) {
+          echo '<a href="espace-perso">Espace perso</a>';
+        } else {
+          echo '<a href="connexion">Se connecter</a>
+          <a href="inscription">S\'inscrire</a>';
+        }
+        ?>
       </div>
-      <div class="navbar-menu__left__item">
-        <h2>Auteur</h2>
-        <a href="espace-perso">Espace auteur</a>
-        <a href="depot-article">Soummetre un article</a>
-        <a href="connexion">Connexion Auteur</a>
-      </div>
+      <?php
+      if (!empty($_SESSION) && isset($_SESSION) && in_array($_SESSION['role'], [2, 3])) {
+      ?>
+        <div class="navbar-menu__left__item">
+          <h2>Auteur</h2>
+          <a href="espace-perso">Espace perso</a>
+          <a href="depot-article">Soummetre un article</a>
+          <a href="discussion-auteurs">Discussion avec les auteurs</a>
+        </div>
+      <?php
+      }
+      ?>
+
+
     </div>
     <div class="navbar-menu__right">
       <div class="fast-links">
+        <h2>Accès rapide</h2>
         <ul>
           <li>
             <a href="connexion" class="btn btn-blue"> Connexion </a>

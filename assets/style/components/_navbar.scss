@@ -178,6 +178,10 @@ header {
     top: 1rem;
   }
 
+  h2 {
+    margin: 0;
+  }
+
   .navbar-menu__container {
     margin-top: 75px;
     border-top: 1px solid #e5e5e5;
@@ -206,8 +210,29 @@ header {
           transition: all 0.3s ease-in-out;
           &:hover {
             color: rgb(26, 43, 57);
+            transform: translateX(5px);
           }
         }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .navbar-menu {
+    left: 0;
+    right: 0;
+    border-radius: 0;
+    .navbar-menu__container {
+      .navbar-menu__left {
+        flex: 0 0 100%;
+        border-right: none;
+        .navbar-menu__left__item {
+          flex: 0 0 100%;
+        }
+      }
+      .navbar-menu__right {
+        display: none;
       }
     }
   }

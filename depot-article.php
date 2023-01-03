@@ -44,7 +44,7 @@ if (!empty($_SESSION) && isset($_SESSION)) {
             </div>
             <div class="input-group">
                <textarea name="resumeArticle" class="long" id="articleResume" placeholder=" " required></textarea>
-               <label for="resumeArticle">Résumé de l'article</label>
+               <label for="resumeArticle">Résumé de l'article (balises HTML acceptées)</label>
             </div>
             <div class="input-group">
                <input type="file" name="article" placeholder=" " accept=".pdf" id="file" required style="background-color: #fff;" />

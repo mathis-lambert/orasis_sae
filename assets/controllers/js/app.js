@@ -8,43 +8,18 @@ function success(message) {
     <p id='success'>${message}</p>`;
 }
 
-function xhr(data, file = null) {
+function xhr(data) {
   let xhr = new XMLHttpRequest();
-  let xhr2 = new XMLHttpRequest();
-
   let json = JSON.stringify(data);
 
-  // send pdf file
-  if (file !== null) {
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 0))
-        traitementArticle(xhr.responseText);
-    };
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 0))
+      traitement(xhr.responseText);
+  };
 
-    xhr2.onreadystatechange = () => {
-      if (xhr2.readyState === 4 && (xhr2.status === 200 || xhr2.status === 0))
-        traitementArticle(xhr2.responseText);
-    };
-
-    xhr.open("POST", "assets/controllers/php/controller");
-    xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
-    xhr.send(json);
-
-    let formData = new FormData();
-    formData.append("file", file);
-
-    xhr2.open("POST", "assets/controllers/php/encodePDF");
-    xhr2.send(formData);
-  } else {
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 0))
-        traitement(xhr.responseText);
-    };
-
-    xhr.open("POST", "assets/controllers/php/controller");
-    xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
-    xhr.send(json);
-  }
+  xhr.open("POST", "assets/controllers/php/controller");
+  xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
+  xhr.send(json);
 }
 
 /* check all mails inputs  */
@@ -65,10 +40,6 @@ if (mailInputs) {
 
 const inscription_form = document.querySelector("#inscription_form");
 const connexion_form = document.querySelector("#connexion_form");
-
-function traitementArticle(data) {
-  data = JSON.parse(data);
-}
 
 function traitement(data) {
   data = JSON.parse(data);
@@ -127,6 +98,22 @@ function traitement(data) {
       row.remove();
     });
     success(data.message);
+  }
+
+  if (data.error == false && data.method == "message") {
+    const message_grid = document.querySelector(".messages_grid");
+
+    message_grid.innerHTML += `
+    <div class="message">
+      <div class="message_header">
+        <div class="message_infos">Par ${data.data.userFirstname} ${data.data.userLastname} le ${data.data.messageDate}</div>
+        </div>
+        <div class="message_content">
+          <p>${data.data.messageText}</p>
+        </div>
+      </div>
+    </div>
+    `;
   }
 }
 
@@ -346,15 +333,49 @@ const articleForm = document.querySelector("#article-form");
 if (articleForm) {
   articleForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    let titre = document.querySelector("#articleTitle").value;
-    let resume = document.querySelector("#articleResume").value;
-    let file = document.querySelector("#file").files[0];
-    let data = {
-      submitArticle: {
-        titre: titre,
-        resume: resume,
-      },
+
+    articleForm.querySelector("button[type=submit]").classList.add("loading");
+    // send data including pdf file
+    let formData = new FormData(articleForm);
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "assets/controllers/php/encodeArticle", true);
+    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+    xhr.send(formData);
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        let response = JSON.parse(xhr.responseText);
+        success(response.message);
+        articleForm
+          .querySelector("button[type=submit]")
+          .classList.remove("loading");
+      }
     };
-    xhr(data, file);
+  });
+}
+
+const send_container = document.querySelector(".send_container");
+
+if (send_container) {
+  const send_button = send_container.querySelector("#message_button");
+  const message_input = document.querySelector("#message_input");
+  const message_container = document.querySelector("#message_container");
+
+  send_button.addEventListener("click", (e) => {
+    if (message_input.value != "") {
+      let data = {
+        message: {
+          message: message_input.value,
+        },
+      };
+      xhr(data);
+      message_input.value = "";
+    }
+  });
+
+  message_input.addEventListener("keyup", (e) => {
+    if (e.key == "Enter") {
+      send_button.click();
+    }
   });
 }

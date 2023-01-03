@@ -44,10 +44,20 @@ if (empty($article)) {
         </p>
         <br>
         <div class="card">
+            <!-- Show pdf article -->
+            <?php
+            // if file exists
+            if (file_exists('articles_pdf_files/AuthorID_' . $article['writtenUserId'] . '_' . date("Y-m-d") . '_ArticleID' . $article['articleId'] . '.pdf')) {
+                echo '<a href="articles_pdf_files/AuthorID_' . $article['writtenUserId'] . '_' . date("Y-m-d") . '_ArticleID' . $article['articleId'] . '.pdf" class="btn btn-primary card-link">Accéder au PDF</a>';
+            }
+            ?>
+            <br>
             <div class="card-body">
                 <?= $article['articleText'] ?>
             </div>
         </div>
+
+
     </div>
     <?php include_once 'assets/includes/_footer.html' ?>
     <!-- Javascript import files -->

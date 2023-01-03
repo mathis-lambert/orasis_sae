@@ -3,7 +3,7 @@
     margin: 0 auto;
     max-width: 1728px;
     position: relative;
-    top: 125px;
+    margin-top: 125px;
     background-color: #f5f5f5;
     border-radius: 20px;
     padding: 4rem 5rem;
@@ -36,7 +36,7 @@
 
   @media screen and (max-width: 720px) {
     .content {
-      padding: 4rem 1.9rem;
+      padding: 4rem 1rem;
     }
     .apps {
       justify-content: center;

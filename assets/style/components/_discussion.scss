@@ -1,0 +1,101 @@
+#discussion {
+  .container {
+    height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+    h1 {
+      align-self: baseline;
+    }
+
+    .message_container {
+      width: 100%;
+      height: calc(100vh - 18rem);
+      overflow-y: auto;
+      padding: 1rem;
+      background-color: #1f1f1f75;
+      backdrop-filter: blur(5px);
+      border-radius: 0.5rem;
+    }
+    .messages_grid {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      width: 100%;
+      gap: 1rem;
+
+      .message {
+        flex: 0 0 auto;
+        display: flex;
+
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        background-color: #2f2f2f;
+        color: white;
+        word-break: break-word;
+        height: fit-content;
+
+        .message_header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          margin-bottom: 0.5rem;
+
+          .message_infos {
+            font-weight: bold;
+          }
+        }
+
+        .message_content {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          width: 100%;
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+
+    .send_container {
+      flex: 0 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-block: 1rem;
+
+      input {
+        flex: 1 0 auto;
+        height: 2rem;
+        border: none;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        margin-right: 1rem;
+      }
+
+      button {
+        flex: 0 0 auto;
+        height: 2rem;
+        border: none;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        background-color: #2f2f2f;
+        color: white;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #3f3f3f;
+        }
+      }
+    }
+  }
+}

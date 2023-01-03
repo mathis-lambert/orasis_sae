@@ -258,44 +258,35 @@ if (isset($d['delete'])) {
     }
 }
 
-if (isset($d['submitArticle'])) {
-    if (in_array($_SESSION['role'], [1, 2, 3])) {
-        $titre = $d['submitArticle']['titre'];
-        $contenu = $d['submitArticle']['resume'];
-        $auteur = $_SESSION['id'];
-        $file = file_get_contents($_FILES['file']['tmp_name']);
+if (isset($d['message'])) {
+    if (in_array($_SESSION['role'], [2, 3])) {
 
-        var_dump($file, $_FILES);
+        $id = $_SESSION['id'];
+        $message = $d['message']['message'];
 
-        /* stocker titre, resumé et auteur dans la bdd, et stocker le fichier pdf dans le dossier ./articles */
-        $sql = "INSERT INTO articles (articleTitle, articleText) VALUES (?, ?)";
-        $sql2 = "INSERT INTO written (writtenStatus, writtenUserId, writtenArticleId) VALUES ('pending', ?, ?)";
+        $sql = "INSERT INTO messages (messageText, messageUserId) VALUES (?, ?)";
 
         if ($stmt = $pdo->prepare($sql)) {
-            $stmt->bindValue(1, htmlspecialchars($titre, ENT_QUOTES, 'UTF-8'));
-            $stmt->bindValue(2, $contenu);
+            $stmt->bindValue(1, $message);
+            $stmt->bindValue(2, $id);
             $stmt->execute();
 
-            $lastId = $pdo->lastInsertId();
-
-            if ($stmt2 = $pdo->prepare($sql2)) {
-                $stmt2->bindValue(1, $auteur);
-                $stmt2->bindValue(2, $lastId);
-                $stmt2->execute();
-
-                $file = fopen("../../articles/idArticle_" . $lastId . ".pdf", "w");
-                fwrite($file, $d['submitArticle']['file']);
-                fclose($file);
+            //select all the data of the last insert message
+            $sql2 = "SELECT * FROM messages, users WHERE messageUserId = userId AND users.userId = ? ORDER BY messageDate DESC LIMIT 1";
+            $stmt2 = $pdo->prepare($sql2);
+            $stmt2->bindValue(1, $id);
+            $stmt2->execute();
+            $message = $stmt2->fetch(PDO::FETCH_ASSOC);
 
 
-                echo json_encode(["error" => $error, "method" => "submitArticle", "target" => "article", $id = $lastId, "message" => "Article soumis"]);
-                exit;
-            } else {
-                echo json_encode(["error" => $error = true, "method" => "submitArticle", "target" => "article", $id = null, "message" => "Erreur de soumission"]);
-                exit;
-            }
+            echo json_encode(["error" => $error, "method" => "message", $id = $id, "message" => "Message envoyé", "data" => $message]);
+            exit;
         } else {
-            echo json_encode(["error" => $error = true, "method" => "submitArticle", "target" => "article", $id = null, "message" => "Vous n'avez pas les droits pour créer un article"]);
+            echo json_encode(["error" => $error = true, "method" => "message", $id = null, "message" => "Erreur d'envoi"]);
+            exit;
         }
+    } else {
+        echo json_encode(["error" => $error = true, "method" => "message", $id = null, "message" => "Vous n'avez pas les droits pour effectuer cette action"]);
+        exit;
     }
 }

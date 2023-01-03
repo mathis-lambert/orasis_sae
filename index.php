@@ -30,6 +30,22 @@ include_once 'config/config.php';
 
 <body class="home">
    <?php include_once 'assets/includes/_navbar.php' ?>
+
+   <div id="calendar_modal" class="hidden">
+      <div class="modal">
+         <div class="modal-header">
+            <h2>Description :</h2>
+            <span class="close">&times;</span>
+         </div>
+         <div class="modal-body">
+            <p id="event_desc"></p>
+            <br>
+            <p id="event_time"></p>
+         </div>
+      </div>
+   </div>
+
+
    <div class="hero_container">
       <div class="hero">
          <div class="content">
@@ -48,6 +64,8 @@ include_once 'config/config.php';
                            opportunité d'entendre des chercheurs confirmés du domaine et de
                            s'initier au processus de rédaction, dépôt, évaluation et
                            présentation d'articles de recherche.
+                           <br>
+                           Les journées seront rythmées par des sessions plénières ainsi que des sessions posters. Plusieurs sessions (7) de conférenciers invités complètent le déroulement de ces journées.
                         </p>
                      </div>
                   </div>
@@ -149,16 +167,14 @@ include_once 'config/config.php';
                </div>
             </div>
          </div>
-<a class="btn btn-blue margin-auto"href="./comite.php">Voir les membres du Comité</a>
-      
+         <a class="btn btn-blue margin-auto" href="./comite.php">Voir les membres du Comité</a>
+
          <h2></h2>
       </section>
       <br />
       <section id="programme">
          <h1>Le programme</h1>
-         <div id="calendar" class="container" style="padding-top: 20px;">
-            <!-- <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23ffffff&ctz=Europe%2FParis&showTitle=0&showNav=1&showTabs=1&showCalendars=0&showTz=0&mode=WEEK&src=MjNjODg4YjhhZjJlMzBmMDQxNDE4ZTNiNTBiNGUwMDlmOTBlOTVlZjQ2N2ZiYzc5ZmZiMTliYTQxNmE3ODAxOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23616161" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe> -->
-         </div>
+         <div id="calendar" class="container" style="padding-top: 20px;"></div>
       </section>
       <br />
       <section id="evenement" style="margin-bottom: 20px;">
@@ -167,7 +183,7 @@ include_once 'config/config.php';
          <div id="articles_container" class="container articles_container">
             <div id="articles">
                <?php
-               $sql = "SELECT * FROM articles, written WHERE articles.articleId = written.writtenArticleId ORDER BY written.writtenDate DESC";
+               $sql = "SELECT * FROM articles, written WHERE articles.articleId = written.writtenArticleId AND written.writtenStatus = 'published' ORDER BY written.writtenDate DESC";
                $stmt = $pdo->prepare($sql);
                $stmt->execute();
                $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -175,25 +191,25 @@ include_once 'config/config.php';
                if (!empty($stmt)) {
                   if (count($articles) < 3) {
                      for ($i = 0; $i < count($articles); $i++) {
-                        echo '<div class="article">';
+
                         echo '<div class="card">';
                         echo '<div class="card-body">';
                         echo '<h5 class="card-title">' . $articles[$i]['articleTitle'] . '</h5>';
+                        echo '<p class="card-date">' . $articles[$i]['writtenDate'] . '</p>';
                         echo '<div class="card-text">' . $articles[$i]['articleText'] . '</div>';
                         echo '<a href="article?id=' . $articles[$i]['articleId'] . '" class="btn btn-blue card-link">Voir l\'article</a>';
-                        echo '</div>';
                         echo '</div>';
                         echo '</div>';
                      }
                   } else {
                      for ($i = 0; $i < 3; $i++) {
-                        echo '<div class="article">';
+
                         echo '<div class="card">';
                         echo '<div class="card-body">';
                         echo '<h5 class="card-title">' . $articles[$i]['articleTitle'] . '</h5>';
+                        echo '<p class="card-date">' . $articles[$i]['writtenDate'] . '</p>';
                         echo '<div class="card-text">' . $articles[$i]['articleText'] . '</div>';
                         echo '<a href="article?id=' . $articles[$i]['articleId'] . '" class="btn btn-blue card-link">Voir l\'article</a>';
-                        echo '</div>';
                         echo '</div>';
                         echo '</div>';
                      }
@@ -326,7 +342,38 @@ include_once 'config/config.php';
 
          eventClick: function(info) {
             // display a popup when clicking on an event
-            alert(info.event.extendedProps.description);
+            const calendarModal = document.getElementById('calendar_modal'),
+               calendarModalDescription = document.getElementById('event_desc'),
+               calendarModalTime = document.getElementById('event_time'),
+               html = document.querySelector('html');
+
+            html.classList.add('no-scroll');
+            calendarModalDescription.innerHTML = info.event.extendedProps.description;
+            calendarModalTime.innerHTML = info.event.start.toLocaleString('fr-FR', {
+               hour: 'numeric',
+               minute: 'numeric'
+            }) + ' - ' + info.event.end.toLocaleString('fr-FR', {
+               hour: 'numeric',
+               minute: 'numeric'
+            });
+            calendarModal.classList.remove('hidden');
+
+            // close the popup when clicking on the cross
+            const calendarModalClose = calendarModal.querySelector('.close');
+            calendarModalClose.addEventListener('click', function() {
+               html.classList.remove('no-scroll');
+               calendarModal.classList.add('hidden');
+            });
+
+            // close the popup when clicking outside of it
+            calendarModal.addEventListener('click', function(e) {
+               if (e.target === calendarModal) {
+                  html.classList.remove('no-scroll');
+                  calendarModal.classList.add('hidden');
+               }
+            });
+
+
          },
 
          events: [{
