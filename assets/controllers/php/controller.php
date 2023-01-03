@@ -134,7 +134,7 @@ if (isset($d['connexion'])) {
 /* TRAITEMENT DES MODIFICATIONS */
 if (isset($d['edit'])) {
     if (in_array($_SESSION['role'], [1, 2, 3])) {
-        if ($d['edit']['target'] == "users") {
+        if ($d['edit']['target'] == "user") {
             $id = $d['edit']['id'];
             $mail = $d['edit']['email'];
             $nom = $d['edit']['nom'];
@@ -206,7 +206,7 @@ if (isset($d['edit'])) {
 /* TRAITEMENT DES SUPPRESSIONS */
 if (isset($d['delete'])) {
     if (in_array($_SESSION['role'], [2, 3])) {
-        if ($d['delete']['target'] == 'users') {
+        if ($d['delete']['target'] == 'user') {
             if ($_SESSION['id'] == $d['delete']['id']) {
                 echo json_encode(["error" => $error = true, "method" => "delete", "target" => "user", $id = null, "message" => "Vous ne pouvez pas vous supprimer"]);
                 exit;
@@ -263,9 +263,11 @@ if (isset($d['submitArticle'])) {
         $titre = $d['submitArticle']['titre'];
         $contenu = $d['submitArticle']['resume'];
         $auteur = $_SESSION['id'];
-        $file = $d['submitArticle']['file'];
+        $file = file_get_contents($_FILES['file']['tmp_name']);
 
-        /* stocker titre, resumé et auteur dans la bdd, et envoyer le fichier pdf par mail */
+        var_dump($file, $_FILES);
+
+        /* stocker titre, resumé et auteur dans la bdd, et stocker le fichier pdf dans le dossier ./articles */
         $sql = "INSERT INTO articles (articleTitle, articleText) VALUES (?, ?)";
         $sql2 = "INSERT INTO written (writtenStatus, writtenUserId, writtenArticleId) VALUES ('pending', ?, ?)";
 
@@ -281,16 +283,10 @@ if (isset($d['submitArticle'])) {
                 $stmt2->bindValue(2, $lastId);
                 $stmt2->execute();
 
-                $to = $globalAdminMail;
-                $subject = "Nouvel article en attente de validation";
-                $message = "Un nouvel article a été soumis par " . $_SESSION['firstname'] . " et est en attente de validation. Vous pouvez le consulter en vous connectant à l'adresse suivante : http://localhost:8888/Projet%20PHP%20-%20Blog/admin.php";
-                $headers = "From: " . $_SESSION['firstname'] . " <" . $_SESSION['email'] . ">";
-                try {
-                    mail($to, $subject, $message, $headers);
-                } catch (Exception $e) {
-                    echo json_encode(["error" => $error = true, "method" => "submitArticle", "target" => "article", $id = null, "message" => "Erreur d'envoi du fichier, veuillez contacter " . $globalAdminMail . " pour signaler le problème"]);
-                    exit;
-                }
+                $file = fopen("../../articles/idArticle_" . $lastId . ".pdf", "w");
+                fwrite($file, $d['submitArticle']['file']);
+                fclose($file);
+
 
                 echo json_encode(["error" => $error, "method" => "submitArticle", "target" => "article", $id = $lastId, "message" => "Article soumis"]);
                 exit;

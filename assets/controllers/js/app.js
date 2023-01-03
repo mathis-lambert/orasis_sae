@@ -8,18 +8,43 @@ function success(message) {
     <p id='success'>${message}</p>`;
 }
 
-function xhr(data) {
+function xhr(data, file = null) {
   let xhr = new XMLHttpRequest();
+  let xhr2 = new XMLHttpRequest();
+
   let json = JSON.stringify(data);
 
-  xhr.onreadystatechange = () => {
-    if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 0))
-      traitement(xhr.responseText);
-  };
+  // send pdf file
+  if (file !== null) {
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 0))
+        traitementArticle(xhr.responseText);
+    };
 
-  xhr.open("POST", "assets/controllers/php/controller");
-  xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
-  xhr.send(json);
+    xhr2.onreadystatechange = () => {
+      if (xhr2.readyState === 4 && (xhr2.status === 200 || xhr2.status === 0))
+        traitementArticle(xhr2.responseText);
+    };
+
+    xhr.open("POST", "assets/controllers/php/controller");
+    xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
+    xhr.send(json);
+
+    let formData = new FormData();
+    formData.append("file", file);
+
+    xhr2.open("POST", "assets/controllers/php/encodePDF");
+    xhr2.send(formData);
+  } else {
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 0))
+        traitement(xhr.responseText);
+    };
+
+    xhr.open("POST", "assets/controllers/php/controller");
+    xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
+    xhr.send(json);
+  }
 }
 
 /* check all mails inputs  */
@@ -40,6 +65,10 @@ if (mailInputs) {
 
 const inscription_form = document.querySelector("#inscription_form");
 const connexion_form = document.querySelector("#connexion_form");
+
+function traitementArticle(data) {
+  data = JSON.parse(data);
+}
 
 function traitement(data) {
   data = JSON.parse(data);
@@ -176,13 +205,13 @@ if (editTable) {
       // get target table
       let target = button.parentElement.parentElement.dataset.target;
 
-      console.log(target);
-
       let inputsValues = [];
 
       inputs.forEach((input) => {
         inputsValues.push(input.value);
       });
+
+      console.log(target, userId, articleId, inputsValues);
 
       parentTableRow
         .querySelector(".deleteButton")
@@ -199,7 +228,7 @@ if (editTable) {
         });
       } else {
         let data = {};
-        if (target == "users") {
+        if (target == "user") {
           data = {
             edit: {
               target: target,
@@ -238,7 +267,7 @@ if (editTable) {
               inputsValues.push(input.value);
             });
 
-            if (target == "users") {
+            if (target == "user") {
               data = {
                 edit: {
                   target: target,
@@ -277,6 +306,17 @@ if (editTable) {
     });
   });
 
+  let test = {
+    edit: {
+      target: "user",
+      id: "18",
+      nom: "test",
+      prenom: "test",
+      email: "mail.mail@mail.com",
+      role: "2",
+    },
+  };
+
   deleteButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
       if (!button.classList.contains("disabled")) {
@@ -313,9 +353,8 @@ if (articleForm) {
       submitArticle: {
         titre: titre,
         resume: resume,
-        file: file,
       },
     };
-    xhr(data);
+    xhr(data, file);
   });
 }
