@@ -850,6 +850,36 @@ footer .footer-ending p {
   display: none;
 }
 
+.activite {
+  height: 300px;
+  width: 400px;
+  display: flex;
+  background-color: aliceblue;
+  border-radius: 20px;
+  text-align: center;
+  margin: 40px;
+}
+
+#img_act {
+  height: 250px;
+  width: 400px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.act {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#activite_content {
+  display: flex;
+  flex-direction: column;
+}
+
 /* reset */
 *,
 *:before,
