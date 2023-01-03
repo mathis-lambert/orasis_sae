@@ -43,6 +43,7 @@ body {
   background-image: url("../img/background.png");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 
   &.home {
     background-image: none;
@@ -100,6 +101,10 @@ h1:not(.no-style):before {
 
 .no-margin {
   margin: 0;
+}
+
+.white {
+  color: white;
 }
 
 @media screen and (max-width: 1400px) {
@@ -258,7 +263,7 @@ table {
 .content-container {
   align-items: center;
   gap: 5vw;
-  flex-wrap: wrap;
+  flex-flow: row-reverse wrap;
   .main-container {
     display: flex;
     flex: 1 1 400px;
@@ -267,10 +272,25 @@ table {
     gap: 3rem;
     margin-inline: 0;
     .para {
-      background-color: rgba($color: #5c5c5c, $alpha: 0.75);
+      background-color: rgba($color: #c2c2c2, $alpha: 0.5);
       padding: 1rem;
       border-radius: 1rem;
     }
+  }
+}
+
+.img_tarifs {
+  flex: 1 1 400px;
+  width: min(100%, 400px);
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
   }
 }
 

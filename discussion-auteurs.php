@@ -67,7 +67,7 @@ session_start();
             <button id="message_button">Envoyer</button>
         </div>
     </div>
-    <?php include_once 'assets/includes/_footer.html' ?>
+    <?php include_once 'assets/includes/_footer.php' ?>
     <!-- Javascript import files -->
     <script>
         const message_container = document.querySelector('.message_container');
@@ -78,6 +78,57 @@ session_start();
             message_container.scrollTop = message_container.scrollHeight;
         }
         scrollToBottom();
+
+        function fetchMessages() {
+            let messages = [];
+            let request = new XMLHttpRequest();
+            request.open('GET', 'assets/controllers/php/fetchMessages.php', false);
+            request.send(null);
+            if (request.status === 200) {
+                messages = JSON.parse(request.responseText);
+            }
+            return messages;
+        }
+
+        function updateGrid(messages) {
+            let grid = document.querySelector('.messages_grid');
+            grid.innerHTML = '';
+            messages.forEach(message => {
+                let messageDiv = document.createElement('div');
+                messageDiv.classList.add('message');
+
+                let messageHeader = document.createElement('div');
+                messageHeader.classList.add('message_header');
+
+                let messageInfos = document.createElement('div');
+                messageInfos.classList.add('message_infos');
+                messageInfos.innerHTML = `Par ${message.userFirstname} ${message.userLastname} le ${message.messageDate}`;
+
+                let messageContent = document.createElement('div');
+                messageContent.classList.add('message_content');
+                messageContent.innerHTML = message.messageText;
+
+                messageHeader.appendChild(messageInfos);
+                messageDiv.appendChild(messageHeader);
+                messageDiv.appendChild(messageContent);
+                grid.appendChild(messageDiv);
+            });
+            scrollToBottom();
+        }
+
+        let messages = fetchMessages();
+        console.log(messages);
+        updateGrid(messages);
+
+        setInterval(() => {
+            if (messages.length !== fetchMessages().length) {
+                messages = fetchMessages();
+                updateGrid(messages);
+                scrollToBottom();
+            } else {
+                console.log('Pas de nouveaux messages');
+            }
+        }, 1000);
     </script>
     <script src="assets/app/index.js"></script>
     <script src="assets/controllers/js/app.js"></script>

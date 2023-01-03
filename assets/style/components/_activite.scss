@@ -1,33 +1,47 @@
-.activite{
-    height: 300px;
-    width: 400px;
-    display: flex;
-    background-color: aliceblue;
-    border-radius: 20px;
-    text-align: center;
-    margin: 40px;
+details {
+  width: 100%;
 }
 
-#img_act{
-    height: 250px;
-    width: 400px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px ;
+#activites {
+  .white {
+    color: white;
+  }
+
+  .container {
+    min-height: 100dvh;
+  }
 }
 
-.act{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-#activite_content{
-    display: flex;
-    flex-direction: column;
+.activite {
+  height: 300px;
+  width: min(100% - 1rem, 400px);
+  display: flex;
+  background-color: aliceblue;
+  border-radius: 20px;
+  text-align: center;
+  margin: 1rem;
 }
 
+#img_act {
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
 
+.act {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+#activite_content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 
 // -------------- BUTTON
 
@@ -56,7 +70,7 @@
   left: 50%;
   max-width: 90%;
   pointer-events: none;
-  position: absolute;
+  position: fixed;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 30em;
@@ -134,8 +148,6 @@
 details {
   summary {
     list-style: none;
-      
-
   }
 }
 
@@ -155,5 +167,3 @@ code {
   position: relative;
   top: -2px;
 }
-
-

@@ -232,6 +232,7 @@
         <a href="./#programme">Le programme</a>
         <a href="./comite">Comités</a>
         <a href="articles">Les articles</a>
+        <a href="activite">Les activités</a>
 
       </div>
       <div class="navbar-menu__left__item">
@@ -256,6 +257,7 @@
           <a href="inscription">S\'inscrire</a>';
         }
         ?>
+        <a href="http://www.afrif.asso.fr/?page_id=64" target="_blank">Adhérer à l'AFRIF</a>
       </div>
       <?php
       if (!empty($_SESSION) && isset($_SESSION) && in_array($_SESSION['role'], [2, 3])) {

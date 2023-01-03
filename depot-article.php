@@ -66,7 +66,7 @@ if (!empty($_SESSION) && isset($_SESSION)) {
       ?>
    </div>
 
-   <?php include_once 'assets/includes/_footer.html' ?>
+   <?php include_once 'assets/includes/_footer.php' ?>
 
    <script>
       const userRole = <?= $session_role ?>;

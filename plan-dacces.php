@@ -1,3 +1,8 @@
+<?php
+session_start();
+define('MyConst', TRUE);
+include_once 'config/config.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -60,7 +65,7 @@
       </div>
    </div>
 
-   <?php include 'assets/includes/_footer.html'; ?>
+   <?php include 'assets/includes/_footer.php'; ?>
 
    <!-- Javascript import files -->
    <script src="assets/app/index.js"></script>

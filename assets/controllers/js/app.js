@@ -101,7 +101,8 @@ function traitement(data) {
   }
 
   if (data.error == false && data.method == "message") {
-    const message_grid = document.querySelector(".messages_grid");
+    const message_grid = document.querySelector(".messages_grid"),
+      message_container = document.querySelector(".message_container");
 
     message_grid.innerHTML += `
     <div class="message">
@@ -114,6 +115,8 @@ function traitement(data) {
       </div>
     </div>
     `;
+
+    message_container.scrollTop = message_container.scrollHeight;
   }
 }
 

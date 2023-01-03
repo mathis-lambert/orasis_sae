@@ -60,7 +60,7 @@ if (!empty($_SESSION) && isset($_SESSION)) {
     </section>
 
     <!-- </div> -->
-    <?php include_once 'assets/includes/_footer.html' ?>
+    <?php include_once 'assets/includes/_footer.php' ?>
     <!-- Javascript import files -->
 
     <script src="assets/app/index.js"></script>

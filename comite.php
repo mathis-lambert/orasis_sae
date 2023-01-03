@@ -25,7 +25,7 @@ include_once 'config/config.php';
 <body>
    <?php include_once 'assets/includes/_navbar.php' ?>
    <div class="container">
-   <section id="intervenants">
+      <section id="intervenants">
          <h1 style="color: white;">Les intervenants</h1>
          <h2 style="color: white;">Comité d'organisation</h2>
          <div class="container intervenants_container">
@@ -175,27 +175,32 @@ include_once 'config/config.php';
                   <h3>OLIVIER LÉZORAY</h3>
                   <p>UNIVERSITÉ DE CAEN</p>
                </div>
-            </div><div class="card_container">
+            </div>
+            <div class="card_container">
                <div id="card_intervenant">
                   <h3>SÉBASTIEN LEFÈVRE</h3>
                   <p>UNIVERSITÉ BRETAGNE SUD</p>
                </div>
-            </div><div class="card_container">
+            </div>
+            <div class="card_container">
                <div id="card_intervenant">
                   <h3>NICOLAS LOMÉNIE</h3>
                   <p>UNIVERSITÉ PARIS CITÉ</p>
                </div>
-            </div><div class="card_container">
+            </div>
+            <div class="card_container">
                <div id="card_intervenant">
                   <h3>ANTOINE MANZANERA</h3>
                   <p>ENSTA PARIS, IPP</p>
                </div>
-            </div><div class="card_container">
+            </div>
+            <div class="card_container">
                <div id="card_intervenant">
                   <h3>BENOÎT NAEGEL</h3>
                   <p>UNIVERSITÉ DE STRASBOURG</p>
                </div>
-            </div><div class="card_container">
+            </div>
+            <div class="card_container">
                <div id="card_intervenant">
                   <h3>THANH PHUONG NGUYEN</h3>
                   <p>UNIVERSITÉ DE TOULON</p>
@@ -303,11 +308,11 @@ include_once 'config/config.php';
          <h2></h2>
       </section>
    </div>
-      <?php include_once 'assets/includes/_footer.html' ?>
+   <?php include_once 'assets/includes/_footer.php' ?>
 
    <!-- Javascript import files -->
    <script src="assets/app/index.js"></script>
    <script src="assets/controllers/js/accueil.js"></script>
-   </body>
+</body>
 
 </html>
